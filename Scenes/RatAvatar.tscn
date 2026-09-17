@@ -1,0 +1,168 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Scripts/Avatar.gd" id="1_qjnjq"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_l503f"]
+radius = 0.3
+height = 0.9
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_voup8"]
+albedo_color = Color(0.2, 0.4, 0.6, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2pfmo"]
+size = Vector3(0.4, 0.35, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n3jmk"]
+albedo_color = Color(0.6, 0.3, 0.1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_aatnq"]
+size = Vector3(0.2, 0.15, 0.4)
+
+[sub_resource type="SphereMesh" id="SphereMesh_cefck"]
+radius = 0.08
+height = 0.16
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4oamc"]
+albedo_color = Color(0.9, 0.6, 0.6, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ox4iy"]
+radius = 0.05
+height = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j2bgf"]
+albedo_color = Color(0.1, 0.1, 0.1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_cmglb"]
+radius = 0.05
+height = 0.1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ccv08"]
+top_radius = 0.15
+bottom_radius = 0.15
+height = 0.05
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_x3fau"]
+top_radius = 0.15
+bottom_radius = 0.15
+height = 0.05
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_xv1bh"]
+top_radius = 0.2
+bottom_radius = 0.22
+height = 0.15
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_h6dep"]
+top_radius = 0.25
+bottom_radius = 0.25
+height = 0.02
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_0tkqw"]
+radius = 0.08
+height = 0.5
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_janlr"]
+radius = 0.1
+height = 0.4
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ddgg6"]
+top_radius = 0.02
+bottom_radius = 0.04
+height = 0.8
+
+[node name="RatAvatar" type="Node3D" unique_id=1870930540]
+script = ExtResource("1_qjnjq")
+
+[node name="Rig" type="Node3D" parent="." unique_id=494925478]
+
+[node name="Body" type="MeshInstance3D" parent="Rig" unique_id=1755541951]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+mesh = SubResource("CapsuleMesh_l503f")
+surface_material_override/0 = SubResource("StandardMaterial3D_voup8")
+
+[node name="HeadPivot" type="Node3D" parent="Rig" unique_id=89347906]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+
+[node name="Head" type="MeshInstance3D" parent="Rig/HeadPivot" unique_id=725418228]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1)
+mesh = SubResource("BoxMesh_2pfmo")
+surface_material_override/0 = SubResource("StandardMaterial3D_n3jmk")
+
+[node name="Snout" type="MeshInstance3D" parent="Rig/HeadPivot/Head" unique_id=1240902394]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0.4)
+mesh = SubResource("BoxMesh_aatnq")
+surface_material_override/0 = SubResource("StandardMaterial3D_n3jmk")
+
+[node name="Nose" type="MeshInstance3D" parent="Rig/HeadPivot/Head/Snout" unique_id=1897104595]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2)
+mesh = SubResource("SphereMesh_cefck")
+surface_material_override/0 = SubResource("StandardMaterial3D_4oamc")
+
+[node name="@MeshInstance3D@2" type="MeshInstance3D" parent="Rig/HeadPivot/Head" unique_id=437803037]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, 0.1, 0.25)
+mesh = SubResource("SphereMesh_ox4iy")
+surface_material_override/0 = SubResource("StandardMaterial3D_j2bgf")
+
+[node name="@MeshInstance3D@3" type="MeshInstance3D" parent="Rig/HeadPivot/Head" unique_id=1683530168]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, 0.1, 0.25)
+mesh = SubResource("SphereMesh_cmglb")
+surface_material_override/0 = SubResource("StandardMaterial3D_j2bgf")
+
+[node name="@MeshInstance3D@4" type="MeshInstance3D" parent="Rig/HeadPivot/Head" unique_id=2085759729]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.25, 0.2, -0.1)
+mesh = SubResource("CylinderMesh_ccv08")
+surface_material_override/0 = SubResource("StandardMaterial3D_4oamc")
+
+[node name="@MeshInstance3D@5" type="MeshInstance3D" parent="Rig/HeadPivot/Head" unique_id=130873408]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.25, 0.2, -0.1)
+mesh = SubResource("CylinderMesh_x3fau")
+surface_material_override/0 = SubResource("StandardMaterial3D_4oamc")
+
+[node name="Hat" type="MeshInstance3D" parent="Rig/HeadPivot/Head" unique_id=1868795221]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+mesh = SubResource("CylinderMesh_xv1bh")
+surface_material_override/0 = SubResource("StandardMaterial3D_voup8")
+
+[node name="@MeshInstance3D@6" type="MeshInstance3D" parent="Rig/HeadPivot/Head/Hat" unique_id=996428667]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0.1)
+mesh = SubResource("CylinderMesh_h6dep")
+surface_material_override/0 = SubResource("StandardMaterial3D_voup8")
+
+[node name="LeftArmPivot" type="Node3D" parent="Rig" unique_id=529214603]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, 0.8, 0)
+
+[node name="LeftArm" type="MeshInstance3D" parent="Rig/LeftArmPivot" unique_id=1374113708]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+mesh = SubResource("CapsuleMesh_0tkqw")
+surface_material_override/0 = SubResource("StandardMaterial3D_voup8")
+
+[node name="RightArmPivot" type="Node3D" parent="Rig" unique_id=1450768692]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35, 0.8, 0)
+
+[node name="RightArm" type="MeshInstance3D" parent="Rig/RightArmPivot" unique_id=2050090497]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+mesh = SubResource("CapsuleMesh_0tkqw")
+surface_material_override/0 = SubResource("StandardMaterial3D_voup8")
+
+[node name="LeftLegPivot" type="Node3D" parent="Rig" unique_id=851132586]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, 0.3, 0)
+
+[node name="LeftLeg" type="MeshInstance3D" parent="Rig/LeftLegPivot" unique_id=250234261]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, 0)
+mesh = SubResource("CapsuleMesh_janlr")
+surface_material_override/0 = SubResource("StandardMaterial3D_voup8")
+
+[node name="RightLegPivot" type="Node3D" parent="Rig" unique_id=1713762713]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, 0.3, 0)
+
+[node name="RightLeg" type="MeshInstance3D" parent="Rig/RightLegPivot" unique_id=63465967]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, 0)
+mesh = SubResource("CapsuleMesh_janlr")
+surface_material_override/0 = SubResource("StandardMaterial3D_voup8")
+
+[node name="TailPivot" type="Node3D" parent="Rig" unique_id=347087704]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -0.3)
+
+[node name="Tail" type="MeshInstance3D" parent="Rig/TailPivot" unique_id=10725949]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 0, 0.3, -0.3)
+mesh = SubResource("CylinderMesh_ddgg6")
+surface_material_override/0 = SubResource("StandardMaterial3D_4oamc")
