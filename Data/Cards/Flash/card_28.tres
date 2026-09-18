@@ -1,0 +1,23 @@
+﻿[gd_resource type="Resource" script_class="CardResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Resources/card_resource.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = 28
+title = "කුකුළු ගොවිපල (Poultry Farm)"
+card_type = "Flash"
+description = "මිතුරෙකුගේ Passion Fruit වගාවකට ආයෝජනය කරන ලෙස යෝජනාවක් ලැබේ. Passion Fruit භාවිතයෙන් නව පානයක් ජාත්‍යන්තර වශයෙන් ප්‍රසිද්ධ ව්‍යාපාරයක් ආරම්භ කරන අතර ඔවුන් ඒ සඳහා ලංකාවේ වැවෙන passion Fruit තෝරා ගෙන ඇති බව විශ්වාසවන්ත විදෙස් ආරංචි මාර්ග පවසයි."
+cost = 8000
+down_payment = 0
+cashflow = 1500
+penalty = 0
+price_per_share = 0
+buttons = ["invest", "pass"]
+financial_statement_effect = "Adds Asset 'Poultry Farm' (40,000), Adds Passive Income 'Poultry Farm' (5,000)"
+cash_ledger_effect = "Deducts Investment (-40,000)"
+ignore_skip_rule = "Can be ignored (Pass)"
+insufficient_funds_rule = "Optional Loan available"
+interdependencies = "None"
+action_key = "invest_poultry"
+values = "Investment – 8,000/= | Cashflow – 1,500/="

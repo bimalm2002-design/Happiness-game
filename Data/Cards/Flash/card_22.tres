@@ -1,0 +1,23 @@
+﻿[gd_resource type="Resource" script_class="CardResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Resources/card_resource.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = 22
+title = "ටෙක්නෝ ක්‍රිප්ටෝ කඩාවැටීම (Techno Crash)"
+card_type = "Flash"
+description = "\"Techno\" නම් නව Cryptocurrency එක අසාර්ථක වූ බව නිල වශයෙන් දැනුම් දෙයි."Techno\" නම් නව Cryptocurrency එක අසාර්ථක වූ බව නිල වශයෙන් දැනුම් දෙයි."
+cost = 0
+down_payment = 0
+cashflow = 0
+penalty = 0
+price_per_share = 0
+buttons = []
+financial_statement_effect = "Removes all 'Techno' shares/coins from Assets"
+cash_ledger_effect = "None directly (Investment lost)"
+ignore_skip_rule = "Auto-executes. Cannot be ignored."
+insufficient_funds_rule = "N/A"
+interdependencies = "Targets Techno Crypto"
+action_key = "techno_crash"
+values = "None"

@@ -1,0 +1,23 @@
+﻿[gd_resource type="Resource" script_class="CardResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Resources/card_resource.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = 5
+title = "පොල් ඉඩම (Coconut Land)"
+card_type = "Opportunity"
+description = "වයස්ගත වී කළමනාකරණය අපහසු වීම නිසා විශ්‍රාම යාමට ආසන්න මහත්මයෙකුගේ පොල් ඉඩමක් විකිණීමට ඇත."
+cost = 60000
+down_payment = 15000
+cashflow = 9000
+penalty = 0
+price_per_share = 0
+buttons = ["invest", "pass"]
+financial_statement_effect = "Adds Asset 'Coconut Land' (60,000), Adds Liability 'Coconut Land' (45,000), Adds Passive Income 'Coconut Land' (9,000)"
+cash_ledger_effect = "Deducts Downpayment (-15,000)"
+ignore_skip_rule = "Can be ignored (Pass)"
+insufficient_funds_rule = "Optional Loan available"
+interdependencies = "None"
+action_key = "invest_real_estate"
+values = "Total Investment – 60,000/= | Cashflow – 9,000/= | Downpayment – 15,000/="

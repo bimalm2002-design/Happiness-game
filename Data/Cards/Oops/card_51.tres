@@ -1,0 +1,23 @@
+﻿[gd_resource type="Resource" script_class="CardResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Resources/card_resource.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = 51
+title = "මිතුරෙකුගේ මංගල තෑග්ග (Wedding Gift)"
+card_type = "Oops"
+description = "ඔබට වැළඳුණු රෝගයක් නිශ්චිතවම හඳුනාගැනීම සඳහා පරීක්ෂණ කිහිපයක් සිදු කළ යුතුය. රජයේ රෝහල්වල ඊට අදාල පහසුකම් නොමැති බැවින් පුද්ගලික රෝහලකින් මුදල් ගෙවා සිදු කර ගැනීමට සිදුවේ."
+cost = 0
+down_payment = 0
+cashflow = 0
+penalty = 3000
+price_per_share = 0
+buttons = []
+financial_statement_effect = "None"
+cash_ledger_effect = "Deducts Cost (-3,500)"
+ignore_skip_rule = "Cannot be ignored"
+insufficient_funds_rule = "Mandatory Loan if cash < 3,500"
+interdependencies = "None"
+action_key = "wedding_gift"
+values = "3,000/="

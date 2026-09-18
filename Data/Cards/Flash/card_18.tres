@@ -1,0 +1,23 @@
+﻿[gd_resource type="Resource" script_class="CardResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Resources/card_resource.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = 18
+title = "සංගීත ප්‍රසංගයේ අවදානම (Concert Risk)"
+card_type = "Flash"
+description = "Musical Show එක පැවති දින අධික වර්ෂාව නිසා ටිකට් පත් අලෙවිය සැලකිය යුතු ලෙස අඩු විය."
+cost = 0
+down_payment = 0
+cashflow = 0
+penalty = 0
+price_per_share = 0
+buttons = []
+financial_statement_effect = "Removes Asset 'Musical Show'"
+cash_ledger_effect = "Adds Partial Return (+10,000)"
+ignore_skip_rule = "Auto-executes if Card 14 owned"
+insufficient_funds_rule = "N/A"
+interdependencies = "Requires Card 14"
+action_key = "return_concert_risk"
+values = "Investment – 4,000/= | Loss – 2,000/= | ඉතිරිය – 2,000/="

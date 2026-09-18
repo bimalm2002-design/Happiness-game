@@ -1,0 +1,520 @@
+[gd_scene format=3 uid="uid://d3360kx5wxlsy"]
+
+[ext_resource type="Script" uid="uid://5tn8pha5bt61" path="res://Scripts/FinancialStatement.gd" id="1_0av0m"]
+[ext_resource type="FontFile" uid="uid://18eqbjshot3m" path="res://LilitaOne-Regular.ttf" id="2_c4a62"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c4a62"]
+bg_color = Color(0.89411765, 0.9647059, 0.9882353, 1)
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.70941174, 0.83647054, 0.8788235, 1)
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5k5vs"]
+bg_color = Color(1, 0.4392157, 0, 1)
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_blahq"]
+bg_color = Color(0.28235295, 0.35686275, 0.5058824, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1doqm"]
+bg_color = Color(1, 0.4392157, 0, 1)
+corner_radius_top_left = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6jw3h"]
+bg_color = Color(1, 0.4392157, 0, 1)
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tomti"]
+bg_color = Color(1, 0.4392157, 0, 1)
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qjvjp"]
+bg_color = Color(1, 0.4392157, 0, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="FinancialStatement" type="Control" unique_id=1142765155]
+layout_mode = 3
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_0av0m")
+
+[node name="BackgroundDim" type="ColorRect" parent="." unique_id=627389715]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.4)
+
+[node name="MainPanel" type="PanelContainer" parent="." unique_id=1445796417]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_bottom = 1.0
+offset_top = 10.0
+offset_right = 580.0
+offset_bottom = -10.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_c4a62")
+
+[node name="@MarginContainer@78781" type="MarginContainer" parent="MainPanel" unique_id=712991357]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="@VBoxContainer@78782" type="VBoxContainer" parent="MainPanel/@MarginContainer@78781" unique_id=2107838604]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="@HBoxContainer@78783" type="HBoxContainer" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782" unique_id=825781833]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.2
+theme_override_constants/separation = 15
+
+[node name="@VBoxContainer@78784" type="VBoxContainer" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78783" unique_id=863518882]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.1
+
+[node name="@PanelContainer@78785" type="PanelContainer" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78783/@VBoxContainer@78784" unique_id=1341790205]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5k5vs")
+
+[node name="@Label@78786" type="Label" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78783/@VBoxContainer@78784/@PanelContainer@78785" unique_id=2038126689]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_c4a62")
+theme_override_font_sizes/font_size = 18
+text = "Income"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="@MarginContainer@78787" type="MarginContainer" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78783/@VBoxContainer@78784" unique_id=1900149711]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+
+[node name="@VBoxContainer@78788" type="VBoxContainer" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78783/@VBoxContainer@78784/@MarginContainer@78787" unique_id=1009816819]
+layout_mode = 2
+
+[node name="SalaryContainer" type="VBoxContainer" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78783/@VBoxContainer@78784/@MarginContainer@78787/@VBoxContainer@78788" unique_id=1976030588]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="@Label@78789" type="Label" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78783/@VBoxContainer@78784/@MarginContainer@78787/@VBoxContainer@78788" unique_id=621734963]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_c4a62")
+theme_override_font_sizes/font_size = 12
+text = "Cashflow"
+horizontal_alignment = 2
+
+[node name="IncomeScroll" type="ScrollContainer" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78783/@VBoxContainer@78784/@MarginContainer@78787/@VBoxContainer@78788" unique_id=109579522]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="IncomeList" type="VBoxContainer" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78783/@VBoxContainer@78784/@MarginContainer@78787/@VBoxContainer@78788/IncomeScroll" unique_id=1918152738]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
+
+[node name="@VBoxContainer@78792" type="VBoxContainer" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78783" unique_id=251033059]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="@Control@78793" type="Control" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78783/@VBoxContainer@78792" unique_id=710133337]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+
+[node name="RatRaceProgress" type="VBoxContainer" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78783/@VBoxContainer@78792" unique_id=493548329]
+layout_mode = 2
+
+[node name="@Label@78794" type="Label" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78783/@VBoxContainer@78792/RatRaceProgress" unique_id=1455536920]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_c4a62")
+theme_override_font_sizes/font_size = 13
+text = "Increase passive income to
+escape the rat race"
+horizontal_alignment = 1
+
+[node name="@Control@78795" type="Control" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78783/@VBoxContainer@78792/RatRaceProgress" unique_id=1802888168]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+
+[node name="RatRaceExpensesLabel" type="Label" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78783/@VBoxContainer@78792/RatRaceProgress" unique_id=466805145]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_c4a62")
+theme_override_font_sizes/font_size = 10
+text = "Total Expenses: 0"
+
+[node name="@Control@78796" type="Control" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78783/@VBoxContainer@78792/RatRaceProgress" unique_id=1780031566]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="ProgressBarBG" type="Panel" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78783/@VBoxContainer@78792/RatRaceProgress/@Control@78796" unique_id=1085705694]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 14)
+layout_mode = 0
+anchor_right = 1.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_blahq")
+
+[node name="ProgressBarFill" type="Panel" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78783/@VBoxContainer@78792/RatRaceProgress/@Control@78796" unique_id=1344400604]
+unique_name_in_owner = true
+layout_mode = 0
+offset_bottom = 14.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1doqm")
+
+[node name="PassiveIncomePointer" type="Label" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78783/@VBoxContainer@78792/RatRaceProgress/@Control@78796" unique_id=65453702]
+unique_name_in_owner = true
+layout_mode = 0
+offset_top = 14.0
+offset_right = 127.0
+offset_bottom = 89.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -2
+theme_override_fonts/font = ExtResource("2_c4a62")
+theme_override_font_sizes/font_size = 9
+text = "▲
+Passive Incomes
+0"
+horizontal_alignment = 1
+
+[node name="@HBoxContainer@78797" type="HBoxContainer" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782" unique_id=2033425710]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 15
+
+[node name="@VBoxContainer@78798" type="VBoxContainer" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78797" unique_id=883856925]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.1
+
+[node name="@PanelContainer@78799" type="PanelContainer" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78797/@VBoxContainer@78798" unique_id=2119536623]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6jw3h")
+
+[node name="@Label@78800" type="Label" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78797/@VBoxContainer@78798/@PanelContainer@78799" unique_id=1629264480]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_c4a62")
+theme_override_font_sizes/font_size = 18
+text = "Expenses"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="@MarginContainer@78801" type="MarginContainer" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78797/@VBoxContainer@78798" unique_id=2035212819]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+
+[node name="ExpensesScroll" type="ScrollContainer" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78797/@VBoxContainer@78798/@MarginContainer@78801" unique_id=497348516]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="ExpensesList" type="VBoxContainer" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78797/@VBoxContainer@78798/@MarginContainer@78801/ExpensesScroll" unique_id=2011096617]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
+
+[node name="@VBoxContainer@78804" type="VBoxContainer" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78797" unique_id=1333367444]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="@Control@78805" type="Control" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78797/@VBoxContainer@78804" unique_id=919345172]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SummaryContainer" type="VBoxContainer" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78797/@VBoxContainer@78804" unique_id=850646686]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="@HBoxContainer@78806" type="HBoxContainer" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78797/@VBoxContainer@78804/SummaryContainer" unique_id=555722237]
+layout_mode = 2
+
+[node name="@Label@78807" type="Label" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78797/@VBoxContainer@78804/SummaryContainer/@HBoxContainer@78806" unique_id=846075882]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.84705883, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_c4a62")
+theme_override_font_sizes/font_size = 24
+text = "CASH:"
+
+[node name="CashLabel" type="Label" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78797/@VBoxContainer@78804/SummaryContainer/@HBoxContainer@78806" unique_id=752463492]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.84705883, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_c4a62")
+theme_override_font_sizes/font_size = 24
+text = "0"
+horizontal_alignment = 2
+
+[node name="@HBoxContainer@78808" type="HBoxContainer" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78797/@VBoxContainer@78804/SummaryContainer" unique_id=1761443835]
+layout_mode = 2
+
+[node name="@Label@78809" type="Label" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78797/@VBoxContainer@78804/SummaryContainer/@HBoxContainer@78808" unique_id=1397718522]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.16078432, 0.79607844, 0.078431375, 1)
+theme_override_fonts/font = ExtResource("2_c4a62")
+theme_override_font_sizes/font_size = 14
+text = "Total Income:"
+
+[node name="TotalIncomeLabel" type="Label" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78797/@VBoxContainer@78804/SummaryContainer/@HBoxContainer@78808" unique_id=420678104]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.16078432, 0.79607844, 0.078431375, 1)
+theme_override_fonts/font = ExtResource("2_c4a62")
+theme_override_font_sizes/font_size = 14
+text = "0"
+horizontal_alignment = 2
+
+[node name="@HBoxContainer@78810" type="HBoxContainer" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78797/@VBoxContainer@78804/SummaryContainer" unique_id=286603172]
+layout_mode = 2
+
+[node name="@Label@78811" type="Label" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78797/@VBoxContainer@78804/SummaryContainer/@HBoxContainer@78810" unique_id=36827512]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.11764706, 0.1254902, 1)
+theme_override_fonts/font = ExtResource("2_c4a62")
+theme_override_font_sizes/font_size = 14
+text = "Total Expenses:"
+
+[node name="TotalExpensesLabel" type="Label" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78797/@VBoxContainer@78804/SummaryContainer/@HBoxContainer@78810" unique_id=1213730010]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.11764706, 0.1254902, 1)
+theme_override_fonts/font = ExtResource("2_c4a62")
+theme_override_font_sizes/font_size = 14
+text = "0"
+horizontal_alignment = 2
+
+[node name="@ColorRect@78812" type="ColorRect" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78797/@VBoxContainer@78804/SummaryContainer" unique_id=127489042]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+color = Color(1, 0.11764706, 0.1254902, 1)
+
+[node name="@HBoxContainer@78813" type="HBoxContainer" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78797/@VBoxContainer@78804/SummaryContainer" unique_id=1249305496]
+layout_mode = 2
+
+[node name="@Label@78814" type="Label" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78797/@VBoxContainer@78804/SummaryContainer/@HBoxContainer@78813" unique_id=2045116485]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3372549, 0.5411765, 0.8392157, 1)
+theme_override_fonts/font = ExtResource("2_c4a62")
+theme_override_font_sizes/font_size = 16
+text = "PAYDAY"
+
+[node name="PaydayLabel" type="Label" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78797/@VBoxContainer@78804/SummaryContainer/@HBoxContainer@78813" unique_id=1668046752]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.3372549, 0.5411765, 0.8392157, 1)
+theme_override_fonts/font = ExtResource("2_c4a62")
+theme_override_font_sizes/font_size = 16
+text = "0"
+horizontal_alignment = 2
+
+[node name="@HBoxContainer@78815" type="HBoxContainer" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782" unique_id=800014051]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.3
+theme_override_constants/separation = 15
+
+[node name="@VBoxContainer@78816" type="VBoxContainer" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78815" unique_id=1875362646]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.1
+
+[node name="@PanelContainer@78817" type="PanelContainer" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78815/@VBoxContainer@78816" unique_id=1009246191]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tomti")
+
+[node name="@Label@78818" type="Label" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78815/@VBoxContainer@78816/@PanelContainer@78817" unique_id=1133489711]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_c4a62")
+theme_override_font_sizes/font_size = 18
+text = "Assets"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="@MarginContainer@78819" type="MarginContainer" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78815/@VBoxContainer@78816" unique_id=774466031]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+
+[node name="AssetsScroll" type="ScrollContainer" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78815/@VBoxContainer@78816/@MarginContainer@78819" unique_id=385318888]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="AssetsContainer" type="VBoxContainer" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78815/@VBoxContainer@78816/@MarginContainer@78819/AssetsScroll" unique_id=1721374450]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 3
+
+[node name="@HBoxContainer@78822" type="HBoxContainer" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78815/@VBoxContainer@78816/@MarginContainer@78819/AssetsScroll/AssetsContainer" unique_id=525122809]
+layout_mode = 2
+
+[node name="@Label@78823" type="Label" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78815/@VBoxContainer@78816/@MarginContainer@78819/AssetsScroll/AssetsContainer/@HBoxContainer@78822" unique_id=122475163]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_c4a62")
+theme_override_font_sizes/font_size = 12
+text = "Stocks"
+
+[node name="@Label@78824" type="Label" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78815/@VBoxContainer@78816/@MarginContainer@78819/AssetsScroll/AssetsContainer/@HBoxContainer@78822" unique_id=2023411969]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_c4a62")
+theme_override_font_sizes/font_size = 12
+text = "#"
+
+[node name="@Label@78825" type="Label" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78815/@VBoxContainer@78816/@MarginContainer@78819/AssetsScroll/AssetsContainer/@HBoxContainer@78822" unique_id=206457919]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_c4a62")
+theme_override_font_sizes/font_size = 12
+text = "Cost/Share"
+horizontal_alignment = 2
+
+[node name="StocksList" type="VBoxContainer" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78815/@VBoxContainer@78816/@MarginContainer@78819/AssetsScroll/AssetsContainer" unique_id=1090367903]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="@ColorRect@78826" type="ColorRect" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78815/@VBoxContainer@78816/@MarginContainer@78819/AssetsScroll/AssetsContainer" unique_id=129674410]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+color = Color(0, 0, 0, 0)
+
+[node name="@HBoxContainer@78827" type="HBoxContainer" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78815/@VBoxContainer@78816/@MarginContainer@78819/AssetsScroll/AssetsContainer" unique_id=1278837903]
+layout_mode = 2
+
+[node name="@Label@78828" type="Label" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78815/@VBoxContainer@78816/@MarginContainer@78819/AssetsScroll/AssetsContainer/@HBoxContainer@78827" unique_id=1821505347]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_c4a62")
+theme_override_font_sizes/font_size = 12
+text = "Real Estate/ Business"
+
+[node name="@Label@78829" type="Label" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78815/@VBoxContainer@78816/@MarginContainer@78819/AssetsScroll/AssetsContainer/@HBoxContainer@78827" unique_id=1699328277]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_c4a62")
+theme_override_font_sizes/font_size = 12
+text = "Cost"
+horizontal_alignment = 2
+
+[node name="RealEstateAssetsList" type="VBoxContainer" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78815/@VBoxContainer@78816/@MarginContainer@78819/AssetsScroll/AssetsContainer" unique_id=679542918]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="@VBoxContainer@78830" type="VBoxContainer" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78815" unique_id=950514587]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="@PanelContainer@78831" type="PanelContainer" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78815/@VBoxContainer@78830" unique_id=879907406]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qjvjp")
+
+[node name="@Label@78832" type="Label" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78815/@VBoxContainer@78830/@PanelContainer@78831" unique_id=1038255619]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_c4a62")
+theme_override_font_sizes/font_size = 18
+text = "Liabilities"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LiabilitiesScroll" type="ScrollContainer" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78815/@VBoxContainer@78830" unique_id=2058888255]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="LiabilitiesContainer" type="VBoxContainer" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78815/@VBoxContainer@78830/LiabilitiesScroll" unique_id=803149747]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 3
+
+[node name="FixedLiabilitiesList" type="VBoxContainer" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78815/@VBoxContainer@78830/LiabilitiesScroll/LiabilitiesContainer" unique_id=1565776701]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="@MarginContainer@78835" type="MarginContainer" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78815/@VBoxContainer@78830/LiabilitiesScroll/LiabilitiesContainer" unique_id=1678847051]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="@ColorRect@78836" type="ColorRect" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78815/@VBoxContainer@78830/LiabilitiesScroll/LiabilitiesContainer/@MarginContainer@78835" unique_id=1132049309]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="@HBoxContainer@78837" type="HBoxContainer" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78815/@VBoxContainer@78830/LiabilitiesScroll/LiabilitiesContainer" unique_id=1666417119]
+layout_mode = 2
+
+[node name="@Label@78838" type="Label" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78815/@VBoxContainer@78830/LiabilitiesScroll/LiabilitiesContainer/@HBoxContainer@78837" unique_id=955197989]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_c4a62")
+theme_override_font_sizes/font_size = 11
+text = "Real Estate/ Business"
+
+[node name="@Label@78839" type="Label" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78815/@VBoxContainer@78830/LiabilitiesScroll/LiabilitiesContainer/@HBoxContainer@78837" unique_id=168234981]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_c4a62")
+theme_override_font_sizes/font_size = 11
+text = "Liability"
+horizontal_alignment = 2
+
+[node name="RealEstateLiabilitiesList" type="VBoxContainer" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78815/@VBoxContainer@78830/LiabilitiesScroll/LiabilitiesContainer" unique_id=1041599157]
+unique_name_in_owner = true
+layout_mode = 2

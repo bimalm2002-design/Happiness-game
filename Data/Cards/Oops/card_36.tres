@@ -1,0 +1,23 @@
+﻿[gd_resource type="Resource" script_class="CardResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Resources/card_resource.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = 36
+title = "ගෘහ උපකරණ අලුත්වැඩියාව (Appliance Repair)"
+card_type = "Oops"
+description = "ඇතිවූ තද වැසි හා සුළි සුළං තත්ත්වය හේතුවෙන් ඔබගේ නිවසේ නිවසේ වහලය සහ දර මඩුව හානි වී ඇත. අලුත්වැඩියා කර ප්‍රතිසංස්කරණය කිරීම අත්‍යවශ්‍ය වේ."
+cost = 0
+down_payment = 0
+cashflow = 0
+penalty = 2000
+price_per_share = 0
+buttons = []
+financial_statement_effect = "None"
+cash_ledger_effect = "Deducts Cost (-4,000)"
+ignore_skip_rule = "Cannot be ignored"
+insufficient_funds_rule = "Mandatory Loan if cash < 4,000"
+interdependencies = "None"
+action_key = "appliance_repair"
+values = "2,000/="

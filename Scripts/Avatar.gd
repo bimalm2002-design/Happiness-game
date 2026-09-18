@@ -1,6 +1,7 @@
 extends Node3D
 
 signal move_finished()
+signal passed_square(square_node)
 
 var current_index = 0
 
@@ -60,5 +61,8 @@ func move_spaces(count: int, board_nodes: Array):
 		
 		await get_tree().create_timer(0.4).timeout
 		current_index = next_index
+		
+		# Emit passed square signal for each step (including the final one)
+		emit_signal("passed_square", board_nodes[current_index])
 		
 	emit_signal("move_finished")

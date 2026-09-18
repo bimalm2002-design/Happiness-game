@@ -1,0 +1,23 @@
+﻿[gd_resource type="Resource" script_class="CardResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Resources/card_resource.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = 25
+title = "ක්‍රීඩා බයිසිකලය විකිණීම (Sell Sport Bike)"
+card_type = "Flash"
+description = "තම හිතුවක්කාර පුතාගේ දැඩි ඉල්ලීම නිසා sport වර්ගයේ යතුරුපැදියක් සොයන පියෙකු ගැනුම්කරුවෙකු ලෙස ඔබට හමුවෙයි."
+cost = 0
+down_payment = 0
+cashflow = 0
+penalty = 0
+price_per_share = 0
+buttons = ["sell", "pass"]
+financial_statement_effect = "Removes status 'has_bicycle'"
+cash_ledger_effect = "Adds Cash (+25,000)"
+ignore_skip_rule = "Active only if Card 48 owned"
+insufficient_funds_rule = "N/A"
+interdependencies = "Requires Card 48"
+action_key = "sell_sport_bike"
+values = "25,000/="

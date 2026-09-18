@@ -1,0 +1,23 @@
+﻿[gd_resource type="Resource" script_class="CardResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Resources/card_resource.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = 41
+title = "නෛතික ආරවුලක් (Legal Dispute)"
+card_type = "Oops"
+description = "ඔබගේ දෙමව්පියන්ට හදිසි මුදල් අවශ්‍යතාවයක් ඇතිවේ."
+cost = 0
+down_payment = 0
+cashflow = 0
+penalty = 4000
+price_per_share = 0
+buttons = []
+financial_statement_effect = "None"
+cash_ledger_effect = "Deducts Cost (-10,000)"
+ignore_skip_rule = "Cannot be ignored"
+insufficient_funds_rule = "Mandatory Loan if cash < 10,000"
+interdependencies = "None"
+action_key = "legal_dispute"
+values = "4,000/="

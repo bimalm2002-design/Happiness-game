@@ -9,13 +9,15 @@
 [ext_resource type="Texture2D" uid="uid://dk65mw0qt48jr" path="res://Assets/Icons/bear-bull-stock-3840x2160-13812.png" id="5_s8kmm"]
 [ext_resource type="Texture2D" uid="uid://loxsi6fobs81" path="res://Assets/Icons/lightning-icon.png" id="6_04cdr"]
 [ext_resource type="Script" uid="uid://dnspmy07lxd35" path="res://Scripts/GameManager.gd" id="6_feipq"]
+[ext_resource type="Script" uid="uid://bhnaddoq0mqfi" path="res://Scripts/Avatar.gd" id="8_feipq"]
+[ext_resource type="Script" uid="uid://gu1mtn61ts83" path="res://Scripts/Dice.gd" id="10_loqvx"]
 
 [sub_resource type="Environment" id="Environment_hw4rv"]
 background_mode = 1
 background_color = Color(0.54509807, 0.7411765, 0.2627451, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3tp62"]
-size = Vector3(200, 1, 200)
+size = Vector3(26.701935, 1, 16.21991)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tsauk"]
 size = Vector3(25, 10, 1)
@@ -24,13 +26,13 @@ size = Vector3(25, 10, 1)
 size = Vector3(25, 10, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_feipq"]
-size = Vector3(1, 10, 25)
+size = Vector3(1, 10, 16.033203)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_loqvx"]
-size = Vector3(1, 10, 25)
+size = Vector3(1, 10, 16.116943)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s8kmm"]
-size = Vector3(25, 1, 25)
+size = Vector3(25, 1, 16.189087)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_feipq"]
 albedo_color = Color(0.35, 0.83, 0.2, 1)
@@ -402,7 +404,7 @@ transform = Transform3D(1, 0, 0, 0, 0.7071067, 0.7071067, 0, -0.7071067, 0.70710
 environment = SubResource("Environment_hw4rv")
 script = ExtResource("1_642dx")
 
-[node name="MainUI" parent="." unique_id=835148113 instance=ExtResource("2_3tp62")]
+[node name="MainUI" type="Node" parent="." unique_id=835148113 instance=ExtResource("2_3tp62")]
 
 [node name="DirectionalLight" type="DirectionalLight3D" parent="." unique_id=627119458]
 transform = Transform3D(0.7071067, -0.61237246, 0.35355335, 0, 0.49999997, 0.86602545, -0.7071067, -0.61237246, 0.35355335, 0, 0, 0)
@@ -410,7 +412,7 @@ transform = Transform3D(0.7071067, -0.61237246, 0.35355335, 0, 0.49999997, 0.866
 [node name="Floor" type="StaticBody3D" parent="." unique_id=1291688132]
 
 [node name="@CollisionShape3D@248617" type="CollisionShape3D" parent="Floor" unique_id=188125822]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.35, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10649109, -0.35, -0.596405)
 shape = SubResource("BoxShape3D_3tp62")
 
 [node name="InvisibleWalls" type="Node3D" parent="." unique_id=1926076751]
@@ -419,351 +421,356 @@ shape = SubResource("BoxShape3D_3tp62")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -11.5)
 
 [node name="@CollisionShape3D@248618" type="CollisionShape3D" parent="InvisibleWalls/Wall_0" unique_id=1864841315]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.2078753)
 shape = SubResource("BoxShape3D_tsauk")
 
 [node name="Wall_1" type="StaticBody3D" parent="InvisibleWalls" unique_id=983797958]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 11.5)
 
 [node name="@CollisionShape3D@248619" type="CollisionShape3D" parent="InvisibleWalls/Wall_1" unique_id=75962094]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.9479933)
 shape = SubResource("BoxShape3D_lrp6i")
 
 [node name="Wall_2" type="StaticBody3D" parent="InvisibleWalls" unique_id=555461862]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 5, 0)
 
 [node name="@CollisionShape3D@248620" type="CollisionShape3D" parent="InvisibleWalls/Wall_2" unique_id=58380048]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.34960938)
 shape = SubResource("BoxShape3D_feipq")
 
 [node name="Wall_3" type="StaticBody3D" parent="InvisibleWalls" unique_id=163416692]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 5, 0)
 
 [node name="@CollisionShape3D@248621" type="CollisionShape3D" parent="InvisibleWalls/Wall_3" unique_id=1605537218]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2503662)
 shape = SubResource("BoxShape3D_loqvx")
 
 [node name="Wall_4" type="StaticBody3D" parent="InvisibleWalls" unique_id=410250064]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
 
 [node name="@CollisionShape3D@248622" type="CollisionShape3D" parent="InvisibleWalls/Wall_4" unique_id=620451368]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.027160645)
 shape = SubResource("BoxShape3D_s8kmm")
 
 [node name="Board" type="Node3D" parent="." unique_id=580303587]
 
-[node name="OpportunitySquares" type="Node3D" parent="Board" unique_id=1427296131]
+[node name="OpportunitySquares" type="Node3D" parent="Board" unique_id=2049962310]
 
-[node name="opportunity_1" type="MeshInstance3D" parent="Board/OpportunitySquares" unique_id=1957760876]
+[node name="opportunity_1" type="MeshInstance3D" parent="Board/OpportunitySquares" unique_id=561533327]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 7)
 mesh = SubResource("BoxMesh_loqvx")
 metadata/path_index = 5
 
-[node name="@Sprite3D@295734" type="Sprite3D" parent="Board/OpportunitySquares/opportunity_1" unique_id=36284317]
+[node name="@Sprite3D@48813" type="Sprite3D" parent="Board/OpportunitySquares/opportunity_1" unique_id=1719109232]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11, 0)
 pixel_size = 0.002027027
 axis = 1
 texture = ExtResource("3_feipq")
 
-[node name="opportunity_2" type="MeshInstance3D" parent="Board/OpportunitySquares" unique_id=1446272413]
+[node name="opportunity_2" type="MeshInstance3D" parent="Board/OpportunitySquares" unique_id=1949094692]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 7)
 mesh = SubResource("BoxMesh_04cdr")
 metadata/path_index = 10
 
-[node name="@Sprite3D@295741" type="Sprite3D" parent="Board/OpportunitySquares/opportunity_2" unique_id=1601713779]
+[node name="@Sprite3D@48820" type="Sprite3D" parent="Board/OpportunitySquares/opportunity_2" unique_id=336781806]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11, 0)
 pixel_size = 0.002027027
 axis = 1
 texture = ExtResource("3_feipq")
 
-[node name="opportunity_3" type="MeshInstance3D" parent="Board/OpportunitySquares" unique_id=1301764928]
+[node name="opportunity_3" type="MeshInstance3D" parent="Board/OpportunitySquares" unique_id=784754582]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 1)
 mesh = SubResource("BoxMesh_5dk8e")
 metadata/path_index = 15
 
-[node name="@Sprite3D@295747" type="Sprite3D" parent="Board/OpportunitySquares/opportunity_3" unique_id=550881930]
+[node name="@Sprite3D@48826" type="Sprite3D" parent="Board/OpportunitySquares/opportunity_3" unique_id=1672104136]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11, 0)
 pixel_size = 0.002027027
 axis = 1
 texture = ExtResource("3_feipq")
 
-[node name="opportunity_4" type="MeshInstance3D" parent="Board/OpportunitySquares" unique_id=1544807753]
+[node name="opportunity_4" type="MeshInstance3D" parent="Board/OpportunitySquares" unique_id=1212211804]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -7)
 mesh = SubResource("BoxMesh_2xr2y")
 metadata/path_index = 21
 
-[node name="@Sprite3D@295754" type="Sprite3D" parent="Board/OpportunitySquares/opportunity_4" unique_id=285084513]
+[node name="@Sprite3D@48833" type="Sprite3D" parent="Board/OpportunitySquares/opportunity_4" unique_id=1888066949]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11, 0)
 pixel_size = 0.002027027
 axis = 1
 texture = ExtResource("3_feipq")
 
-[node name="opportunity_5" type="MeshInstance3D" parent="Board/OpportunitySquares" unique_id=1912287107]
+[node name="opportunity_5" type="MeshInstance3D" parent="Board/OpportunitySquares" unique_id=1469767193]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -7)
 mesh = SubResource("BoxMesh_ucp47")
 metadata/path_index = 29
 
-[node name="@Sprite3D@295765" type="Sprite3D" parent="Board/OpportunitySquares/opportunity_5" unique_id=1525928541]
+[node name="@Sprite3D@48844" type="Sprite3D" parent="Board/OpportunitySquares/opportunity_5" unique_id=397952400]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11, 0)
 pixel_size = 0.002027027
 axis = 1
 texture = ExtResource("3_feipq")
 
-[node name="opportunity_6" type="MeshInstance3D" parent="Board/OpportunitySquares" unique_id=399760341]
+[node name="opportunity_6" type="MeshInstance3D" parent="Board/OpportunitySquares" unique_id=283565926]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -7)
 mesh = SubResource("BoxMesh_q0w0y")
 metadata/path_index = 31
 
-[node name="@Sprite3D@295767" type="Sprite3D" parent="Board/OpportunitySquares/opportunity_6" unique_id=2004172484]
+[node name="@Sprite3D@48846" type="Sprite3D" parent="Board/OpportunitySquares/opportunity_6" unique_id=643647293]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11, 0)
 pixel_size = 0.002027027
 axis = 1
 texture = ExtResource("3_feipq")
 
-[node name="opportunity_7" type="MeshInstance3D" parent="Board/OpportunitySquares" unique_id=879842262]
+[node name="opportunity_7" type="MeshInstance3D" parent="Board/OpportunitySquares" unique_id=388978942]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 5)
 mesh = SubResource("BoxMesh_avvvp")
 metadata/path_index = 37
 
-[node name="@Sprite3D@295775" type="Sprite3D" parent="Board/OpportunitySquares/opportunity_7" unique_id=1483062318]
+[node name="@Sprite3D@48854" type="Sprite3D" parent="Board/OpportunitySquares/opportunity_7" unique_id=974678242]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11, 0)
 pixel_size = 0.002027027
 axis = 1
 texture = ExtResource("3_feipq")
 
-[node name="OopsSquares" type="Node3D" parent="Board" unique_id=1458663473]
+[node name="OopsSquares" type="Node3D" parent="Board" unique_id=218141787]
 
-[node name="oops_1" type="MeshInstance3D" parent="Board/OopsSquares" unique_id=1143929118]
+[node name="oops_1" type="MeshInstance3D" parent="Board/OopsSquares" unique_id=1551990582]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 7)
 mesh = SubResource("BoxMesh_uhvgs")
 metadata/path_index = 2
 
-[node name="@Sprite3D@295730" type="Sprite3D" parent="Board/OopsSquares/oops_1" unique_id=366162633]
+[node name="@Sprite3D@48809" type="Sprite3D" parent="Board/OopsSquares/oops_1" unique_id=50607753]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11, 0)
 pixel_size = 0.002734375
 axis = 1
 texture = ExtResource("4_loqvx")
 
-[node name="oops_2" type="MeshInstance3D" parent="Board/OopsSquares" unique_id=1524558488]
+[node name="oops_2" type="MeshInstance3D" parent="Board/OopsSquares" unique_id=451615521]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 7)
 mesh = SubResource("BoxMesh_xgnxj")
 metadata/path_index = 7
 
-[node name="@Sprite3D@295737" type="Sprite3D" parent="Board/OopsSquares/oops_2" unique_id=138336500]
+[node name="@Sprite3D@48816" type="Sprite3D" parent="Board/OopsSquares/oops_2" unique_id=434750465]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11, 0)
 pixel_size = 0.002734375
 axis = 1
 texture = ExtResource("4_loqvx")
 
-[node name="oops_3" type="MeshInstance3D" parent="Board/OopsSquares" unique_id=1761973228]
+[node name="oops_3" type="MeshInstance3D" parent="Board/OopsSquares" unique_id=217286286]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 7)
 mesh = SubResource("BoxMesh_87nqf")
 metadata/path_index = 11
 
-[node name="@Sprite3D@295742" type="Sprite3D" parent="Board/OopsSquares/oops_3" unique_id=2010473684]
+[node name="@Sprite3D@48821" type="Sprite3D" parent="Board/OopsSquares/oops_3" unique_id=923068718]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11, 0)
 pixel_size = 0.002734375
 axis = 1
 texture = ExtResource("4_loqvx")
 
-[node name="oops_4" type="MeshInstance3D" parent="Board/OopsSquares" unique_id=2038874625]
+[node name="oops_4" type="MeshInstance3D" parent="Board/OopsSquares" unique_id=854695107]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -5)
 mesh = SubResource("BoxMesh_uossk")
 metadata/path_index = 18
 
-[node name="@Sprite3D@295751" type="Sprite3D" parent="Board/OopsSquares/oops_4" unique_id=585349144]
+[node name="@Sprite3D@48830" type="Sprite3D" parent="Board/OopsSquares/oops_4" unique_id=1792954714]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11, 0)
 pixel_size = 0.002734375
 axis = 1
 texture = ExtResource("4_loqvx")
 
-[node name="oops_5" type="MeshInstance3D" parent="Board/OopsSquares" unique_id=941063105]
+[node name="oops_5" type="MeshInstance3D" parent="Board/OopsSquares" unique_id=906878618]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -7)
 mesh = SubResource("BoxMesh_y1hhp")
 metadata/path_index = 20
 
-[node name="@Sprite3D@295753" type="Sprite3D" parent="Board/OopsSquares/oops_5" unique_id=1983434394]
+[node name="@Sprite3D@48832" type="Sprite3D" parent="Board/OopsSquares/oops_5" unique_id=1820571659]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11, 0)
 pixel_size = 0.002734375
 axis = 1
 texture = ExtResource("4_loqvx")
 
-[node name="oops_6" type="MeshInstance3D" parent="Board/OopsSquares" unique_id=524054502]
+[node name="oops_6" type="MeshInstance3D" parent="Board/OopsSquares" unique_id=24546076]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -7)
 mesh = SubResource("BoxMesh_475gs")
 metadata/path_index = 23
 
-[node name="@Sprite3D@295757" type="Sprite3D" parent="Board/OopsSquares/oops_6" unique_id=1993479132]
+[node name="@Sprite3D@48836" type="Sprite3D" parent="Board/OopsSquares/oops_6" unique_id=734903391]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11, 0)
 pixel_size = 0.002734375
 axis = 1
 texture = ExtResource("4_loqvx")
 
-[node name="oops_7" type="MeshInstance3D" parent="Board/OopsSquares" unique_id=728846992]
+[node name="oops_7" type="MeshInstance3D" parent="Board/OopsSquares" unique_id=700848477]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -7)
 mesh = SubResource("BoxMesh_hsne0")
 metadata/path_index = 30
 
-[node name="@Sprite3D@295766" type="Sprite3D" parent="Board/OopsSquares/oops_7" unique_id=1329568578]
+[node name="@Sprite3D@48845" type="Sprite3D" parent="Board/OopsSquares/oops_7" unique_id=2011711256]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11, 0)
 pixel_size = 0.002734375
 axis = 1
 texture = ExtResource("4_loqvx")
 
-[node name="oops_8" type="MeshInstance3D" parent="Board/OopsSquares" unique_id=272211271]
+[node name="oops_8" type="MeshInstance3D" parent="Board/OopsSquares" unique_id=810956053]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 1)
 mesh = SubResource("BoxMesh_5et5c")
 metadata/path_index = 35
 
-[node name="@Sprite3D@295772" type="Sprite3D" parent="Board/OopsSquares/oops_8" unique_id=555534164]
+[node name="@Sprite3D@48851" type="Sprite3D" parent="Board/OopsSquares/oops_8" unique_id=1320103810]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11, 0)
 pixel_size = 0.002734375
 axis = 1
 texture = ExtResource("4_loqvx")
 
-[node name="StockSquares" type="Node3D" parent="Board" unique_id=805035001]
+[node name="StockSquares" type="Node3D" parent="Board" unique_id=312000572]
 
-[node name="stock_1" type="MeshInstance3D" parent="Board/StockSquares" unique_id=1950473161]
+[node name="stock_1" type="MeshInstance3D" parent="Board/StockSquares" unique_id=1770770153]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 7)
 mesh = SubResource("BoxMesh_lwm8t")
 metadata/path_index = 4
 
-[node name="@Sprite3D@295733" type="Sprite3D" parent="Board/StockSquares/stock_1" unique_id=1527741776]
+[node name="@Sprite3D@48812" type="Sprite3D" parent="Board/StockSquares/stock_1" unique_id=708198526]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11, 0)
 pixel_size = 0.00046875
 axis = 1
 texture = ExtResource("5_s8kmm")
 
-[node name="stock_2" type="MeshInstance3D" parent="Board/StockSquares" unique_id=2084382227]
+[node name="stock_2" type="MeshInstance3D" parent="Board/StockSquares" unique_id=126505142]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 7)
 mesh = SubResource("BoxMesh_pja6n")
 metadata/path_index = 12
 
-[node name="@Sprite3D@295743" type="Sprite3D" parent="Board/StockSquares/stock_2" unique_id=843374508]
+[node name="@Sprite3D@48822" type="Sprite3D" parent="Board/StockSquares/stock_2" unique_id=1060886409]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11, 0)
 pixel_size = 0.00046875
 axis = 1
 texture = ExtResource("5_s8kmm")
 
-[node name="stock_3" type="MeshInstance3D" parent="Board/StockSquares" unique_id=1877699859]
+[node name="stock_3" type="MeshInstance3D" parent="Board/StockSquares" unique_id=1966429189]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 5)
 mesh = SubResource("BoxMesh_kporf")
 metadata/path_index = 13
 
-[node name="@Sprite3D@295744" type="Sprite3D" parent="Board/StockSquares/stock_3" unique_id=35845259]
+[node name="@Sprite3D@48823" type="Sprite3D" parent="Board/StockSquares/stock_3" unique_id=1440790686]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11, 0)
 pixel_size = 0.00046875
 axis = 1
 texture = ExtResource("5_s8kmm")
 
-[node name="stock_4" type="MeshInstance3D" parent="Board/StockSquares" unique_id=368963128]
+[node name="stock_4" type="MeshInstance3D" parent="Board/StockSquares" unique_id=1074961621]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -7)
 mesh = SubResource("BoxMesh_2fkic")
 metadata/path_index = 19
 
-[node name="@Sprite3D@295752" type="Sprite3D" parent="Board/StockSquares/stock_4" unique_id=1053742610]
+[node name="@Sprite3D@48831" type="Sprite3D" parent="Board/StockSquares/stock_4" unique_id=740863410]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11, 0)
 pixel_size = 0.00046875
 axis = 1
 texture = ExtResource("5_s8kmm")
 
-[node name="stock_5" type="MeshInstance3D" parent="Board/StockSquares" unique_id=106269984]
+[node name="stock_5" type="MeshInstance3D" parent="Board/StockSquares" unique_id=1629031321]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -7)
 mesh = SubResource("BoxMesh_dmsic")
 metadata/path_index = 24
 
-[node name="@Sprite3D@295758" type="Sprite3D" parent="Board/StockSquares/stock_5" unique_id=479390020]
+[node name="@Sprite3D@48837" type="Sprite3D" parent="Board/StockSquares/stock_5" unique_id=628877866]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11, 0)
 pixel_size = 0.00046875
 axis = 1
 texture = ExtResource("5_s8kmm")
 
-[node name="stock_6" type="MeshInstance3D" parent="Board/StockSquares" unique_id=1039378671]
+[node name="stock_6" type="MeshInstance3D" parent="Board/StockSquares" unique_id=751547751]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -7)
 mesh = SubResource("BoxMesh_yc4uk")
 metadata/path_index = 26
 
-[node name="@Sprite3D@295761" type="Sprite3D" parent="Board/StockSquares/stock_6" unique_id=741428823]
+[node name="@Sprite3D@48840" type="Sprite3D" parent="Board/StockSquares/stock_6" unique_id=1145975398]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11, 0)
 pixel_size = 0.00046875
 axis = 1
 texture = ExtResource("5_s8kmm")
 
-[node name="stock_7" type="MeshInstance3D" parent="Board/StockSquares" unique_id=691628536]
+[node name="stock_7" type="MeshInstance3D" parent="Board/StockSquares" unique_id=966516409]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -5)
 mesh = SubResource("BoxMesh_fsexn")
 metadata/path_index = 32
 
-[node name="@Sprite3D@295768" type="Sprite3D" parent="Board/StockSquares/stock_7" unique_id=1392580824]
+[node name="@Sprite3D@48847" type="Sprite3D" parent="Board/StockSquares/stock_7" unique_id=65062348]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11, 0)
 pixel_size = 0.00046875
 axis = 1
 texture = ExtResource("5_s8kmm")
 
-[node name="FlashSquares" type="Node3D" parent="Board" unique_id=1802492654]
+[node name="FlashSquares" type="Node3D" parent="Board" unique_id=867058712]
 
-[node name="flash_1" type="MeshInstance3D" parent="Board/FlashSquares" unique_id=963899653]
+[node name="flash_1" type="MeshInstance3D" parent="Board/FlashSquares" unique_id=1490210425]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 7)
 mesh = SubResource("BoxMesh_i1di1")
 metadata/path_index = 1
 
-[node name="@Sprite3D@295729" type="Sprite3D" parent="Board/FlashSquares/flash_1" unique_id=1494413441]
+[node name="@Sprite3D@48808" type="Sprite3D" parent="Board/FlashSquares/flash_1" unique_id=623887834]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11, 0)
 pixel_size = 0.003125
 axis = 1
 texture = ExtResource("6_04cdr")
 
-[node name="flash_2" type="MeshInstance3D" parent="Board/FlashSquares" unique_id=2039072226]
+[node name="flash_2" type="MeshInstance3D" parent="Board/FlashSquares" unique_id=1796614279]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 7)
 mesh = SubResource("BoxMesh_r4etk")
 metadata/path_index = 8
 
-[node name="@Sprite3D@295738" type="Sprite3D" parent="Board/FlashSquares/flash_2" unique_id=1034169457]
+[node name="@Sprite3D@48817" type="Sprite3D" parent="Board/FlashSquares/flash_2" unique_id=261234577]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11, 0)
 pixel_size = 0.003125
 axis = 1
 texture = ExtResource("6_04cdr")
 
-[node name="flash_3" type="MeshInstance3D" parent="Board/FlashSquares" unique_id=595308357]
+[node name="flash_3" type="MeshInstance3D" parent="Board/FlashSquares" unique_id=1650452711]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -1)
 mesh = SubResource("BoxMesh_r6iuc")
 metadata/path_index = 16
 
-[node name="@Sprite3D@295748" type="Sprite3D" parent="Board/FlashSquares/flash_3" unique_id=1774389720]
+[node name="@Sprite3D@48827" type="Sprite3D" parent="Board/FlashSquares/flash_3" unique_id=992159088]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11, 0)
 pixel_size = 0.003125
 axis = 1
 texture = ExtResource("6_04cdr")
 
-[node name="flash_4" type="MeshInstance3D" parent="Board/FlashSquares" unique_id=251047859]
+[node name="flash_4" type="MeshInstance3D" parent="Board/FlashSquares" unique_id=1930900125]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -7)
 mesh = SubResource("BoxMesh_e68ry")
 metadata/path_index = 27
 
-[node name="@Sprite3D@295762" type="Sprite3D" parent="Board/FlashSquares/flash_4" unique_id=1700337980]
+[node name="@Sprite3D@48841" type="Sprite3D" parent="Board/FlashSquares/flash_4" unique_id=1344027548]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11, 0)
 pixel_size = 0.003125
 axis = 1
 texture = ExtResource("6_04cdr")
 
-[node name="flash_5" type="MeshInstance3D" parent="Board/FlashSquares" unique_id=1462321302]
+[node name="flash_5" type="MeshInstance3D" parent="Board/FlashSquares" unique_id=45778361]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -1)
 mesh = SubResource("BoxMesh_vjf40")
 metadata/path_index = 34
 
-[node name="@Sprite3D@295771" type="Sprite3D" parent="Board/FlashSquares/flash_5" unique_id=938764915]
+[node name="@Sprite3D@48850" type="Sprite3D" parent="Board/FlashSquares/flash_5" unique_id=895489765]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11, 0)
 pixel_size = 0.003125
 axis = 1
 texture = ExtResource("6_04cdr")
 
-[node name="MonopolySquares" type="Node3D" parent="Board" unique_id=14379888]
+[node name="MonopolySquares" type="Node3D" parent="Board" unique_id=1872677499]
 
-[node name="monopoly_1" type="MeshInstance3D" parent="Board/MonopolySquares" unique_id=1275794484]
+[node name="monopoly_1" type="MeshInstance3D" parent="Board/MonopolySquares" unique_id=1851290571]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 7)
 mesh = SubResource("BoxMesh_l6chb")
 metadata/path_index = 3
 
-[node name="@MeshInstance3D@295731" type="MeshInstance3D" parent="Board/MonopolySquares/monopoly_1" unique_id=1688168552]
+[node name="@MeshInstance3D@48810" type="MeshInstance3D" parent="Board/MonopolySquares/monopoly_1" unique_id=1505246024]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.43275)
 mesh = SubResource("BoxMesh_804rn")
 
-[node name="@Label3D@295732" type="Label3D" parent="Board/MonopolySquares/monopoly_1/@MeshInstance3D@295731" unique_id=942370676]
+[node name="@Label3D@48811" type="Label3D" parent="Board/MonopolySquares/monopoly_1/@MeshInstance3D@48810" unique_id=480706762]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.11, 0)
 modulate = Color(0.73333335, 0.73333335, 0.73333335, 1)
 outline_modulate = Color(0, 0, 0, 0)
@@ -771,16 +778,16 @@ text = "M"
 font_size = 300
 outline_size = 0
 
-[node name="monopoly_2" type="MeshInstance3D" parent="Board/MonopolySquares" unique_id=1018600295]
+[node name="monopoly_2" type="MeshInstance3D" parent="Board/MonopolySquares" unique_id=404769920]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
 mesh = SubResource("BoxMesh_jdj8h")
 metadata/path_index = 6
 
-[node name="@MeshInstance3D@295735" type="MeshInstance3D" parent="Board/MonopolySquares/monopoly_2" unique_id=701772106]
+[node name="@MeshInstance3D@48814" type="MeshInstance3D" parent="Board/MonopolySquares/monopoly_2" unique_id=594393347]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.43275)
 mesh = SubResource("BoxMesh_ml5sn")
 
-[node name="@Label3D@295736" type="Label3D" parent="Board/MonopolySquares/monopoly_2/@MeshInstance3D@295735" unique_id=152740438]
+[node name="@Label3D@48815" type="Label3D" parent="Board/MonopolySquares/monopoly_2/@MeshInstance3D@48814" unique_id=176381296]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.11, 0)
 modulate = Color(0.73333335, 0.73333335, 0.73333335, 1)
 outline_modulate = Color(0, 0, 0, 0)
@@ -788,16 +795,16 @@ text = "M"
 font_size = 300
 outline_size = 0
 
-[node name="monopoly_3" type="MeshInstance3D" parent="Board/MonopolySquares" unique_id=207580833]
+[node name="monopoly_3" type="MeshInstance3D" parent="Board/MonopolySquares" unique_id=399513422]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 7)
 mesh = SubResource("BoxMesh_f56b3")
 metadata/path_index = 9
 
-[node name="@MeshInstance3D@295739" type="MeshInstance3D" parent="Board/MonopolySquares/monopoly_3" unique_id=724456878]
+[node name="@MeshInstance3D@48818" type="MeshInstance3D" parent="Board/MonopolySquares/monopoly_3" unique_id=314870753]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.43275)
 mesh = SubResource("BoxMesh_4rrlb")
 
-[node name="@Label3D@295740" type="Label3D" parent="Board/MonopolySquares/monopoly_3/@MeshInstance3D@295739" unique_id=290038773]
+[node name="@Label3D@48819" type="Label3D" parent="Board/MonopolySquares/monopoly_3/@MeshInstance3D@48818" unique_id=685100102]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.11, 0)
 modulate = Color(0.73333335, 0.73333335, 0.73333335, 1)
 outline_modulate = Color(0, 0, 0, 0)
@@ -805,16 +812,16 @@ text = "M"
 font_size = 300
 outline_size = 0
 
-[node name="monopoly_4" type="MeshInstance3D" parent="Board/MonopolySquares" unique_id=897841664]
+[node name="monopoly_4" type="MeshInstance3D" parent="Board/MonopolySquares" unique_id=427325568]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 3)
 mesh = SubResource("BoxMesh_p7vou")
 metadata/path_index = 14
 
-[node name="@MeshInstance3D@295745" type="MeshInstance3D" parent="Board/MonopolySquares/monopoly_4" unique_id=142105199]
+[node name="@MeshInstance3D@48824" type="MeshInstance3D" parent="Board/MonopolySquares/monopoly_4" unique_id=121704324]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.43275, 0, 0)
 mesh = SubResource("BoxMesh_tmvoj")
 
-[node name="@Label3D@295746" type="Label3D" parent="Board/MonopolySquares/monopoly_4/@MeshInstance3D@295745" unique_id=1103444156]
+[node name="@Label3D@48825" type="Label3D" parent="Board/MonopolySquares/monopoly_4/@MeshInstance3D@48824" unique_id=1608888009]
 transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 1.9106855e-15, 0, 0.11, 0)
 modulate = Color(0.73333335, 0.73333335, 0.73333335, 1)
 outline_modulate = Color(0, 0, 0, 0)
@@ -822,16 +829,16 @@ text = "M"
 font_size = 300
 outline_size = 0
 
-[node name="monopoly_5" type="MeshInstance3D" parent="Board/MonopolySquares" unique_id=821398214]
+[node name="monopoly_5" type="MeshInstance3D" parent="Board/MonopolySquares" unique_id=765992253]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -3)
 mesh = SubResource("BoxMesh_qpskr")
 metadata/path_index = 17
 
-[node name="@MeshInstance3D@295749" type="MeshInstance3D" parent="Board/MonopolySquares/monopoly_5" unique_id=1447387498]
+[node name="@MeshInstance3D@48828" type="MeshInstance3D" parent="Board/MonopolySquares/monopoly_5" unique_id=895411824]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.43275, 0, 0)
 mesh = SubResource("BoxMesh_35tpn")
 
-[node name="@Label3D@295750" type="Label3D" parent="Board/MonopolySquares/monopoly_5/@MeshInstance3D@295749" unique_id=1922739294]
+[node name="@Label3D@48829" type="Label3D" parent="Board/MonopolySquares/monopoly_5/@MeshInstance3D@48828" unique_id=1010309214]
 transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 1.9106855e-15, 0, 0.11, 0)
 modulate = Color(0.73333335, 0.73333335, 0.73333335, 1)
 outline_modulate = Color(0, 0, 0, 0)
@@ -839,16 +846,16 @@ text = "M"
 font_size = 300
 outline_size = 0
 
-[node name="monopoly_6" type="MeshInstance3D" parent="Board/MonopolySquares" unique_id=1444627790]
+[node name="monopoly_6" type="MeshInstance3D" parent="Board/MonopolySquares" unique_id=639749263]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -7)
 mesh = SubResource("BoxMesh_egydv")
 metadata/path_index = 22
 
-[node name="@MeshInstance3D@295755" type="MeshInstance3D" parent="Board/MonopolySquares/monopoly_6" unique_id=672163298]
+[node name="@MeshInstance3D@48834" type="MeshInstance3D" parent="Board/MonopolySquares/monopoly_6" unique_id=1129524037]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.43275)
 mesh = SubResource("BoxMesh_76e11")
 
-[node name="@Label3D@295756" type="Label3D" parent="Board/MonopolySquares/monopoly_6/@MeshInstance3D@295755" unique_id=4237607]
+[node name="@Label3D@48835" type="Label3D" parent="Board/MonopolySquares/monopoly_6/@MeshInstance3D@48834" unique_id=200302617]
 transform = Transform3D(-1, 8.742278e-08, 3.821371e-15, 0, -4.371139e-08, 1, 8.742278e-08, 1, 4.371139e-08, 0, 0.11, 0)
 modulate = Color(0.73333335, 0.73333335, 0.73333335, 1)
 outline_modulate = Color(0, 0, 0, 0)
@@ -856,16 +863,16 @@ text = "M"
 font_size = 300
 outline_size = 0
 
-[node name="monopoly_7" type="MeshInstance3D" parent="Board/MonopolySquares" unique_id=280433792]
+[node name="monopoly_7" type="MeshInstance3D" parent="Board/MonopolySquares" unique_id=940010247]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
 mesh = SubResource("BoxMesh_mk6j8")
 metadata/path_index = 25
 
-[node name="@MeshInstance3D@295759" type="MeshInstance3D" parent="Board/MonopolySquares/monopoly_7" unique_id=927048221]
+[node name="@MeshInstance3D@48838" type="MeshInstance3D" parent="Board/MonopolySquares/monopoly_7" unique_id=603145339]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.43275)
 mesh = SubResource("BoxMesh_3msmn")
 
-[node name="@Label3D@295760" type="Label3D" parent="Board/MonopolySquares/monopoly_7/@MeshInstance3D@295759" unique_id=1531872538]
+[node name="@Label3D@48839" type="Label3D" parent="Board/MonopolySquares/monopoly_7/@MeshInstance3D@48838" unique_id=2069965716]
 transform = Transform3D(-1, 8.742278e-08, 3.821371e-15, 0, -4.371139e-08, 1, 8.742278e-08, 1, 4.371139e-08, 0, 0.11, 0)
 modulate = Color(0.73333335, 0.73333335, 0.73333335, 1)
 outline_modulate = Color(0, 0, 0, 0)
@@ -873,16 +880,16 @@ text = "M"
 font_size = 300
 outline_size = 0
 
-[node name="monopoly_8" type="MeshInstance3D" parent="Board/MonopolySquares" unique_id=1025444696]
+[node name="monopoly_8" type="MeshInstance3D" parent="Board/MonopolySquares" unique_id=1823687865]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -7)
 mesh = SubResource("BoxMesh_bljd5")
 metadata/path_index = 28
 
-[node name="@MeshInstance3D@295763" type="MeshInstance3D" parent="Board/MonopolySquares/monopoly_8" unique_id=1876419734]
+[node name="@MeshInstance3D@48842" type="MeshInstance3D" parent="Board/MonopolySquares/monopoly_8" unique_id=824958343]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.43275)
 mesh = SubResource("BoxMesh_5pu3p")
 
-[node name="@Label3D@295764" type="Label3D" parent="Board/MonopolySquares/monopoly_8/@MeshInstance3D@295763" unique_id=1673970092]
+[node name="@Label3D@48843" type="Label3D" parent="Board/MonopolySquares/monopoly_8/@MeshInstance3D@48842" unique_id=729878373]
 transform = Transform3D(-1, 8.742278e-08, 3.821371e-15, 0, -4.371139e-08, 1, 8.742278e-08, 1, 4.371139e-08, 0, 0.11, 0)
 modulate = Color(0.73333335, 0.73333335, 0.73333335, 1)
 outline_modulate = Color(0, 0, 0, 0)
@@ -890,16 +897,16 @@ text = "M"
 font_size = 300
 outline_size = 0
 
-[node name="monopoly_9" type="MeshInstance3D" parent="Board/MonopolySquares" unique_id=182778163]
+[node name="monopoly_9" type="MeshInstance3D" parent="Board/MonopolySquares" unique_id=1781358015]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -3)
 mesh = SubResource("BoxMesh_67yi3")
 metadata/path_index = 33
 
-[node name="@MeshInstance3D@295769" type="MeshInstance3D" parent="Board/MonopolySquares/monopoly_9" unique_id=681065925]
+[node name="@MeshInstance3D@48848" type="MeshInstance3D" parent="Board/MonopolySquares/monopoly_9" unique_id=286304284]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.43275, 0, 0)
 mesh = SubResource("BoxMesh_rf20x")
 
-[node name="@Label3D@295770" type="Label3D" parent="Board/MonopolySquares/monopoly_9/@MeshInstance3D@295769" unique_id=784686383]
+[node name="@Label3D@48849" type="Label3D" parent="Board/MonopolySquares/monopoly_9/@MeshInstance3D@48848" unique_id=495934860]
 transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 0, 0.11, 0)
 modulate = Color(0.73333335, 0.73333335, 0.73333335, 1)
 outline_modulate = Color(0, 0, 0, 0)
@@ -907,16 +914,16 @@ text = "M"
 font_size = 300
 outline_size = 0
 
-[node name="monopoly_10" type="MeshInstance3D" parent="Board/MonopolySquares" unique_id=1002382501]
+[node name="monopoly_10" type="MeshInstance3D" parent="Board/MonopolySquares" unique_id=1888909438]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 3)
 mesh = SubResource("BoxMesh_wvx86")
 metadata/path_index = 36
 
-[node name="@MeshInstance3D@295773" type="MeshInstance3D" parent="Board/MonopolySquares/monopoly_10" unique_id=999795755]
+[node name="@MeshInstance3D@48852" type="MeshInstance3D" parent="Board/MonopolySquares/monopoly_10" unique_id=163331000]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.43275, 0, 0)
 mesh = SubResource("BoxMesh_6873l")
 
-[node name="@Label3D@295774" type="Label3D" parent="Board/MonopolySquares/monopoly_10/@MeshInstance3D@295773" unique_id=101890219]
+[node name="@Label3D@48853" type="Label3D" parent="Board/MonopolySquares/monopoly_10/@MeshInstance3D@48852" unique_id=1863924442]
 transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 0, 0.11, 0)
 modulate = Color(0.73333335, 0.73333335, 0.73333335, 1)
 outline_modulate = Color(0, 0, 0, 0)
@@ -924,51 +931,52 @@ text = "M"
 font_size = 300
 outline_size = 0
 
-[node name="OtherSquares" type="Node3D" parent="Board" unique_id=1923895726]
+[node name="OtherSquares" type="Node3D" parent="Board" unique_id=556050414]
 
-[node name="go_1" type="MeshInstance3D" parent="Board/OtherSquares" unique_id=2127147776]
+[node name="go_1" type="MeshInstance3D" parent="Board/OtherSquares" unique_id=1463103971]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 7)
 mesh = SubResource("BoxMesh_0p1ei")
 metadata/path_index = 0
 
-[node name="@Label3D@295728" type="Label3D" parent="Board/OtherSquares/go_1" unique_id=760607774]
+[node name="@Label3D@48807" type="Label3D" parent="Board/OtherSquares/go_1" unique_id=235372051]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.11, 0)
 modulate = Color(0, 0, 0, 1)
 text = "GO"
 font_size = 140
 
-[node name="BoardFloor" type="StaticBody3D" parent="Board" unique_id=94095778]
+[node name="BoardFloor" type="StaticBody3D" parent="Board" unique_id=818768023]
 physics_material_override = SubResource("PhysicsMaterial_buhmu")
 
-[node name="@CollisionShape3D@295776" type="CollisionShape3D" parent="Board/BoardFloor" unique_id=1881527196]
+[node name="@CollisionShape3D@48855" type="CollisionShape3D" parent="Board/BoardFloor" unique_id=445328548]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
 shape = SubResource("BoxShape3D_ufjwd")
 
-[node name="@CollisionShape3D@295777" type="CollisionShape3D" parent="Board/BoardFloor" unique_id=148731332]
+[node name="@CollisionShape3D@48856" type="CollisionShape3D" parent="Board/BoardFloor" unique_id=1426594049]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -13)
 shape = SubResource("BoxShape3D_7a8sr")
 
-[node name="@CollisionShape3D@295778" type="CollisionShape3D" parent="Board/BoardFloor" unique_id=128983651]
+[node name="@CollisionShape3D@48857" type="CollisionShape3D" parent="Board/BoardFloor" unique_id=748526296]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 13)
 shape = SubResource("BoxShape3D_dyjwp")
 
-[node name="@CollisionShape3D@295779" type="CollisionShape3D" parent="Board/BoardFloor" unique_id=65776610]
+[node name="@CollisionShape3D@48858" type="CollisionShape3D" parent="Board/BoardFloor" unique_id=762352567]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 10, 0)
 shape = SubResource("BoxShape3D_1n4t2")
 
-[node name="@CollisionShape3D@295780" type="CollisionShape3D" parent="Board/BoardFloor" unique_id=1662366439]
+[node name="@CollisionShape3D@48859" type="CollisionShape3D" parent="Board/BoardFloor" unique_id=536954686]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 10, 0)
 shape = SubResource("BoxShape3D_063so")
 
-[node name="BasePlane" type="MeshInstance3D" parent="Board" unique_id=189237425]
-visible = false
+[node name="BasePlane" type="MeshInstance3D" parent="Board" unique_id=1148849439]
 mesh = SubResource("PlaneMesh_xuyp2")
 
-[node name="RatAvatar" parent="." unique_id=1870930540 instance=ExtResource("2_hw4rv")]
+[node name="RatAvatar" type="Node3D" parent="." unique_id=1870930540 instance=ExtResource("2_hw4rv")]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 12.056197, 0.05, 7.013132)
+script = ExtResource("8_feipq")
 
-[node name="Dice3D" parent="." unique_id=614651584 instance=ExtResource("4_tsauk")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+[node name="Dice3D" type="RigidBody3D" parent="." unique_id=614651584 instance=ExtResource("4_tsauk")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 11.166016, 0)
+script = ExtResource("10_loqvx")
 
 [node name="GameManager" type="Node" parent="." unique_id=305035796]
 script = ExtResource("6_feipq")

@@ -1,0 +1,23 @@
+﻿[gd_resource type="Resource" script_class="CardResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Resources/card_resource.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = 27
+title = "වැටුප් වැඩිවීම (Salary Increment)"
+card_type = "Flash"
+description = "මාසික වැටුප් වැඩිවීමක්."
+cost = 0
+down_payment = 0
+cashflow = 0
+penalty = 0
+price_per_share = 0
+buttons = []
+financial_statement_effect = "Increases Active Income (Salary) by 2,000"
+cash_ledger_effect = "None directly (Boosts future Paydays)"
+ignore_skip_rule = "Auto-executes (OK)"
+insufficient_funds_rule = "N/A"
+interdependencies = "None"
+action_key = "salary_increment"
+values = "2,000/="

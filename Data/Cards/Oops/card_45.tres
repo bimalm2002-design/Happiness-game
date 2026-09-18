@@ -1,0 +1,23 @@
+﻿[gd_resource type="Resource" script_class="CardResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Resources/card_resource.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = 45
+title = "මූල්‍ය අධ්‍යාපන සම්මන්ත්‍රණය (Finance Seminar)"
+card_type = "Oops"
+description = "ව්‍යාපාර හා ආයෝජන ක්ෂේත්‍රයේ නියුතු ඔබගේ පැරණි පාසල් මිතුරෙක් ඔබට මහ මඟදී හමුවේ. ඔහු සමග දින තුනක නේවාසික ආයෝජන පාඨමාලාවක් සඳහා සහභාගි වීමට ඔහු ඇරයුමක් කරයි. ඊට සහභාගි වුවහොත් Free opportunity කඩ්පතක් හිමි වේ."
+cost = 0
+down_payment = 0
+cashflow = 0
+penalty = 2000
+price_per_share = 0
+buttons = ["participate", "pass"]
+financial_statement_effect = "None"
+cash_ledger_effect = "Deducts Cost (-2,000). If accepted, draw free Opportunity."
+ignore_skip_rule = "Can be skipped (Pass)"
+insufficient_funds_rule = "Optional Loan available"
+interdependencies = "Draws Opportunity card"
+action_key = "finance_seminar"
+values = "2,000/="

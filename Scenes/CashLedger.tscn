@@ -1,0 +1,140 @@
+[gd_scene format=3 uid="uid://dv2iv18seabtn"]
+
+[ext_resource type="Script" uid="uid://cm00lm403ad6m" path="res://Scripts/CashLedger.gd" id="1_04d6t"]
+[ext_resource type="Texture2D" uid="uid://b0c3cdt1ssysp" path="res://Assets/UI/skyline_clean.svg" id="2_04d6t"]
+[ext_resource type="FontFile" uid="uid://18eqbjshot3m" path="res://LilitaOne-Regular.ttf" id="3_q46m1"]
+[ext_resource type="Texture2D" uid="uid://bv32apv8gtbih" path="res://Assets/UI/avatar_doc.png" id="4_yiekn"]
+[ext_resource type="Texture2D" uid="uid://csdyisrrr84h4" path="res://Assets/UI/close_icon.png" id="5_p5qag"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_04d6t"]
+bg_color = Color(0.7882353, 0.9019608, 1, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 35
+corner_radius_top_right = 35
+corner_radius_bottom_right = 35
+corner_radius_bottom_left = 35
+
+[node name="CashLedger" type="Control" unique_id=647254571]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_04d6t")
+
+[node name="BackgroundDim" type="ColorRect" parent="." unique_id=1585794561]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.4)
+
+[node name="MainPanel" type="Control" parent="." unique_id=1700956149]
+custom_minimum_size = Vector2(588, 664)
+anchors_preset = 0
+offset_right = 588.0
+offset_bottom = 664.0
+
+[node name="Background" type="Panel" parent="MainPanel" unique_id=1144626192]
+clip_contents = true
+layout_mode = 0
+offset_top = 8.0
+offset_right = 591.0
+offset_bottom = 664.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_04d6t")
+
+[node name="Skyline" type="TextureRect" parent="MainPanel/Background" unique_id=664427153]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 10.5
+offset_right = 589.0
+offset_bottom = 106.5
+texture = ExtResource("2_04d6t")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="@Label@139306" type="Label" parent="MainPanel/Background" unique_id=1767152030]
+layout_mode = 0
+offset_left = 201.0
+offset_top = 76.0
+offset_right = 361.0
+offset_bottom = 116.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_q46m1")
+theme_override_font_sizes/font_size = 26
+text = "CASH LEDGER"
+horizontal_alignment = 1
+
+[node name="GreenBand" type="ColorRect" parent="MainPanel/Background" unique_id=1425307861]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 106.0
+offset_right = 591.0
+offset_bottom = 226.0
+color = Color(0.24313726, 0.6627451, 0.44705883, 1)
+
+[node name="@Label@139307" type="Label" parent="MainPanel/Background" unique_id=2003316540]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 135.0
+offset_right = 152.0
+offset_bottom = 159.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_q46m1")
+theme_override_font_sizes/font_size = 20
+text = "TOTAL CASH:"
+
+[node name="TotalCashLabel" type="Label" parent="MainPanel/Background" unique_id=840858008]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 36.0
+offset_top = 160.0
+offset_right = 140.0
+offset_bottom = 209.0
+theme_override_colors/font_color = Color(0.99215686, 0.84705883, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("3_q46m1")
+theme_override_font_sizes/font_size = 42
+text = "0 LKR"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MainPanel" unique_id=583265643]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 250.0
+offset_right = 570.0
+offset_bottom = 644.0
+horizontal_scroll_mode = 0
+
+[node name="EntriesList" type="VBoxContainer" parent="MainPanel/ScrollContainer" unique_id=2013930259]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="Avatar" type="TextureRect" parent="MainPanel" unique_id=430735937]
+layout_mode = 0
+offset_left = 367.0
+offset_top = 53.0
+offset_right = 564.0
+offset_bottom = 234.5
+texture = ExtResource("4_yiekn")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CloseButton" type="TextureButton" parent="MainPanel" unique_id=2045995723]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 563.0
+offset_top = -25.0
+offset_right = 613.0
+offset_bottom = 25.0
+texture_normal = ExtResource("5_p5qag")
+ignore_texture_size = true
+stretch_mode = 5

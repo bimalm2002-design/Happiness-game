@@ -1,0 +1,23 @@
+﻿[gd_resource type="Resource" script_class="CardResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Resources/card_resource.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = 73
+title = "කිරිකෝකා දන්තාලේප (Kirikoka Toothpaste)"
+card_type = "Stock"
+description = "කිරිකොකා දන්තාලේප සමාගම ආදායම් බදු දෙපාර්තමේන්තුවේ නිලධාරියෙකුට අල්ලස් දුන්නා යයි චෝදනා මත අධිකරණයෙන් නඩු පවරා ඇත. කොටස් මිල සීඝ්‍රයෙන් පහළ වැටී ඇත."
+cost = 0
+down_payment = 0
+cashflow = 0
+penalty = 0
+price_per_share = 5
+buttons = ["buy", "sell", "pass"]
+financial_statement_effect = "Adds/Updates Asset 'Kirikoka'"
+cash_ledger_effect = "Deducts (Qty * Price) on buy / Adds on sell"
+ignore_skip_rule = "Can be ignored (Pass)"
+insufficient_funds_rule = "Optional Loan available"
+interdependencies = "None"
+action_key = "trade_stock"
+values = "cost per share - 5/= | Trading range - 20 - 50/="

@@ -119,116 +119,116 @@ top_radius = 0.06
 bottom_radius = 0.06
 height = 0.008
 
-[node name="Dice3D" type="RigidBody3D" unique_id=666792827]
+[node name="Dice3D" type="RigidBody3D" unique_id=1847652364]
 script = ExtResource("1_wpqjs")
 
-[node name="@CollisionShape3D@296388" type="CollisionShape3D" parent="." unique_id=746066780]
+[node name="@CollisionShape3D@135618" type="CollisionShape3D" parent="." unique_id=1703623047]
 shape = SubResource("BoxShape3D_wpqjs")
 
-[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1337259490]
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=362613678]
 mesh = SubResource("BoxMesh_jn3s8")
 
-[node name="@MeshInstance3D@296389" type="MeshInstance3D" parent="Mesh" unique_id=399918014]
+[node name="@MeshInstance3D@135619" type="MeshInstance3D" parent="Mesh" unique_id=1835374996]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.304, 0)
 mesh = SubResource("CylinderMesh_t62st")
 surface_material_override/0 = SubResource("StandardMaterial3D_vsiko")
 
-[node name="@MeshInstance3D@296390" type="MeshInstance3D" parent="Mesh" unique_id=413229118]
+[node name="@MeshInstance3D@135620" type="MeshInstance3D" parent="Mesh" unique_id=752549769]
 transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, -0.14, -0.304, -0.14)
 mesh = SubResource("CylinderMesh_rigc7")
 surface_material_override/0 = SubResource("StandardMaterial3D_vsiko")
 
-[node name="@MeshInstance3D@296391" type="MeshInstance3D" parent="Mesh" unique_id=466010698]
+[node name="@MeshInstance3D@135621" type="MeshInstance3D" parent="Mesh" unique_id=208688656]
 transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, -0.304, -0.14)
 mesh = SubResource("CylinderMesh_d22q5")
 surface_material_override/0 = SubResource("StandardMaterial3D_vsiko")
 
-[node name="@MeshInstance3D@296392" type="MeshInstance3D" parent="Mesh" unique_id=2095539245]
+[node name="@MeshInstance3D@135622" type="MeshInstance3D" parent="Mesh" unique_id=1035296213]
 transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0.14, -0.304, -0.14)
 mesh = SubResource("CylinderMesh_dj1ii")
 surface_material_override/0 = SubResource("StandardMaterial3D_vsiko")
 
-[node name="@MeshInstance3D@296393" type="MeshInstance3D" parent="Mesh" unique_id=2082883091]
+[node name="@MeshInstance3D@135623" type="MeshInstance3D" parent="Mesh" unique_id=568509389]
 transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, -0.14, -0.304, 0.14)
 mesh = SubResource("CylinderMesh_mtdmw")
 surface_material_override/0 = SubResource("StandardMaterial3D_vsiko")
 
-[node name="@MeshInstance3D@296394" type="MeshInstance3D" parent="Mesh" unique_id=753367359]
+[node name="@MeshInstance3D@135624" type="MeshInstance3D" parent="Mesh" unique_id=1359483803]
 transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, -0.304, 0.14)
 mesh = SubResource("CylinderMesh_ydh8o")
 surface_material_override/0 = SubResource("StandardMaterial3D_vsiko")
 
-[node name="@MeshInstance3D@296395" type="MeshInstance3D" parent="Mesh" unique_id=575914374]
+[node name="@MeshInstance3D@135625" type="MeshInstance3D" parent="Mesh" unique_id=688775248]
 transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0.14, -0.304, 0.14)
 mesh = SubResource("CylinderMesh_to238")
 surface_material_override/0 = SubResource("StandardMaterial3D_vsiko")
 
-[node name="@MeshInstance3D@296396" type="MeshInstance3D" parent="Mesh" unique_id=2005485597]
+[node name="@MeshInstance3D@135626" type="MeshInstance3D" parent="Mesh" unique_id=641452090]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.14, 0.14, 0.304)
 mesh = SubResource("CylinderMesh_wrah2")
 surface_material_override/0 = SubResource("StandardMaterial3D_vsiko")
 
-[node name="@MeshInstance3D@296397" type="MeshInstance3D" parent="Mesh" unique_id=1938983979]
+[node name="@MeshInstance3D@135627" type="MeshInstance3D" parent="Mesh" unique_id=1344572964]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.14, -0.14, 0.304)
 mesh = SubResource("CylinderMesh_dcajd")
 surface_material_override/0 = SubResource("StandardMaterial3D_vsiko")
 
-[node name="@MeshInstance3D@296398" type="MeshInstance3D" parent="Mesh" unique_id=931940774]
+[node name="@MeshInstance3D@135628" type="MeshInstance3D" parent="Mesh" unique_id=341586611]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.14, 0.14, -0.304)
 mesh = SubResource("CylinderMesh_4eyyr")
 surface_material_override/0 = SubResource("StandardMaterial3D_vsiko")
 
-[node name="@MeshInstance3D@296399" type="MeshInstance3D" parent="Mesh" unique_id=797956524]
+[node name="@MeshInstance3D@135629" type="MeshInstance3D" parent="Mesh" unique_id=1569450407]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.14, -0.14, -0.304)
 mesh = SubResource("CylinderMesh_uw11h")
 surface_material_override/0 = SubResource("StandardMaterial3D_vsiko")
 
-[node name="@MeshInstance3D@296400" type="MeshInstance3D" parent="Mesh" unique_id=1927484919]
+[node name="@MeshInstance3D@135630" type="MeshInstance3D" parent="Mesh" unique_id=1593221259]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.14, -0.14, -0.304)
 mesh = SubResource("CylinderMesh_nlf84")
 surface_material_override/0 = SubResource("StandardMaterial3D_vsiko")
 
-[node name="@MeshInstance3D@296401" type="MeshInstance3D" parent="Mesh" unique_id=1063898333]
+[node name="@MeshInstance3D@135631" type="MeshInstance3D" parent="Mesh" unique_id=224847523]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.14, 0.14, -0.304)
 mesh = SubResource("CylinderMesh_qn4rp")
 surface_material_override/0 = SubResource("StandardMaterial3D_vsiko")
 
-[node name="@MeshInstance3D@296402" type="MeshInstance3D" parent="Mesh" unique_id=816914417]
+[node name="@MeshInstance3D@135632" type="MeshInstance3D" parent="Mesh" unique_id=1718657488]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, -0.304)
 mesh = SubResource("CylinderMesh_gdga4")
 surface_material_override/0 = SubResource("StandardMaterial3D_vsiko")
 
-[node name="@MeshInstance3D@296403" type="MeshInstance3D" parent="Mesh" unique_id=307912696]
+[node name="@MeshInstance3D@135633" type="MeshInstance3D" parent="Mesh" unique_id=1372471414]
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.304, 0.14, -0.14)
 mesh = SubResource("CylinderMesh_xt2yn")
 surface_material_override/0 = SubResource("StandardMaterial3D_vsiko")
 
-[node name="@MeshInstance3D@296404" type="MeshInstance3D" parent="Mesh" unique_id=1174349818]
+[node name="@MeshInstance3D@135634" type="MeshInstance3D" parent="Mesh" unique_id=27906089]
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.304, 0, 0)
 mesh = SubResource("CylinderMesh_a1eft")
 surface_material_override/0 = SubResource("StandardMaterial3D_vsiko")
 
-[node name="@MeshInstance3D@296405" type="MeshInstance3D" parent="Mesh" unique_id=351122569]
+[node name="@MeshInstance3D@135635" type="MeshInstance3D" parent="Mesh" unique_id=127104892]
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.304, -0.14, 0.14)
 mesh = SubResource("CylinderMesh_ibntr")
 surface_material_override/0 = SubResource("StandardMaterial3D_vsiko")
 
-[node name="@MeshInstance3D@296406" type="MeshInstance3D" parent="Mesh" unique_id=168898374]
+[node name="@MeshInstance3D@135636" type="MeshInstance3D" parent="Mesh" unique_id=1309904864]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.304, 0.14, -0.14)
 mesh = SubResource("CylinderMesh_fdkwu")
 surface_material_override/0 = SubResource("StandardMaterial3D_vsiko")
 
-[node name="@MeshInstance3D@296407" type="MeshInstance3D" parent="Mesh" unique_id=1694048362]
+[node name="@MeshInstance3D@135637" type="MeshInstance3D" parent="Mesh" unique_id=29956471]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.304, 0.14, 0.14)
 mesh = SubResource("CylinderMesh_e2wbi")
 surface_material_override/0 = SubResource("StandardMaterial3D_vsiko")
 
-[node name="@MeshInstance3D@296408" type="MeshInstance3D" parent="Mesh" unique_id=911977243]
+[node name="@MeshInstance3D@135638" type="MeshInstance3D" parent="Mesh" unique_id=602634002]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.304, -0.14, -0.14)
 mesh = SubResource("CylinderMesh_8ntmn")
 surface_material_override/0 = SubResource("StandardMaterial3D_vsiko")
 
-[node name="@MeshInstance3D@296409" type="MeshInstance3D" parent="Mesh" unique_id=780238167]
+[node name="@MeshInstance3D@135639" type="MeshInstance3D" parent="Mesh" unique_id=811092038]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.304, -0.14, 0.14)
 mesh = SubResource("CylinderMesh_4s0di")
 surface_material_override/0 = SubResource("StandardMaterial3D_vsiko")

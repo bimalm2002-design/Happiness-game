@@ -1,0 +1,23 @@
+﻿[gd_resource type="Resource" script_class="CardResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Resources/card_resource.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = 4
+title = "කුරුදු ඉඩම (Cinnamon Land)"
+card_type = "Opportunity"
+description = "කුරුදු ඉඩමක් රෝගයක් වැළදීම නිසා ඉතා අඩු මුදලට විකිණීමට ඇත. එම රෝගයට අදාළ ඖෂධය නිපදවා ඇති බව විශ්වවිද්‍යාල අභ්‍යන්තර ආරංචි මාර්ග සඳහන් කරයි."
+cost = 30000
+down_payment = 5000
+cashflow = 3000
+penalty = 0
+price_per_share = 0
+buttons = ["invest", "pass"]
+financial_statement_effect = "Adds Asset 'Cinnamon Land' (30,000), Adds Liability 'Cinnamon Land' (25,000), Adds Passive Income 'Cinnamon Land' (3,000)"
+cash_ledger_effect = "Deducts Downpayment (-5,000)"
+ignore_skip_rule = "Can be ignored (Pass)"
+insufficient_funds_rule = "Optional Loan available"
+interdependencies = "None"
+action_key = "invest_real_estate"
+values = "Total Investment – 30,000/= | Cashflow – 3,000/= | Downpayment – 5,000/="

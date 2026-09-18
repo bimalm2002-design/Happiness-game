@@ -1,0 +1,23 @@
+﻿[gd_resource type="Resource" script_class="CardResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Resources/card_resource.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = 20
+title = "වාහන නැවතුම්පොළ විකිණීම (Sell Parking Lot)"
+card_type = "Flash"
+description = "නගරයට ආසන්නව ඔබ මිලදී ගත් Parking Lot එක මිලදී ගැනීමට ගැනුම්කරුවෙක් පැමිණ ඇත."
+cost = 0
+down_payment = 0
+cashflow = 0
+penalty = 0
+price_per_share = 0
+buttons = ["sell", "pass"]
+financial_statement_effect = "Removes Asset 'Parking Lot', Removes Liability 'Parking Lot', Removes Passive Income 'Parking Lot'"
+cash_ledger_effect = "Adds Sale Price (+80,000)"
+ignore_skip_rule = "Active only if Card 2 owned"
+insufficient_funds_rule = "N/A"
+interdependencies = "Requires Card 2"
+action_key = "sell_parking_lot"
+values = "80,000/="

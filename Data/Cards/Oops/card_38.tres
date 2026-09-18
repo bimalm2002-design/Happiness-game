@@ -1,0 +1,23 @@
+﻿[gd_resource type="Resource" script_class="CardResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Resources/card_resource.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = 38
+title = "වාහන අලුත්වැඩියාව (Vehicle Repair)"
+card_type = "Oops"
+description = "ඇපල් සමාගම විසින් නිකුත් කළ නවතම ජංගම දුරකථනය එතෙක් මෙතෙක් ලොව පවතින හොඳම ජංගම දුරකථන කැමරාව පවතින සහ වඩාත්ම හොඳම දුරකථනය ලෙස නම් කර ඇත. ඔබට එම දුරකථනය මිලදී ගැනීමට දැඩි ආශාවක් ඇතිවේ."
+cost = 0
+down_payment = 0
+cashflow = 0
+penalty = 15000
+price_per_share = 0
+buttons = []
+financial_statement_effect = "None"
+cash_ledger_effect = "Deducts Cost (-7,000)"
+ignore_skip_rule = "Cannot be ignored"
+insufficient_funds_rule = "Mandatory Loan if cash < 7,000"
+interdependencies = "None"
+action_key = "vehicle_repair"
+values = "15,000/="

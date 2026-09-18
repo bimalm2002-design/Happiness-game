@@ -1,0 +1,23 @@
+﻿[gd_resource type="Resource" script_class="CardResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Resources/card_resource.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = 6
+title = "රබර් ඉඩම (Rubber Land)"
+card_type = "Opportunity"
+description = "ලීසිං ණය ගෙවා ගැනීමට අපහසු වූ ත්‍රීරෝද රථයක් හිමි Taxi රියදුරෙකු ඔහුගේ ත්‍රීරෝද රථය විකිණීමට ගැනුම්කරුවෙකු සොයයි. ඔහු එය විකුණුවහොත් රැකියාව අහිමි වන බැවින් Rent (කුලී) පදනම මත නැවත ඔහුටම ලබා දිය හැක."
+cost = 15000
+down_payment = 3000
+cashflow = 3000
+penalty = 0
+price_per_share = 0
+buttons = ["invest", "pass"]
+financial_statement_effect = "Adds Asset 'Rubber Land' (50,000), Adds Liability 'Rubber Land' (38,000), Adds Passive Income 'Rubber Land' (7,500)"
+cash_ledger_effect = "Deducts Downpayment (-12,000)"
+ignore_skip_rule = "Can be ignored (Pass)"
+insufficient_funds_rule = "Optional Loan available"
+interdependencies = "None"
+action_key = "invest_real_estate"
+values = "Total Investment – 15,000/= | Cashflow – 3,000/= | Downpayment – 3,000/="

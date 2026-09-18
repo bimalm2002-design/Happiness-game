@@ -52,6 +52,11 @@ func _ready():
 	angular_damp = custom_angular_damp
 	gravity_scale = custom_gravity_scale
 	
+	# Slightly decrease the size of the dice as requested
+	for child in get_children():
+		if child is Node3D:
+			child.scale = Vector3(0.85, 0.85, 0.85)
+	
 	freeze_mode = RigidBody3D.FREEZE_MODE_KINEMATIC
 	contact_monitor = true
 	max_contacts_reported = 4
@@ -102,7 +107,7 @@ func reset_dice():
 		in_hand_pos -= cam_basis.y * 0.4 # Slightly lower than center
 	
 	global_position = in_hand_pos
-	scale = Vector3(1, 1, 1) # Reset any scale to prevent physics bugs
+	scale = Vector3(0.8, 0.8, 0.8) # Scale down slightly to make it a bit smaller
 	rotation_degrees = Vector3(randf_range(0, 360), randf_range(0, 360), randf_range(0, 360))
 
 func _unhandled_input(event):
@@ -149,6 +154,7 @@ func _physics_process(delta):
 			
 		State.AIRBORNE:
 			time_in_airborne += delta
+
 			
 			if global_position.y < -1.0 or global_position.length() > 50.0:
 				global_position = Vector3(0, 2, 0)
@@ -171,6 +177,20 @@ func _integrate_forces(state):
 		state.linear_velocity = _launch_linear_vel
 		state.angular_velocity = _launch_angular_vel
 		_pending_launch = false
+		
+	if current_state == State.AIRBORNE:
+		var pos = state.transform.origin
+		# Constrain to the black inner area, away from M-squares
+		var clamped_x = clamp(pos.x, -8.0, 8.0)
+		var clamped_z = clamp(pos.z, -3.0, 3.0)
+		
+		if pos.x != clamped_x or pos.z != clamped_z:
+			pos.x = clamped_x
+			pos.z = clamped_z
+			state.transform.origin = pos
+			# Stronger bounce to make it feel like hitting a wall
+			state.linear_velocity.x *= -0.7
+			state.linear_velocity.z *= -0.7
 
 func throw_dice(forced_value: int = -1):
 	if forced_value == -1:
@@ -182,7 +202,7 @@ func throw_dice(forced_value: int = -1):
 	current_state = State.AIRBORNE
 	time_in_airborne = 0.0
 	bounce_count = 0
-	scale = Vector3(1, 1, 1) # Ensure scale is strictly 1
+	scale = Vector3(0.8, 0.8, 0.8) # Maintain slightly smaller scale
 	freeze = false
 	
 	var throw_vector = Vector3.ZERO

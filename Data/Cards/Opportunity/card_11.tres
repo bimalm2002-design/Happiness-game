@@ -1,0 +1,23 @@
+﻿[gd_resource type="Resource" script_class="CardResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Resources/card_resource.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = 11
+title = "පොතේ පේටන්ට් අයිතිය (Book Patent)"
+card_type = "Opportunity"
+description = "ඔබට පොතක් රචනා කිරීම සඳහා හොඳ අදහසක් හා සංකල්පයක් පහළ විය. ඔබ විසින් කරන ලද සමීක්ෂණයන්ට අනුව එයට හොඳ ඉල්ලුමක් ලැබෙන බවට පෙනී යයි."
+cost = 2000
+down_payment = 0
+cashflow = 1500
+penalty = 0
+price_per_share = 0
+buttons = ["invest", "pass"]
+financial_statement_effect = "Adds Asset 'Book Patent' (10,000), Adds Passive Income 'Book Patent' (2,500). No liability."
+cash_ledger_effect = "Deducts Total Investment (-10,000)"
+ignore_skip_rule = "Can be ignored (Pass)"
+insufficient_funds_rule = "Optional Loan available"
+interdependencies = "Correlates with Card 21"
+action_key = "invest_patent"
+values = "Investment – 2,000/= | Cashflow – 1,500/="

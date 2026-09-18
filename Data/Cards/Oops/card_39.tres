@@ -1,0 +1,23 @@
+﻿[gd_resource type="Resource" script_class="CardResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Resources/card_resource.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = 39
+title = "දරු උපත (Baby Born)"
+card_type = "Oops"
+description = "නව දරු උපතක්!"
+cost = 0
+down_payment = 0
+cashflow = 0
+penalty = 0
+price_per_share = 0
+buttons = []
+financial_statement_effect = "Adds 1,000 to Expenses (දරුවාගේ වියදම්)"
+cash_ledger_effect = "None"
+ignore_skip_rule = "Cannot be ignored"
+insufficient_funds_rule = "N/A"
+interdependencies = "Requires Marriage (Card 37)"
+action_key = "baby_born"
+values = "වියදම් 1,000/= ක් ලෙස වියදම් තීරුවට එකතු වෙයි."

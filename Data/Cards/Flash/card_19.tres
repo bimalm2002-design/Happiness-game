@@ -1,0 +1,23 @@
+﻿[gd_resource type="Resource" script_class="CardResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Resources/card_resource.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = 19
+title = "මෘදුකාංග ව්‍යාපෘතිය විකිණීම (Sell Software)"
+card_type = "Flash"
+description = "ඔබ ආයෝජනය කරන ලද පරිගණක මෘදුකාංගය සංවර්ධන කටයුතු අවසන් වී එම තරුණ පිරිස එම මෘදුකාංගයේ බුද්ධිමය දේපළ බලපත්‍රය විකුණා, ඔබගේ ආයෝජනයට අදාල කොටස ඔබට ගෙනාවෙත් ලබා දෙන ලදී."
+cost = 0
+down_payment = 0
+cashflow = 0
+penalty = 0
+price_per_share = 0
+buttons = []
+financial_statement_effect = "Removes Asset 'Software Project'"
+cash_ledger_effect = "Adds Sale Price (+50,000)"
+ignore_skip_rule = "Active only if Card 10 owned"
+insufficient_funds_rule = "N/A"
+interdependencies = "Requires Card 10"
+action_key = "sell_software"
+values = "60,000/="

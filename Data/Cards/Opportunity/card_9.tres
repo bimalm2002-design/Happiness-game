@@ -1,0 +1,23 @@
+﻿[gd_resource type="Resource" script_class="CardResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Resources/card_resource.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = 9
+title = "නගරයේ Apartment එක (City Apartment)"
+card_type = "Opportunity"
+description = "නගරයට ආසන්න ප්‍රදේශයක රොටී කඩයක් සදහා හොද අවස්ථාවක් පවතී. මිනිසුන් එවැනි කඩ සොයා විශාල දුරක් යන බව ඔබට නිරීක්ෂණය වෙයි."
+cost = 5000
+down_payment = 0
+cashflow = 2400
+penalty = 0
+price_per_share = 0
+buttons = ["invest", "pass"]
+financial_statement_effect = "Adds Asset 'City Apartment' (110,000), Adds Liability 'City Apartment' (80,000), Adds Passive Income 'City Apartment' (18,000)"
+cash_ledger_effect = "Deducts Downpayment (-30,000)"
+ignore_skip_rule = "Can be ignored (Pass)"
+insufficient_funds_rule = "Optional Loan available"
+interdependencies = "None"
+action_key = "invest_real_estate"
+values = "Investment – 5,000/= | Cashflow – 2,400/="

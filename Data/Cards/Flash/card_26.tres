@@ -1,0 +1,23 @@
+﻿[gd_resource type="Resource" script_class="CardResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Resources/card_resource.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = 26
+title = "සමාගම් බෝනස් මුදල (Company Bonus)"
+card_type = "Flash"
+description = "මෙම මාසයට පමණක් රැකියාවේ Bonus මුදලක් ලැබී ඇත."
+cost = 0
+down_payment = 0
+cashflow = 0
+penalty = 0
+price_per_share = 0
+buttons = []
+financial_statement_effect = "None"
+cash_ledger_effect = "Adds Cash (+3,000)"
+ignore_skip_rule = "Auto-executes (OK)"
+insufficient_funds_rule = "N/A"
+interdependencies = "None"
+action_key = "bonus_cash"
+values = "3,000/="

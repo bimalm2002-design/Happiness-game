@@ -1,0 +1,23 @@
+﻿[gd_resource type="Resource" script_class="CardResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Resources/card_resource.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = 7
+title = "තේ ඉඩම (Tea Estate)"
+card_type = "Opportunity"
+description = "විශ්‍රාමයාමට ආසන්න රියදුරෙක් සිය වෑන් රථය විකිණීමට ගැනුම්කරුවකු සොයයි. මෑතක සිට පාසල් ළමුන් ප්‍රවාහනය කරන බස් රථවල ඉඩකඩ අඩු බැවින් ළමුන් තෙරපෙමින් ගමන් කරන බව අසන්නට ලැබේ."
+cost = 25000
+down_payment = 5000
+cashflow = 4500
+penalty = 0
+price_per_share = 0
+buttons = ["invest", "pass"]
+financial_statement_effect = "Adds Asset 'Tea Estate' (70,000), Adds Liability 'Tea Estate' (52,000), Adds Passive Income 'Tea Estate' (10,500)"
+cash_ledger_effect = "Deducts Downpayment (-18,000)"
+ignore_skip_rule = "Can be ignored (Pass)"
+insufficient_funds_rule = "Optional Loan available"
+interdependencies = "None"
+action_key = "invest_real_estate"
+values = "Total Investment – 25,000/= | Cashflow – 4,500/= | Downpayment – 5,000/="

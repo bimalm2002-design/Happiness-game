@@ -1,0 +1,23 @@
+﻿[gd_resource type="Resource" script_class="CardResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Resources/card_resource.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = 37
+title = "විවාහය (Marriage)"
+card_type = "Oops"
+description = "ඔබගේ පෙම්වතිය/පෙම්වතා ඉක්මනින් විවාහ වීමට අවශ්‍ය බව කියයි. විවාහ නොවුණහොත් සම්බන්ධතාවය නවතා දැමීමට සිදුවන බව කියයි."
+cost = 20000
+down_payment = 0
+cashflow = 0
+penalty = 0
+price_per_share = 0
+buttons = ["party", "ignore"]
+financial_statement_effect = "Adds 2,000 to Expenses (සහකරුගේ වියදම්)"
+cash_ledger_effect = "Deducts 20,000 (If skipped, draw free Opportunity)"
+ignore_skip_rule = "Can be skipped (Ignore)"
+insufficient_funds_rule = "Optional Loan available"
+interdependencies = "Required for 39 and 53"
+action_key = "marriage"
+values = "සහකරුගේ වියදම් ලෙස 2,000/= ක් financial statement එකට එකතු වෙයි. | විවාහ \"උත්සවය\" සඳහා 20,000/= වැයවේ. උත්සවයක් ගැනීම මගහරිනවා නම් free opportunity card එකක් හිමි වේ."

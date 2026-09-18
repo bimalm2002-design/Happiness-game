@@ -1,0 +1,126 @@
+{
+  "1": {
+    "id": 1,
+    "type": "Opportunity",
+    "back_desc": "විශ්වවිද්‍යාලයක් අසල විදෙස්ගත වීම නිසා කාමර 10ක් සහිත ගොඩනැගිල්ලක් ඉක්මනින් විකිණීමට ඇත.",
+    "values": "Total Investment – 80,000/=\nCashflow – 12,000/=\nDownpayment – 20,000/=",
+    "cost": 80000,
+    "cashflow": 12000,
+    "down_payment": 20000,
+    "buttons": ["invest", "pass"]
+  },
+  "2": {
+    "id": 2,
+    "type": "Opportunity",
+    "back_desc": "නගරයේ වාහන තදබදය ඉතා ඉහළ ප්‍රදේශයක හිස් ඉඩමක් පවතී. Parking Lot එකක් සදහා තෝතැන්නකි.",
+    "values": "Total Investment – 40,000/=\nCashflow – 6,000/=\nDownpayment – 10,000/=",
+    "cost": 40000,
+    "cashflow": 6000,
+    "down_payment": 10000,
+    "buttons": ["invest", "pass"]
+  },
+  "3": {
+    "id": 3,
+    "type": "Opportunity",
+    "back_desc": "දියුණුවෙමින් පවතින මංසන්ධියක කඩකාමර 06ක් මිලදී ගැනීමට අදාළ දැන්වීමක් ගමනක් යන අතරතුර ඔබට දකී.",
+    "values": "Total Investment – 90,000/=\nCashflow – 15,000/=\nDownpayment – 25,000/=",
+    "cost": 90000,
+    "cashflow": 15000,
+    "down_payment": 25000,
+    "buttons": ["invest", "pass"]
+  },
+  "4": {
+    "id": 4,
+    "type": "Opportunity",
+    "back_desc": "කුරුදු ඉඩමක් රෝගයක් වැළදීම නිසා ඉතා අඩු මුදලට විකිණීමට ඇත. එම රෝගයට අදාළ ඖෂධය නිපදවා ඇති බව විශ්වවිද්‍යාල අභ්‍යන්තර ආරංචි මාර්ග සඳහන් කරයි.",
+    "values": "Total Investment – 30,000/=\nCashflow – 3,000/=\nDownpayment – 5,000/=",
+    "cost": 30000,
+    "cashflow": 3000,
+    "down_payment": 5000,
+    "buttons": ["invest", "pass"]
+  },
+  "5": {
+    "id": 5,
+    "type": "Opportunity",
+    "back_desc": "වයස්ගත වී කළමනාකරණය අපහසු වීම නිසා විශ්‍රාම යාමට ආසන්න මහත්මයෙකුගේ පොල් ඉඩමක් විකිණීමට ඇත.",
+    "values": "Total Investment – 60,000/=\nCashflow – 9,000/=\nDownpayment – 15,000/=",
+    "cost": 60000,
+    "cashflow": 9000,
+    "down_payment": 15000,
+    "buttons": ["invest", "pass"]
+  },
+  "6": {
+    "id": 6,
+    "type": "Opportunity",
+    "back_desc": "ලීසිං ණය ගෙවා ගැනීමට අපහසු වූ ත්‍රීරෝද රථයක් හිමි Taxi රියදුරෙකු ඔහුගේ ත්‍රීරෝද රථය විකිණීමට ගැනුම්කරුවෙකු සොයයි. ඔහු එය විකුණුවහොත් රැකියාව අහිමි වන බැවින් Rent (කුලී) පදනම මත නැවත ඔහුටම ලබා දිය හැක.",
+    "values": "Total Investment – 15,000/=\nCashflow – 3,000/=\nDownpayment – 3,000/=",
+    "cost": 15000,
+    "cashflow": 3000,
+    "down_payment": 3000,
+    "buttons": ["invest", "pass"]
+  },
+  "7": {
+    "id": 7,
+    "type": "Opportunity",
+    "back_desc": "විශ්‍රාමයාමට ආසන්න රියදුරෙක් සිය වෑන් රථය විකිණීමට ගැනුම්කරුවකු සොයයි. මෑතක සිට පාසල් ළමුන් ප්‍රවාහනය කරන බස් රථවල ඉඩකඩ අඩු බැවින් ළමුන් තෙරපෙමින් ගමන් කරන බව අසන්නට ලැබේ.",
+    "values": "Total Investment – 25,000/=\nCashflow – 4,500/=\nDownpayment – 5,000/=",
+    "cost": 25000,
+    "cashflow": 4500,
+    "down_payment": 5000,
+    "buttons": ["invest", "pass"]
+  },
+  "8": {
+    "id": 8,
+    "type": "Opportunity",
+    "back_desc": "කුඩා ළමුන් සඳහා Leisure Park එකක් ඉදිකිරීමට ඉතා සුදුසු කාලයක් සහ පාසල් හා පෙර පාසල් ආශ්‍රිත ප්‍රදේශයක හොද අවස්ථාවක් පවතී.",
+    "values": "Investment – 20,000/=\nCashflow – 7,500/=",
+    "cost": 20000,
+    "cashflow": 7500,
+    "buttons": ["invest", "pass"]
+  },
+  "9": {
+    "id": 9,
+    "type": "Opportunity",
+    "back_desc": "නගරයට ආසන්න ප්‍රදේශයක රොටී කඩයක් සදහා හොද අවස්ථාවක් පවතී. මිනිසුන් එවැනි කඩ සොයා විශාල දුරක් යන බව ඔබට නිරීක්ෂණය වෙයි.",
+    "values": "Investment – 5,000/=\nCashflow – 2,400/=",
+    "cost": 5000,
+    "cashflow": 2400,
+    "buttons": ["invest", "pass"]
+  },
+  "10": {
+    "id": 10,
+    "type": "Opportunity",
+    "back_desc": "පරිගණක මෘදුකාංගයක් නිර්මාණය කරන දක්ෂ තරුණ කණ්ඩායමක් ඔවුන්ගේ මෘදුකාංගයගේ සංවර්ධන කටයුතු සඳහා ආයෝජකයෙකු සොයයි.",
+    "values": "Investment – 10,000/=\nCashflow – 0/=",
+    "cost": 10000,
+    "cashflow": 0,
+    "buttons": ["invest", "pass"]
+  },
+  "11": {
+    "id": 11,
+    "type": "Opportunity",
+    "back_desc": "ඔබට පොතක් රචනා කිරීම සඳහා හොඳ අදහසක් හා සංකල්පයක් පහළ විය. ඔබ විසින් කරන ලද සමීක්ෂණයන්ට අනුව එයට හොඳ ඉල්ලුමක් ලැබෙන බවට පෙනී යයි.",
+    "values": "Investment – 2,000/=\nCashflow – 1,500/=",
+    "cost": 2000,
+    "cashflow": 1500,
+    "buttons": ["invest", "pass"]
+  },
+  "12": {
+    "id": 12,
+    "type": "Opportunity",
+    "back_desc": "නගරයට මදක් ආසන්න ප්‍රදේශයක නිදහස් වටපිටාවක Family Restaurant එකක් සඳහා හොඳ අවස්ථාවක් පවතී.",
+    "values": "Investment – 35,000/=\nCashflow – 12,000/=",
+    "cost": 35000,
+    "cashflow": 12000,
+    "buttons": ["invest", "pass"]
+  },
+  "52": {
+    "id": 52,
+    "type": "Opportunity",
+    "back_desc": "නිවසට Solar Panel යොදාගැනීමෙන් ඔබගේ විදුලි බිල සම්පූර්ණයෙන්ම අඩු කර ගත හැකි අතර අමතර ආදායමක් ද උපයාගත හැක.",
+    "values": "Cost: 3,000/= | Cashflow: 300/= (Stage 1)\nCost: 10,000/= | Cashflow: 1,000/= (Stage 2)\nCost: 15,000/= | Cashflow: 1,500/= (Stage 3)",
+    "cost": 10000,
+    "cashflow": 1000,
+    "buttons": ["invest", "pass"]
+  }
+}

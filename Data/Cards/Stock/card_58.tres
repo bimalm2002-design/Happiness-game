@@ -1,0 +1,23 @@
+﻿[gd_resource type="Resource" script_class="CardResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Resources/card_resource.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = 58
+title = "බිට්කොයින් (BTC Crypto)"
+card_type = "Stock"
+description = "BTC නව මිල."
+cost = 0
+down_payment = 0
+cashflow = 0
+penalty = 0
+price_per_share = 500
+buttons = ["buy", "sell", "pass"]
+financial_statement_effect = "Adds/Updates Asset 'BTC'"
+cash_ledger_effect = "Deducts (Qty * Price) on buy / Adds on sell"
+ignore_skip_rule = "Can be ignored (Pass)"
+insufficient_funds_rule = "Optional Loan available"
+interdependencies = "None"
+action_key = "trade_stock"
+values = "price per coin - 500/= | Trading range - 100 - 3000/="

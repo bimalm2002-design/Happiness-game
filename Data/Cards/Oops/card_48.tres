@@ -1,0 +1,23 @@
+﻿[gd_resource type="Resource" script_class="CardResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Resources/card_resource.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = 48
+title = "ක්‍රීඩා බයිසිකලයක් මිලදී ගැනීම (Buy Sport Bike)"
+card_type = "Oops"
+description = "ඔබ කුඩා කල සිට ඔබ සතු කර ගැනීමට දැඩි ආශා කළ Sport යතුරුපැදියක් විකිණීමට ඇත. මිලදී නොගත්තොත් Free Opportunity Card එකක් හිමිවේ."
+cost = 0
+down_payment = 0
+cashflow = 0
+penalty = 18000
+price_per_share = 0
+buttons = ["buy", "ignore"]
+financial_statement_effect = "Sets status 'has_bicycle'"
+cash_ledger_effect = "Deducts Cost (-18,000). If skipped, draw free Opportunity."
+ignore_skip_rule = "Can be skipped (Pass)"
+insufficient_funds_rule = "Optional Loan available"
+interdependencies = "Required for Card 25"
+action_key = "buy_bike"
+values = "18,000/="

@@ -1,0 +1,23 @@
+﻿[gd_resource type="Resource" script_class="CardResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Resources/card_resource.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = 23
+title = "ගඟ අසල ඉඩම විකිණීම (Sell River Land)"
+card_type = "Flash"
+description = "හෝටලයක් ඉදි කිරීම සඳහා සුප්‍රසිද්ධ ආයෝජකයෙක් ජලාශයක් ආශ්‍රිත ඉඩමක් සොයයි."
+cost = 0
+down_payment = 0
+cashflow = 0
+penalty = 0
+price_per_share = 0
+buttons = ["sell", "pass"]
+financial_statement_effect = "Removes Asset 'River Land'"
+cash_ledger_effect = "Adds Sale Price (+120,000)"
+ignore_skip_rule = "Active only if Card 24 owned"
+insufficient_funds_rule = "N/A"
+interdependencies = "Requires Card 24"
+action_key = "sell_river_land"
+values = "120,000/="

@@ -1,0 +1,23 @@
+﻿[gd_resource type="Resource" script_class="CardResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Resources/card_resource.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = 46
+title = "දන්ත සැත්කමක් (Dental Surgery)"
+card_type = "Oops"
+description = "බිරිඳ සමග බහින්බස් වීමෙන් ඇති වූ ආරවුලක් නිසා නිවසේ ආලින්දයේ තිබූ රූපවාහිනිය ඔබ විසින් පොළවේ ගසා විනාශ කරන ලදී. නව රූපවාහිනියක් මිලදී ගත යුතුය."
+cost = 0
+down_payment = 0
+cashflow = 0
+penalty = 1000
+price_per_share = 0
+buttons = []
+financial_statement_effect = "None"
+cash_ledger_effect = "Deducts Cost (-5,000)"
+ignore_skip_rule = "Cannot be ignored"
+insufficient_funds_rule = "Mandatory Loan if cash < 5,000"
+interdependencies = "None"
+action_key = "dental_surgery"
+values = "1,000/="

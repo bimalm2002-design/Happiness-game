@@ -1,0 +1,23 @@
+﻿[gd_resource type="Resource" script_class="CardResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Resources/card_resource.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = 32
+title = "මාස 3ක් වැටුප් රහිත නිවාඩු (Unpaid Leave 3 Months)"
+card_type = "Oops"
+description = "රැකියාවේදී සිදු වූ නොකළ වරදක් නිර්දෝෂී භාවය ඔප්පු කර ගැනීමට පොහොසත් වීම නිසා මාස 03ක් වැටුප් රහිතව වැඩ කිරීමට සිදුවේ."
+cost = 0
+down_payment = 0
+cashflow = 0
+penalty = 0
+price_per_share = 0
+buttons = []
+financial_statement_effect = "Sets status 'no_salary' for 3 paydays"
+cash_ledger_effect = "None directly"
+ignore_skip_rule = "Cannot be ignored"
+insufficient_funds_rule = "Mandatory Loan equal to (3 * Total Expenses) - (Cash + Cashflow)"
+interdependencies = "None"
+action_key = "unpaid_leave_3m"
+values = "None"

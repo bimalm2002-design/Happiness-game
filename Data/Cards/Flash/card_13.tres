@@ -1,0 +1,23 @@
+﻿[gd_resource type="Resource" script_class="CardResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Resources/card_resource.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = 13
+title = "වේදිකා නාට්‍යය (Stage Drama)"
+card_type = "Flash"
+description = "Stage Drama එකක් සඳහා ආයෝජන අවස්ථාවක් ලැබී ඇත."
+cost = 3000
+down_payment = 0
+cashflow = 0
+penalty = 0
+price_per_share = 0
+buttons = ["invest", "pass"]
+financial_statement_effect = "Adds Asset 'Stage Drama' (15,000)"
+cash_ledger_effect = "Deducts Investment (-15,000)"
+ignore_skip_rule = "Can be ignored (Pass)"
+insufficient_funds_rule = "Optional Loan available"
+interdependencies = "Correlates with Card 16 and 17"
+action_key = "invest_drama"
+values = "Investment – 3,000/= | අපේක්ෂිත ලාභය – 1,000/="

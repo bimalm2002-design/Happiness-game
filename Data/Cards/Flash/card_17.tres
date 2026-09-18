@@ -1,0 +1,23 @@
+﻿[gd_resource type="Resource" script_class="CardResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Resources/card_resource.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = 17
+title = "වේදිකා නාට්‍යයේ පාඩුව (Drama Loss)"
+card_type = "Flash"
+description = "Stage Drama එක දින ගැටුමක් හේතුවෙන් සම්පූර්ණයෙන් එය සම්පූර්ණයෙන් විනාශ විය."
+cost = 0
+down_payment = 0
+cashflow = 0
+penalty = 0
+price_per_share = 0
+buttons = []
+financial_statement_effect = "Removes Asset 'Stage Drama'"
+cash_ledger_effect = "Deducts Loss (-5,000)"
+ignore_skip_rule = "Auto-executes if Card 13 owned"
+insufficient_funds_rule = "Mandatory Loan if cash < 5,000"
+interdependencies = "Requires Card 13"
+action_key = "loss_drama_crash"
+values = "Loss – 3,000/="

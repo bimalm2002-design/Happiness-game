@@ -1,0 +1,23 @@
+﻿[gd_resource type="Resource" script_class="CardResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Resources/card_resource.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = 15
+title = "සංගීත ප්‍රසංගයේ ලාභය (Concert Profit)"
+card_type = "Flash"
+description = "Musical Show එකේ ආයෝජන ප්‍රතිලාභය ලැබුණි."
+cost = 0
+down_payment = 0
+cashflow = 0
+penalty = 0
+price_per_share = 0
+buttons = []
+financial_statement_effect = "Removes Asset 'Musical Show'"
+cash_ledger_effect = "Adds Revenue (+55,000)"
+ignore_skip_rule = "Auto-executes or Sell"
+insufficient_funds_rule = "N/A"
+interdependencies = "Requires Card 14"
+action_key = "sell_concert_success"
+values = "Investment – 4,000/= | Profit – 1,500/= | Total – 5,500/="

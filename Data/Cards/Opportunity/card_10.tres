@@ -1,0 +1,23 @@
+﻿[gd_resource type="Resource" script_class="CardResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Resources/card_resource.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = 10
+title = "මෘදුකාංග ව්‍යාපෘතිය (Software Project)"
+card_type = "Opportunity"
+description = "පරිගණක මෘදුකාංගයක් නිර්මාණය කරන දක්ෂ තරුණ කණ්ඩායමක් ඔවුන්ගේ මෘදුකාංගයගේ සංවර්ධන කටයුතු සඳහා ආයෝජකයෙකු සොයයි."
+cost = 10000
+down_payment = 0
+cashflow = 0
+penalty = 0
+price_per_share = 0
+buttons = ["invest", "pass"]
+financial_statement_effect = "Adds Asset 'Software Project' (20,000). No liability, No Cashflow."
+cash_ledger_effect = "Deducts Total Investment (-20,000)"
+ignore_skip_rule = "Can be ignored (Pass)"
+insufficient_funds_rule = "Optional Loan available"
+interdependencies = "Correlates with Card 19"
+action_key = "invest_software"
+values = "Investment – 10,000/= | Cashflow – 0/="

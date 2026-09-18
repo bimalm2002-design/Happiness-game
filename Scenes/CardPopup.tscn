@@ -1,0 +1,318 @@
+[gd_scene format=3 uid="uid://hk354lnolsm8"]
+
+[ext_resource type="Script" uid="uid://bpvi7s6p5lfd6" path="res://Scripts/card_popup.gd" id="1_5mon2"]
+[ext_resource type="Shader" uid="uid://5xhbf0mfaqg3" path="res://Scripts/rays.gdshader" id="2_jp4qd"]
+[ext_resource type="FontFile" uid="uid://dxugam2572y4e" path="res://Assets/Fonts/AbhayaLibre-Regular.ttf" id="2_xe3qe"]
+[ext_resource type="FontFile" uid="uid://18eqbjshot3m" path="res://LilitaOne-Regular.ttf" id="3_lilita"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xe3qe"]
+shader = ExtResource("2_jp4qd")
+shader_parameter/ray_color = Color(1, 0, 0, 0.5)
+shader_parameter/speed = 1.0
+shader_parameter/ray_count = 12.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_front"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_back"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_inner"]
+bg_color = Color(1, 1, 1, 0.5)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_stock_input"]
+bg_color = Color(0.219608, 0.254902, 0.376471, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+content_margin_left = 6
+content_margin_top = 2
+content_margin_right = 6
+content_margin_bottom = 2
+
+[sub_resource type="Animation" id="Animation_jp4qd"]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardCenter/Rotator:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CardCenter/Rotator/FrontFace:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CardCenter/Rotator/BackFace:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_cmwkg"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardCenter/Rotator:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.1, 0.1), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_swtuc"]
+_data = {
+&"flip_card": SubResource("Animation_jp4qd"),
+&"pop_up": SubResource("Animation_cmwkg")
+}
+
+[node name="CardPopupLayer" type="CanvasLayer" unique_id=1147757591]
+script = ExtResource("1_5mon2")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=415835033]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6)
+
+[node name="Rays" type="ColorRect" parent="." unique_id=1249064498]
+material = SubResource("ShaderMaterial_xe3qe")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -514.0
+offset_top = -484.0
+offset_right = 486.0
+offset_bottom = 516.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(500, 500)
+
+[node name="CardCenter" type="Control" parent="." unique_id=1599936836]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Rotator" type="Control" parent="CardCenter" unique_id=1396259628]
+anchors_preset = 0
+
+[node name="FrontFace" type="Panel" parent="CardCenter/Rotator" unique_id=2117037421]
+visible = false
+layout_mode = 0
+offset_left = -194.0
+offset_top = -260.0
+offset_right = 194.0
+offset_bottom = 261.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_front")
+
+[node name="TapArea" type="Control" parent="CardCenter/Rotator/FrontFace" unique_id=1911532957]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="Label" parent="CardCenter/Rotator/FrontFace" unique_id=1704323278]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -170.0
+offset_top = -32.0
+offset_right = 170.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = ExtResource("3_lilita")
+theme_override_font_sizes/font_size = 40
+text = "Opportunity"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SubtitleLabel" type="Label" parent="CardCenter/Rotator/FrontFace" unique_id=1476639559]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -170.0
+offset_top = 40.0
+offset_right = 170.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0)
+theme_override_fonts/font = ExtResource("3_lilita")
+theme_override_font_sizes/font_size = 22
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackFace" type="Panel" parent="CardCenter/Rotator" unique_id=2066525922]
+clip_contents = true
+layout_mode = 0
+offset_left = -194.0
+offset_top = -260.0
+offset_right = 194.0
+offset_bottom = 261.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_back")
+
+[node name="Gradient" type="TextureRect" parent="CardCenter/Rotator/BackFace" unique_id=1506028603]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+mouse_filter = 2
+
+[node name="TitleLabel" type="Label" parent="CardCenter/Rotator/BackFace" unique_id=1133091756]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 0.0
+offset_right = 372.0
+offset_bottom = 82.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.3)
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("3_lilita")
+theme_override_font_sizes/font_size = 36
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InnerPanel" type="PanelContainer" parent="CardCenter/Rotator/BackFace" unique_id=1083109467]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 82.0
+offset_right = 372.0
+offset_bottom = 493.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_inner")
+
+[node name="Margin" type="MarginContainer" parent="CardCenter/Rotator/BackFace/InnerPanel" unique_id=843796180]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 28
+
+[node name="VBox" type="VBoxContainer" parent="CardCenter/Rotator/BackFace/InnerPanel/Margin" unique_id=619337971]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="DescLabel" type="RichTextLabel" parent="CardCenter/Rotator/BackFace/InnerPanel/Margin/VBox" unique_id=815022252]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/normal_font = ExtResource("2_xe3qe")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+
+[node name="ValuesLabel" type="RichTextLabel" parent="CardCenter/Rotator/BackFace/InnerPanel/Margin/VBox" unique_id=1051035625]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_lilita")
+theme_override_fonts/bold_font = ExtResource("3_lilita")
+theme_override_font_sizes/normal_font_size = 15
+theme_override_font_sizes/bold_font_size = 15
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+
+[node name="Spacer" type="Control" parent="CardCenter/Rotator/BackFace/InnerPanel/Margin/VBox" unique_id=9928171]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="StockInputRow" type="HBoxContainer" parent="CardCenter/Rotator/BackFace/InnerPanel/Margin/VBox" unique_id=9928172]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="SharesLabel" type="Label" parent="CardCenter/Rotator/BackFace/InnerPanel/Margin/VBox/StockInputRow" unique_id=9928173]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_lilita")
+theme_override_font_sizes/font_size = 15
+text = "# of shares:"
+
+[node name="SharesInput" type="LineEdit" parent="CardCenter/Rotator/BackFace/InnerPanel/Margin/VBox/StockInputRow" unique_id=9928174]
+custom_minimum_size = Vector2(65, 26)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_lilita")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_stock_input")
+alignment = 1
+
+[node name="TotalCostLabel" type="Label" parent="CardCenter/Rotator/BackFace/InnerPanel/Margin/VBox/StockInputRow" unique_id=9928175]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_lilita")
+theme_override_font_sizes/font_size = 15
+text = "for 0/="
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="CardCenter/Rotator/BackFace/InnerPanel/Margin/VBox" unique_id=9928176]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1244928025]
+libraries/ = SubResource("AnimationLibrary_swtuc")

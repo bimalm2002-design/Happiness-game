@@ -1,0 +1,23 @@
+﻿[gd_resource type="Resource" script_class="CardResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Resources/card_resource.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = 47
+title = "වැටුප් කප්පාදුව (Salary Cut)"
+card_type = "Oops"
+description = "මාසික වැටුප 1,000/= කින් අඩු කර ඇත."
+cost = 0
+down_payment = 0
+cashflow = 0
+penalty = 0
+price_per_share = 0
+buttons = []
+financial_statement_effect = "Reduces Active Income (Salary) by 1,000 permanently"
+cash_ledger_effect = "None directly"
+ignore_skip_rule = "Cannot be ignored"
+insufficient_funds_rule = "N/A"
+interdependencies = "None"
+action_key = "salary_cut"
+values = "None"

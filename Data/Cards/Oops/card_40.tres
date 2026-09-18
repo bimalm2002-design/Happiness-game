@@ -1,0 +1,23 @@
+﻿[gd_resource type="Resource" script_class="CardResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Resources/card_resource.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = 40
+title = "දියණිය වැඩිවියට පත්වීමේ සාදය (Puberty Party)"
+card_type = "Oops"
+description = "ඔබගේ දියණිය යොවුන් වියට පා තබයි."
+cost = 5000
+down_payment = 0
+cashflow = 0
+penalty = 0
+price_per_share = 0
+buttons = ["party", "ignore"]
+financial_statement_effect = "Adds 1,000 to Expenses"
+cash_ledger_effect = "Deducts 5,000 for party (If skipped, draw free Opportunity)"
+ignore_skip_rule = "Can be skipped (Ignore)"
+insufficient_funds_rule = "Optional Loan available"
+interdependencies = "Requires Child (Card 39)"
+action_key = "puberty_party"
+values = "දියණියගේ වියදම් 1,000/= කින් වැඩිවේ. | යොවුන් වියට පත්වීමේ සාදය සඳහා 5,000/= වැය වන අතර සාදය මඟහැරියහොත් free opportunity card එකක් ගැනීමට අවස්ථාවක් ලැබෙයි."

@@ -1,0 +1,182 @@
+{
+  "54": {
+    "id": 54,
+    "type": "Stock",
+    "back_desc": "මැදපෙරදිග ඇතිවන ගල්ෆ් යුද්ධය නිසා BTC හෙවත් බිට්කොයින් මිල සීඝ්‍රයෙන් පහළ වැටී ඇත.",
+    "values": "price per coin : 25/=\nTrading range : 100 - 3000/=",
+    "price": 25,
+    "range": [100, 3000],
+    "buttons": ["buy", "sell", "pass"]
+  },
+  "55": {
+    "id": 55,
+    "type": "Stock",
+    "back_desc": "ලොව අංක එකේ ධනවතා \"සකරබර්ග්\" BTC හෙවත් බිට්කොයින්වල ආයෝජනය කරනවායැයි යන පුවතක් නිසා බිත්කොයින් මිල සීග්‍රයෙන් විශාල ලෙස ඉහළ ගොස් ඇත.",
+    "values": "price per coin : 3,500/=\nTrading range : 100 - 3000/=",
+    "price": 3500,
+    "range": [100, 3000],
+    "buttons": ["buy", "sell", "pass"]
+  },
+  "56": {
+    "id": 56,
+    "type": "Stock",
+    "back_desc": "BTC නව මිල.",
+    "values": "price per coin : 2,500/=\nTrading range : 100 - 3000/=",
+    "price": 2500,
+    "range": [100, 3000],
+    "buttons": ["buy", "sell", "pass"]
+  },
+  "57": {
+    "id": 57,
+    "type": "Stock",
+    "back_desc": "BTC නව මිල.",
+    "values": "price per coin : 1,500/=\nTrading range : 100 - 3000/=",
+    "price": 1500,
+    "range": [100, 3000],
+    "buttons": ["buy", "sell", "pass"]
+  },
+  "58": {
+    "id": 58,
+    "type": "Stock",
+    "back_desc": "BTC නව මිල.",
+    "values": "price per coin : 500/=\nTrading range : 100 - 3000/=",
+    "price": 500,
+    "range": [100, 3000],
+    "buttons": ["buy", "sell", "pass"]
+  },
+  "59": {
+    "id": 59,
+    "type": "Stock",
+    "back_desc": "\"Techno\" නමින් නව cryptocurrency එකක් crypto වෙළඳපොළට හඳුන්වාදී ඇත. ඒවා ඉතා අඩු මිලට ආරම්භක ගැනුම්කරුවන්ට මිලදී ගත හැක.",
+    "values": "price per coin : 5/=\nTrading range : 1 - 30/=",
+    "price": 5,
+    "range": [1, 30],
+    "buttons": ["buy", "sell", "pass"]
+  },
+  "60": {
+    "id": 60,
+    "type": "Stock",
+    "back_desc": "\"Techno\" නව මිල.",
+    "values": "price per coin : 50/=\nTrading range : 1 - 30/=",
+    "price": 50,
+    "range": [1, 30],
+    "buttons": ["buy", "sell", "pass"]
+  },
+  "61": {
+    "id": 61,
+    "type": "Stock",
+    "back_desc": "\"Techno\" නව මිල.",
+    "values": "price per coin : 20/=\nTrading range : 1 - 30/=",
+    "price": 20,
+    "range": [1, 30],
+    "buttons": ["buy", "sell", "pass"]
+  },
+  "62": {
+    "id": 62,
+    "type": "Stock",
+    "back_desc": "\"Techno\" නව මිල.",
+    "values": "price per coin : 10/=\nTrading range : 1 - 30/=",
+    "price": 10,
+    "range": [1, 30],
+    "buttons": ["buy", "sell", "pass"]
+  },
+  "63": {
+    "id": 63,
+    "type": "Stock",
+    "back_desc": "කොටස් වෙළඳපොලේ සිකුරු සබන් සමාගමේ කොටස් වල මිල සීඝ්‍රයෙන් පහත වැටී ඇත්තේ ඔවුන් විසින් අලුතෙන්ම හඳුන්වා දෙන ලද සබන් කුඩු පැකට්ටුව වෙළඳපොළ තුළ අසාර්ථක වීම හේතුවෙනි.",
+    "values": "cost per share : 1/=\nTrading range : 5 - 40/=",
+    "price": 1,
+    "range": [5, 40],
+    "buttons": ["buy", "sell", "pass"]
+  },
+  "64": {
+    "id": 64,
+    "type": "Stock",
+    "back_desc": "සිකුරු සබන් සමාගම සුප්‍රසිද්ධ විදේශීය ක්ෂාලක නිෂ්පාදන ආයතනයක් වන \"Athulla\" සමාගම සමග එකඟතා ගිවිසුමක් හරහා අත්වැල් බැඳගනියි. ඒ හේතුවෙන් කොටස් මිල සීග්‍රයෙන් ඉහළ ගොස් ඇත.",
+    "values": "cost per share : 60/=\nTrading range : 5 - 40/=",
+    "price": 60,
+    "range": [5, 40],
+    "buttons": ["buy", "sell", "pass"]
+  },
+  "65": {
+    "id": 65,
+    "type": "Stock",
+    "back_desc": "සිකුරු සබන් සමාගමේ නව කොටස් මිල.",
+    "values": "cost per share : 15/=\nTrading range : 5 - 40/=",
+    "price": 15,
+    "range": [5, 40],
+    "buttons": ["buy", "sell", "pass"]
+  },
+  "66": {
+    "id": 66,
+    "type": "Stock",
+    "back_desc": "සිකුරු සබන් සමාගමේ නව කොටස් මිල.",
+    "values": "cost per share : 25/=\nTrading range : 5 - 40/=",
+    "price": 25,
+    "range": [5, 40],
+    "buttons": ["buy", "sell", "pass"]
+  },
+  "67": {
+    "id": 67,
+    "type": "Stock",
+    "back_desc": "සිකුරු සබන් සමාගමේ නව කොටස් මිල.",
+    "values": "cost per share : 35/=\nTrading range : 5 - 40/=",
+    "price": 35,
+    "range": [5, 40],
+    "buttons": ["buy", "sell", "pass"]
+  },
+  "68": {
+    "id": 68,
+    "type": "Stock",
+    "back_desc": "කිරිකොකා දන්තාලේප සමාගම විසින් නව දත් බුරුසුවක් හඳුන්වාදී එම දත් බුරුසුව භාවිතයට ඇති වූ උන්මාදය නිසා සමාගමේ කොටස්පෙළ සීඝ්‍රයෙන් ඉහළ ගොස් ඇත.",
+    "values": "cost per share : 100/=\nTrading range : 20 - 50/=",
+    "price": 100,
+    "range": [20, 50],
+    "buttons": ["buy", "sell", "pass"]
+  },
+  "69": {
+    "id": 69,
+    "type": "Stock",
+    "back_desc": "කිරිකොකා දන්තාලේප සමාගමේ නව කොටස් මිල.",
+    "values": "cost per share : 110/=\nTrading range : 20 - 50/=",
+    "price": 110,
+    "range": [20, 50],
+    "buttons": ["buy", "sell", "pass"]
+  },
+  "70": {
+    "id": 70,
+    "type": "Stock",
+    "back_desc": "කිරිකොකා දන්තාලේප සමාගමේ නව කොටස් මිල.",
+    "values": "cost per share : 120/=\nTrading range : 100 - 150/=",
+    "price": 120,
+    "range": [100, 150],
+    "buttons": ["buy", "sell", "pass"]
+  },
+  "71": {
+    "id": 71,
+    "type": "Stock",
+    "back_desc": "කිරිකොකා දන්තාලේප සමාගමේ නව කොටස් මිල.",
+    "values": "cost per share : 40/=\nTrading range : 20 - 50/=",
+    "price": 40,
+    "range": [20, 50],
+    "buttons": ["buy", "sell", "pass"]
+  },
+  "72": {
+    "id": 72,
+    "type": "Stock",
+    "back_desc": "කිරිකොකා දන්තාලේප සමාගමේ නව කොටස් මිල.",
+    "values": "cost per share : 25/=\nTrading range : 20 - 50/=",
+    "price": 25,
+    "range": [20, 50],
+    "buttons": ["buy", "sell", "pass"]
+  },
+  "73": {
+    "id": 73,
+    "type": "Stock",
+    "back_desc": "කිරිකොකා දන්තාලේප සමාගම ආදායම් බදු දෙපාර්තමේන්තුවේ නිලධාරියෙකුට අල්ලස් දුන්නා යයි චෝදනා මත අධිකරණයෙන් නඩු පවරා ඇත. කොටස් මිල සීඝ්‍රයෙන් පහළ වැටී ඇත.",
+    "values": "cost per share : 5/=\nTrading range : 20 - 50/=",
+    "price": 5,
+    "range": [20, 50],
+    "buttons": ["buy", "sell", "pass"]
+  }
+}

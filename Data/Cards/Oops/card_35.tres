@@ -1,0 +1,23 @@
+﻿[gd_resource type="Resource" script_class="CardResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Resources/card_resource.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = 35
+title = "දරුවාගේ විභාග වියදම් (Child Exam Retake)"
+card_type = "Oops"
+description = "ඔබගේ දරුවකුගේ/ දරුවාගේ මෙවර වාර විභාග ලකුණු අදහාගත නොහැකි ලෙස අතිශයින් පහත වැටී ඇත. ඔහුව වහාම විශේෂ අවශ්‍යතා වැඩමුළුවකට යොමු කළ යුතුය."
+cost = 0
+down_payment = 0
+cashflow = 0
+penalty = 1000
+price_per_share = 0
+buttons = []
+financial_statement_effect = "None"
+cash_ledger_effect = "Deducts Cost (-6,000)"
+ignore_skip_rule = "Cannot be ignored"
+insufficient_funds_rule = "Mandatory Loan if cash < 6,000"
+interdependencies = "Requires Child (Card 39)"
+action_key = "child_exam"
+values = "1,000/="

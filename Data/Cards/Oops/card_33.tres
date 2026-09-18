@@ -1,0 +1,23 @@
+﻿[gd_resource type="Resource" script_class="CardResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Resources/card_resource.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = 33
+title = "හදිසි වෛද්‍ය වියදම් (Medical Emergency)"
+card_type = "Oops"
+description = "ඔබගේ පුද්ගලික වාහනය Repair සහ Service කිරීමට කාලය පැමිණ ඇත."
+cost = 0
+down_payment = 0
+cashflow = 0
+penalty = 0
+price_per_share = 0
+buttons = []
+financial_statement_effect = "None"
+cash_ledger_effect = "Deducts Cost (-8,000)"
+ignore_skip_rule = "Cannot be ignored"
+insufficient_funds_rule = "Mandatory Loan if cash < 8,000"
+interdependencies = "None"
+action_key = "emergency_medical"
+values = "වාහනයේ වටිනාකමින් 1/8ක් වියදම් වේ."

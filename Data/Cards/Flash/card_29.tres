@@ -1,0 +1,23 @@
+﻿[gd_resource type="Resource" script_class="CardResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Resources/card_resource.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = 29
+title = "සත්වෝද්‍යානය අසල ඉඩම (Zoo Land)"
+card_type = "Flash"
+description = "කාසිගග ප්‍රාදේශීය සභාවේ සත්තු වත්තක් ඉදි කිරීමට කැබිනට් මණ්ඩලය අනුමැතිය දැන් ලැබී ඇත. සතුන්ට ජීවත්වීමට වඩා සුදුසු පරිසරයක පිහිටි ඉඩමක් කාසිගග ප්‍රදේශයේ විකිණීමට ඇත."
+cost = 60000
+down_payment = 0
+cashflow = 0
+penalty = 0
+price_per_share = 0
+buttons = ["buy", "pass"]
+financial_statement_effect = "Adds Asset 'Zoo Land' (50,000)"
+cash_ledger_effect = "Deducts Investment (-50,000)"
+ignore_skip_rule = "Can be ignored (Pass)"
+insufficient_funds_rule = "Optional Loan available"
+interdependencies = "Correlates with Card 31"
+action_key = "buy_zoo_land"
+values = "60,000/="

@@ -1,0 +1,23 @@
+﻿[gd_resource type="Resource" script_class="CardResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Resources/card_resource.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = 52
+title = "සූර්ය බලශක්ති පද්ධතිය (Solar Panel System)"
+card_type = "Opportunity"
+description = "නිවසට Solar Panel යොදාගැනීමෙන් ඔබගේ විදුලි බිල සම්පූර්ණයෙන්ම අඩු කර ගත හැකි අතර අමතර ආදායමක් ද උපයාගත හැක."
+cost = 10000
+down_payment = 0
+cashflow = 1000
+penalty = 0
+price_per_share = 0
+buttons = ["invest", "pass"]
+financial_statement_effect = "Adds Asset 'Solar Panel System' (35,000), Adds Passive Income 'Solar Panel System' (1,000), Removes Electricity Expense (විදුලි වියදම්)"
+cash_ledger_effect = "Deducts Cost (-35,000)"
+ignore_skip_rule = "Can be ignored (Pass)"
+insufficient_funds_rule = "Optional Loan available"
+interdependencies = "Removes electricity expenses"
+action_key = "invest_solar"
+values = "Cost: 3,000/= | Cashflow: 300/= (Stage 1) / Cost: 10,000/= | Cashflow: 1,000/= (Stage 2) / Cost: 15,000/= | Cashflow: 1,500/= (Stage 3)"

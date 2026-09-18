@@ -1,0 +1,133 @@
+[gd_scene format=3 uid="uid://flash_card_base_scene"]
+
+[ext_resource type="Script" uid="uid://bpvi7s6p5lfd6" path="res://Scripts/card_popup.gd" id="1_flash"]
+[ext_resource type="FontFile" uid="uid://dxugam2572y4e" path="res://Assets/Fonts/AbhayaLibre-Regular.ttf" id="2_abhaya"]
+[ext_resource type="FontFile" uid="uid://18eqbjshot3m" path="res://LilitaOne-Regular.ttf" id="3_lilita"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_front"]
+bg_color = Color(0.639216, 0.270588, 0.933333, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_back"]
+bg_color = Color(0.639216, 0.270588, 0.933333, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_inner"]
+bg_color = Color(1, 1, 1, 0.5)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="FlashCardBase" type="CanvasLayer"]
+script = ExtResource("1_flash")
+
+[node name="CardCenter" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Rotator" type="Control" parent="CardCenter"]
+anchors_preset = 0
+
+[node name="FrontFace" type="Panel" parent="CardCenter/Rotator"]
+layout_mode = 0
+offset_left = -194.0
+offset_top = -260.0
+offset_right = 194.0
+offset_bottom = 261.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_front")
+
+[node name="TitleLabel" type="Label" parent="CardCenter/Rotator/FrontFace"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -170.0
+offset_top = -32.0
+offset_right = 170.0
+offset_bottom = 32.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_lilita")
+theme_override_font_sizes/font_size = 40
+text = "Flash"
+horizontal_alignment = 1
+
+[node name="BackFace" type="Panel" parent="CardCenter/Rotator"]
+layout_mode = 0
+offset_left = -194.0
+offset_top = -260.0
+offset_right = 194.0
+offset_bottom = 261.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_back")
+
+[node name="TitleLabel" type="Label" parent="CardCenter/Rotator/BackFace"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 0.0
+offset_right = 372.0
+offset_bottom = 82.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_lilita")
+theme_override_font_sizes/font_size = 36
+text = "Flash"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InnerPanel" type="PanelContainer" parent="CardCenter/Rotator/BackFace"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 82.0
+offset_right = 372.0
+offset_bottom = 493.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_inner")
+
+[node name="Margin" type="MarginContainer" parent="CardCenter/Rotator/BackFace/InnerPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 28
+
+[node name="VBox" type="VBoxContainer" parent="CardCenter/Rotator/BackFace/InnerPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="DescLabel" type="RichTextLabel" parent="CardCenter/Rotator/BackFace/InnerPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_abhaya")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+fit_content = true
+
+[node name="ValuesLabel" type="RichTextLabel" parent="CardCenter/Rotator/BackFace/InnerPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_lilita")
+theme_override_font_sizes/normal_font_size = 15
+bbcode_enabled = true
+fit_content = true
+
+[node name="Spacer" type="Control" parent="CardCenter/Rotator/BackFace/InnerPanel/Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="CardCenter/Rotator/BackFace/InnerPanel/Margin/VBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 8
+alignment = 1

@@ -1,0 +1,23 @@
+﻿[gd_resource type="Resource" script_class="CardResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Resources/card_resource.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = 3
+title = "කඩකාමර 06 සංකීර්ණය (6-Shop Complex)"
+card_type = "Opportunity"
+description = "දියුණුවෙමින් පවතින මංසන්ධියක කඩකාමර 06ක් මිලදී ගැනීමට අදාළ දැන්වීමක් ගමනක් යන අතරතුර ඔබට දකී."
+cost = 90000
+down_payment = 25000
+cashflow = 15000
+penalty = 0
+price_per_share = 0
+buttons = ["invest", "pass"]
+financial_statement_effect = "Adds Asset '6-Shop Complex' (90,000), Adds Liability '6-Shop Complex' (65,000), Adds Passive Income '6-Shop Complex' (15,000)"
+cash_ledger_effect = "Deducts Downpayment (-25,000)"
+ignore_skip_rule = "Can be ignored (Pass)"
+insufficient_funds_rule = "Optional Loan available"
+interdependencies = "None"
+action_key = "invest_real_estate"
+values = "Total Investment – 90,000/= | Cashflow – 15,000/= | Downpayment – 25,000/="

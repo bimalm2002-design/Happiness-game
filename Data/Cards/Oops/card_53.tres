@@ -1,0 +1,23 @@
+﻿[gd_resource type="Resource" script_class="CardResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Resources/card_resource.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = 53
+title = "දික්කසාදය (Divorce)"
+card_type = "Oops"
+description = "සහකරු සමග දික්කසාද වීමට සිදුවේ. සහකරුගේ වියදම් ඉවත්වන අතර නඩුහබ වියදම් ගෙවීමට සිදුවේ."
+cost = 0
+down_payment = 0
+cashflow = 0
+penalty = 5000
+price_per_share = 0
+buttons = []
+financial_statement_effect = "Removes 2,000 Spouse Expense"
+cash_ledger_effect = "Deducts Legal Fees (-5,000)"
+ignore_skip_rule = "Auto-executes"
+insufficient_funds_rule = "Mandatory Loan if cash < 5,000"
+interdependencies = "Requires Marriage (Card 37)"
+action_key = "divorce"
+values = "5,000/="

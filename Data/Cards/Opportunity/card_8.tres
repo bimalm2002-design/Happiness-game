@@ -1,0 +1,23 @@
+﻿[gd_resource type="Resource" script_class="CardResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Resources/card_resource.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = 8
+title = "කාමර 02ක නිවස (2-Room House)"
+card_type = "Opportunity"
+description = "කුඩා ළමුන් සඳහා Leisure Park එකක් ඉදිකිරීමට ඉතා සුදුසු කාලයක් සහ පාසල් හා පෙර පාසල් ආශ්‍රිත ප්‍රදේශයක හොද අවස්ථාවක් පවතී."
+cost = 20000
+down_payment = 0
+cashflow = 7500
+penalty = 0
+price_per_share = 0
+buttons = ["invest", "pass"]
+financial_statement_effect = "Adds Asset '2-Room House' (45,000), Adds Liability '2-Room House' (35,000), Adds Passive Income '2-Room House' (5,000)"
+cash_ledger_effect = "Deducts Downpayment (-10,000)"
+ignore_skip_rule = "Can be ignored (Pass)"
+insufficient_funds_rule = "Optional Loan available"
+interdependencies = "None"
+action_key = "invest_real_estate"
+values = "Investment – 20,000/= | Cashflow – 7,500/="

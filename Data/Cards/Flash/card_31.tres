@@ -1,0 +1,23 @@
+﻿[gd_resource type="Resource" script_class="CardResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Resources/card_resource.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = 31
+title = "සත්වෝද්‍යානය අසල ඉඩම විකිණීම (Sell Zoo Land)"
+card_type = "Flash"
+description = "සත්තු වත්තක් ඉදි කිරීම සඳහා කාසිගග ප්‍රාදේශීය සභාව තුළ රජය විසින් ඉඩමක් සොයයි."
+cost = 0
+down_payment = 0
+cashflow = 0
+penalty = 0
+price_per_share = 0
+buttons = ["sell", "pass"]
+financial_statement_effect = "Removes Asset 'Zoo Land'"
+cash_ledger_effect = "Adds Sale Price (+90,000)"
+ignore_skip_rule = "Active only if Card 29 owned"
+insufficient_funds_rule = "N/A"
+interdependencies = "Requires Card 29"
+action_key = "sell_zoo_land"
+values = "90,000/="

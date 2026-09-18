@@ -1,0 +1,23 @@
+﻿[gd_resource type="Resource" script_class="CardResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Resources/card_resource.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = 2
+title = "වාහන නැවතුම්පොළ (Parking Lot)"
+card_type = "Opportunity"
+description = "නගරයේ වාහන තදබදය ඉතා ඉහළ ප්‍රදේශයක හිස් ඉඩමක් පවතී. Parking Lot එකක් සදහා තෝතැන්නකි."
+cost = 40000
+down_payment = 10000
+cashflow = 6000
+penalty = 0
+price_per_share = 0
+buttons = ["invest", "pass"]
+financial_statement_effect = "Adds Asset 'Parking Lot' (40,000), Adds Liability 'Parking Lot' (30,000), Adds Passive Income 'Parking Lot' (6,000)"
+cash_ledger_effect = "Deducts Downpayment (-10,000)"
+ignore_skip_rule = "Can be ignored (Pass)"
+insufficient_funds_rule = "Optional Loan available"
+interdependencies = "Correlates with Card 20"
+action_key = "invest_real_estate"
+values = "Total Investment – 40,000/= | Cashflow – 6,000/= | Downpayment – 10,000/="

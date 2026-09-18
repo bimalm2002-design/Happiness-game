@@ -1,0 +1,23 @@
+﻿[gd_resource type="Resource" script_class="CardResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Resources/card_resource.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = 63
+title = "සිකුරු සබන් සමාගම (Sikuru Saban)"
+card_type = "Stock"
+description = "කොටස් වෙළඳපොලේ සිකුරු සබන් සමාගමේ කොටස් වල මිල සීඝ්‍රයෙන් පහත වැටී ඇත්තේ ඔවුන් විසින් අලුතෙන්ම හඳුන්වා දෙන ලද සබන් කුඩු පැකට්ටුව වෙළඳපොළ තුළ අසාර්ථක වීම හේතුවෙනි."
+cost = 0
+down_payment = 0
+cashflow = 0
+penalty = 0
+price_per_share = 1
+buttons = ["buy", "sell", "pass"]
+financial_statement_effect = "Adds/Updates Asset 'Sikuru Saban'"
+cash_ledger_effect = "Deducts (Qty * Price) on buy / Adds on sell"
+ignore_skip_rule = "Can be ignored (Pass)"
+insufficient_funds_rule = "Optional Loan available"
+interdependencies = "None"
+action_key = "trade_stock"
+values = "cost per share - 1/= | Trading range - 5 - 40/="
