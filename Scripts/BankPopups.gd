@@ -11,8 +11,8 @@ signal insufficient_cash_resolved(accepted: bool)
 @onready var toast_label = $ToastLabel
 
 # Borrow Panel Nodes
-@onready var borrow_amount_input = $BorrowPanel/Margin/VBox/InputContainer/AmountInput
-@onready var borrow_dynamic_lbl = $BorrowPanel/Margin/VBox/InputContainer/DynamicTextLabel
+@onready var borrow_amount_input = $BorrowPanel/Margin/VBox/AmountGroupVBox/InputRow/AmountInput
+@onready var borrow_dynamic_lbl = $BorrowPanel/Margin/VBox/AmountGroupVBox/InputRow/DynamicTextLabel
 @onready var borrow_confirm_btn = $BorrowPanel/Margin/VBox/ButtonsRow/BorrowButton
 @onready var borrow_cancel_btn = $BorrowPanel/Margin/VBox/ButtonsRow/CancelButton
 @onready var borrow_close_btn = $BorrowPanel/CloseButton
