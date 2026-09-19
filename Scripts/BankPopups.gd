@@ -11,36 +11,27 @@ signal insufficient_cash_resolved(accepted: bool)
 @onready var toast_label = $ToastLabel
 
 # Borrow Panel Nodes
-@onready var borrow_amount_input = $BorrowPanel/AmountInput
-@onready var borrow_dynamic_lbl = $BorrowPanel/DynamicTextLabel
-@onready var borrow_confirm_btn = $BorrowPanel/BorrowButton
-@onready var borrow_cancel_btn = $BorrowPanel/CancelButton
+@onready var borrow_amount_input = $BorrowPanel/Margin/VBox/InputContainer/AmountInput
+@onready var borrow_dynamic_lbl = $BorrowPanel/Margin/VBox/InputContainer/DynamicTextLabel
+@onready var borrow_confirm_btn = $BorrowPanel/Margin/VBox/ButtonsRow/BorrowButton
+@onready var borrow_cancel_btn = $BorrowPanel/Margin/VBox/ButtonsRow/CancelButton
 @onready var borrow_close_btn = $BorrowPanel/CloseButton
 
 # Repay Panel Nodes
-@onready var repay_bg = $RepayPanel/BackgroundTexture
-@onready var tab_housing_btn = $RepayPanel/TabHousingButton
-@onready var tab_vehicle_btn = $RepayPanel/TabVehicleButton
-@onready var tab_bank_btn = $RepayPanel/TabBankButton
-@onready var repay_info_lbl = $RepayPanel/InfoLabel
-@onready var bank_repay_row = $RepayPanel/BankRepayRow
-@onready var bank_repay_input = $RepayPanel/BankRepayRow/BankRepayInput
-@onready var repay_confirm_btn = $RepayPanel/RepayButton
-@onready var repay_cancel_btn = $RepayPanel/CancelButton
+@onready var tab_housing_btn = $RepayPanel/Margin/VBox/InnerPanel/Margin/VBox/TabsRow/TabHousingButton
+@onready var tab_vehicle_btn = $RepayPanel/Margin/VBox/InnerPanel/Margin/VBox/TabsRow/TabVehicleButton
+@onready var tab_bank_btn = $RepayPanel/Margin/VBox/InnerPanel/Margin/VBox/TabsRow/TabBankButton
+@onready var repay_info_lbl = $RepayPanel/Margin/VBox/InnerPanel/Margin/VBox/InfoLabel
+@onready var bank_repay_row = $RepayPanel/Margin/VBox/InnerPanel/Margin/VBox/BankRepayRow
+@onready var bank_repay_input = $RepayPanel/Margin/VBox/InnerPanel/Margin/VBox/BankRepayRow/BankRepayInput
+@onready var repay_confirm_btn = $RepayPanel/Margin/VBox/ButtonsRow/RepayButton
+@onready var repay_cancel_btn = $RepayPanel/Margin/VBox/ButtonsRow/CancelButton
 @onready var repay_close_btn = $RepayPanel/CloseButton
 
 # Prompt Panel Nodes (Insufficient Cash)
-@onready var prompt_bg = $PromptPanel/PromptBackgroundTexture
-@onready var prompt_text_lbl = $PromptPanel/PromptTextLabel
-@onready var prompt_borrow_btn = $PromptPanel/PromptBorrowButton
-@onready var prompt_cancel_btn = $PromptPanel/PromptCancelButton
-
-const TEX_REPAY_HOUSING = preload("res://Assets/UI/Bank/Bank loan repay pop up for housing loan.svg")
-const TEX_REPAY_VEHICLE = preload("res://Assets/UI/Bank/Bank loan repay pop up for vehicle loan.svg")
-const TEX_REPAY_BANK = preload("res://Assets/UI/Bank/Bank loan repay pop up for bank loan.svg")
-
-const TEX_PROMPT_MANDATORY = preload("res://Assets/UI/Bank/not_enough_cash_mandatory.svg")
-const TEX_PROMPT_OPTIONAL = preload("res://Assets/UI/Bank/not_enough_cash_optional.svg")
+@onready var prompt_text_lbl = $PromptPanel/Margin/VBox/PromptTextLabel
+@onready var prompt_borrow_btn = $PromptPanel/Margin/VBox/ButtonsRow/PromptBorrowButton
+@onready var prompt_cancel_btn = $PromptPanel/Margin/VBox/ButtonsRow/PromptCancelButton
 
 enum RepayTab { HOUSING, VEHICLE, BANK }
 var current_repay_tab: RepayTab = RepayTab.HOUSING
@@ -49,8 +40,15 @@ var pending_needed_cash: int = 0
 var pending_is_mandatory: bool = false
 var toast_tween: Tween = null
 
+# Custom Button StyleBox references for Tab switching
+var sb_tab_active: StyleBoxFlat
+var sb_tab_inactive: StyleBoxFlat
+var sb_repay_active: StyleBoxFlat
+var sb_repay_disabled: StyleBoxFlat
+
 func _ready():
 	layer = 15
+	_setup_styles()
 	hide_all()
 	
 	# Borrow Signal Connections
@@ -62,7 +60,7 @@ func _ready():
 	# Repay Signal Connections
 	if repay_close_btn: repay_close_btn.pressed.connect(close_all)
 	if repay_cancel_btn: repay_cancel_btn.pressed.connect(close_all)
-	if repay_confirm_btn: repay_confirm_btn.pressed.connect(_on_repay_confirmed)
+	if repay_confirm_btn: repay_confirm_btn.pressed.connect(_on_repay_button_pressed)
 	
 	if tab_housing_btn: tab_housing_btn.pressed.connect(func(): set_repay_tab(RepayTab.HOUSING))
 	if tab_vehicle_btn: tab_vehicle_btn.pressed.connect(func(): set_repay_tab(RepayTab.VEHICLE))
@@ -74,6 +72,37 @@ func _ready():
 	
 	if bg_dim:
 		bg_dim.gui_input.connect(_on_bg_gui_input)
+
+func _setup_styles():
+	# Tab Active Style
+	sb_tab_active = StyleBoxFlat.new()
+	sb_tab_active.bg_color = Color("#FF7000")
+	sb_tab_active.border_width_left = 2; sb_tab_active.border_width_top = 2; sb_tab_active.border_width_right = 2; sb_tab_active.border_width_bottom = 2
+	sb_tab_active.border_color = Color("#222222")
+	sb_tab_active.corner_radius_top_left = 12; sb_tab_active.corner_radius_top_right = 12; sb_tab_active.corner_radius_bottom_right = 12; sb_tab_active.corner_radius_bottom_left = 12
+	sb_tab_active.content_margin_left = 8; sb_tab_active.content_margin_right = 8
+	
+	# Tab Inactive Style
+	sb_tab_inactive = StyleBoxFlat.new()
+	sb_tab_inactive.bg_color = Color("#A4B0BE")
+	sb_tab_inactive.border_width_left = 2; sb_tab_inactive.border_width_top = 2; sb_tab_inactive.border_width_right = 2; sb_tab_inactive.border_width_bottom = 2
+	sb_tab_inactive.border_color = Color("#222222")
+	sb_tab_inactive.corner_radius_top_left = 12; sb_tab_inactive.corner_radius_top_right = 12; sb_tab_inactive.corner_radius_bottom_right = 12; sb_tab_inactive.corner_radius_bottom_left = 12
+	sb_tab_inactive.content_margin_left = 8; sb_tab_inactive.content_margin_right = 8
+	
+	# Repay Active Style
+	sb_repay_active = StyleBoxFlat.new()
+	sb_repay_active.bg_color = Color("#FF3D00")
+	sb_repay_active.border_width_left = 2; sb_repay_active.border_width_top = 2; sb_repay_active.border_width_right = 2; sb_repay_active.border_width_bottom = 2
+	sb_repay_active.border_color = Color("#222222")
+	sb_repay_active.corner_radius_top_left = 16; sb_repay_active.corner_radius_top_right = 16; sb_repay_active.corner_radius_bottom_right = 16; sb_repay_active.corner_radius_bottom_left = 16
+	
+	# Repay Disabled Style
+	sb_repay_disabled = StyleBoxFlat.new()
+	sb_repay_disabled.bg_color = Color("#718093")
+	sb_repay_disabled.border_width_left = 2; sb_repay_disabled.border_width_top = 2; sb_repay_disabled.border_width_right = 2; sb_repay_disabled.border_width_bottom = 2
+	sb_repay_disabled.border_color = Color("#222222")
+	sb_repay_disabled.corner_radius_top_left = 16; sb_repay_disabled.corner_radius_top_right = 16; sb_repay_disabled.corner_radius_bottom_right = 16; sb_repay_disabled.corner_radius_bottom_left = 16
 
 func _on_bg_gui_input(event: InputEvent):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
@@ -146,9 +175,13 @@ func set_repay_tab(tab: RepayTab):
 	var financials = PlayerData.financials if PlayerData else null
 	var current_cash = financials.cash if financials else 0
 	
+	# Apply Tab Style overrides
+	if tab_housing_btn: tab_housing_btn.add_theme_stylebox_override("normal", sb_tab_active if tab == RepayTab.HOUSING else sb_tab_inactive)
+	if tab_vehicle_btn: tab_vehicle_btn.add_theme_stylebox_override("normal", sb_tab_active if tab == RepayTab.VEHICLE else sb_tab_inactive)
+	if tab_bank_btn: tab_bank_btn.add_theme_stylebox_override("normal", sb_tab_active if tab == RepayTab.BANK else sb_tab_inactive)
+	
 	match tab:
 		RepayTab.HOUSING:
-			if repay_bg: repay_bg.texture = TEX_REPAY_HOUSING
 			if repay_info_lbl:
 				repay_info_lbl.text = "Housing loan and vehical leasing can full settle only"
 				repay_info_lbl.show()
@@ -159,7 +192,6 @@ func set_repay_tab(tab: RepayTab):
 			_set_repay_button_state(can_repay)
 			
 		RepayTab.VEHICLE:
-			if repay_bg: repay_bg.texture = TEX_REPAY_VEHICLE
 			if repay_info_lbl:
 				repay_info_lbl.text = "Housing loan and vehical leasing can full settle only"
 				repay_info_lbl.show()
@@ -170,7 +202,6 @@ func set_repay_tab(tab: RepayTab):
 			_set_repay_button_state(can_repay)
 			
 		RepayTab.BANK:
-			if repay_bg: repay_bg.texture = TEX_REPAY_BANK
 			if repay_info_lbl: repay_info_lbl.hide()
 			if bank_repay_row: bank_repay_row.show()
 			
@@ -182,13 +213,13 @@ func set_repay_tab(tab: RepayTab):
 func _set_repay_button_state(enabled: bool):
 	if not repay_confirm_btn: return
 	if enabled:
-		repay_confirm_btn.modulate = Color.WHITE
+		repay_confirm_btn.add_theme_stylebox_override("normal", sb_repay_active)
 		repay_confirm_btn.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 	else:
-		repay_confirm_btn.modulate = Color(0.5, 0.5, 0.5, 0.8)
+		repay_confirm_btn.add_theme_stylebox_override("normal", sb_repay_disabled)
 		repay_confirm_btn.mouse_default_cursor_shape = Control.CURSOR_FORBIDDEN
 
-func _on_repay_confirmed():
+func _on_repay_button_pressed():
 	var financials = PlayerData.financials if PlayerData else null
 	if not financials: return
 	
@@ -204,7 +235,7 @@ func _on_repay_confirmed():
 				show_toast("Not enough cash")
 				return
 			financials.repay_housing_loan()
-			show_toast("✓ Housing Loan fully settled!")
+			show_toast("✓ Full settled - Housing loan")
 			get_tree().create_timer(1.2).timeout.connect(close_all)
 			
 		RepayTab.VEHICLE:
@@ -216,7 +247,7 @@ func _on_repay_confirmed():
 				show_toast("Not enough cash")
 				return
 			financials.repay_car_leasing()
-			show_toast("✓ Vehicle Leasing fully settled!")
+			show_toast("✓ Full settled - vehicle leasing")
 			get_tree().create_timer(1.2).timeout.connect(close_all)
 			
 		RepayTab.BANK:
@@ -252,10 +283,8 @@ func open_insufficient_cash_prompt(needed_cash: int, is_mandatory: bool):
 	var installment = int(recommended_loan * 0.10)
 	
 	if is_mandatory:
-		if prompt_bg: prompt_bg.texture = TEX_PROMPT_MANDATORY
 		if prompt_cancel_btn: prompt_cancel_btn.hide()
 	else:
-		if prompt_bg: prompt_bg.texture = TEX_PROMPT_OPTIONAL
 		if prompt_cancel_btn: prompt_cancel_btn.show()
 		
 	if prompt_text_lbl:

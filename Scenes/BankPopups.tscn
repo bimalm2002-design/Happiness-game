@@ -1,12 +1,85 @@
 [gd_scene format=3 uid="uid://c8b74hkq8n0ap"]
 
 [ext_resource type="Script" uid="uid://dm0y35b2popu2" path="res://Scripts/BankPopups.gd" id="1_script"]
-[ext_resource type="Texture2D" path="res://Assets/UI/Bank/Bank loan borrow pop up.svg" id="2_borrow_svg"]
-[ext_resource type="Texture2D" uid="uid://cunx6281wlkmm" path="res://Assets/UI/Board/Bank image.png" id="3_bank_img"]
-[ext_resource type="Texture2D" path="res://Assets/UI/close_icon.svg" id="4_close_icon"]
-[ext_resource type="Texture2D" path="res://Assets/UI/Bank/Bank loan repay pop up for housing loan.svg" id="5_repay_housing_svg"]
-[ext_resource type="Texture2D" path="res://Assets/UI/Bank/not_enough_cash_mandatory.svg" id="6_prompt_mandatory_svg"]
-[ext_resource type="FontFile" uid="uid://18eqbjshot3m" path="res://LilitaOne-Regular.ttf" id="7_font"]
+[ext_resource type="Texture2D" uid="uid://cunx6281wlkmm" path="res://Assets/UI/Board/Bank image.png" id="2_bank_img"]
+[ext_resource type="Texture2D" path="res://Assets/UI/close_icon.svg" id="3_close_icon"]
+[ext_resource type="FontFile" uid="uid://18eqbjshot3m" path="res://LilitaOne-Regular.ttf" id="4_font"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_orange_panel"]
+bg_color = Color(1, 0.478431, 0, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.18, 0.18, 0.18, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+shadow_color = Color(0, 0, 0, 0.35)
+shadow_size = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_blue_panel"]
+bg_color = Color(0.321569, 0.584314, 0.886275, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.18, 0.18, 0.18, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+shadow_color = Color(0, 0, 0, 0.35)
+shadow_size = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_inner_dark"]
+bg_color = Color(0.517647, 0.345098, 0.239216, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.2, 0.2, 0.2, 0.6)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_input"]
+bg_color = Color(0.17, 0.23, 0.35, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.35, 0.45, 0.65, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_borrow_btn"]
+bg_color = Color(1, 0.239216, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.13, 0.13, 0.13, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cancel_btn"]
+bg_color = Color(0.69, 0.72, 0.78, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.13, 0.13, 0.13, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_toast"]
 bg_color = Color(0.12, 0.12, 0.16, 0.95)
@@ -14,7 +87,7 @@ border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.99, 0.49, 0.11, 0.9)
+border_color = Color(1, 0.478431, 0, 0.9)
 corner_radius_top_left = 12
 corner_radius_top_right = 12
 corner_radius_bottom_right = 12
@@ -23,18 +96,6 @@ content_margin_left = 20.0
 content_margin_top = 10.0
 content_margin_right = 20.0
 content_margin_bottom = 10.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_input"]
-bg_color = Color(0.2, 0.26, 0.38, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.35, 0.45, 0.65, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
 
 [node name="BankPopups" type="CanvasLayer" unique_id=987213451]
 layer = 15
@@ -46,276 +107,416 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color(0, 0, 0, 0.4)
 
-[node name="BorrowPanel" type="Control" parent="." unique_id=897612345]
+[node name="BorrowPanel" type="PanelContainer" parent="." unique_id=897612345]
 visible = false
-layout_mode = 3
+custom_minimum_size = Vector2(440, 520)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -210.0
-offset_top = -250.0
-offset_right = 210.0
-offset_bottom = 250.0
+offset_left = -220.0
+offset_top = -260.0
+offset_right = 220.0
+offset_bottom = 260.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="BackgroundTexture" type="TextureRect" parent="BorrowPanel" unique_id=321654987]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-texture = ExtResource("2_borrow_svg")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="BankImage" type="TextureRect" parent="BorrowPanel" unique_id=789654123]
-layout_mode = 0
-offset_left = 145.0
-offset_top = 65.0
-offset_right = 275.0
-offset_bottom = 175.0
-texture = ExtResource("3_bank_img")
-expand_mode = 1
-stretch_mode = 5
+theme_override_styles/panel = SubResource("StyleBoxFlat_orange_panel")
 
 [node name="CloseButton" type="TextureButton" parent="BorrowPanel" unique_id=456123789]
-layout_mode = 0
-offset_left = 370.0
-offset_top = 15.0
-offset_right = 398.0
-offset_bottom = 43.0
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource("4_close_icon")
+texture_normal = ExtResource("3_close_icon")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="AmountInput" type="LineEdit" parent="BorrowPanel" unique_id=159357246]
-layout_mode = 0
-offset_left = 35.0
-offset_top = 325.0
-offset_right = 195.0
-offset_bottom = 365.0
+[node name="Margin" type="MarginContainer" parent="BorrowPanel" unique_id=85215963]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBox" type="VBoxContainer" parent="BorrowPanel/Margin" unique_id=963258741]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="TitleLabel" type="Label" parent="BorrowPanel/Margin/VBox" unique_id=159357486]
+layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("7_font")
-theme_override_font_sizes/font_size = 18
+theme_override_colors/font_outline_color = Color(0.15, 0.15, 0.15, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 32
+text = "Take a loan"
+horizontal_alignment = 1
+
+[node name="BankImage" type="TextureRect" parent="BorrowPanel/Margin/VBox" unique_id=789654123]
+custom_minimum_size = Vector2(0, 110)
+layout_mode = 2
+texture = ExtResource("2_bank_img")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SubtitleLabel" type="Label" parent="BorrowPanel/Margin/VBox" unique_id=357951486]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 15
+text = "10% of the loan amount will add to expenses as installment."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="ControlSpacer" type="Control" parent="BorrowPanel/Margin/VBox" unique_id=147852369]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="InputContainer" type="HBoxContainer" parent="BorrowPanel/Margin/VBox" unique_id=258147369]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="AmountInput" type="LineEdit" parent="BorrowPanel/Margin/VBox/InputContainer" unique_id=159357246]
+custom_minimum_size = Vector2(160, 44)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_input")
 text = "10000"
 alignment = 1
 
-[node name="DynamicTextLabel" type="Label" parent="BorrowPanel" unique_id=852963741]
-layout_mode = 0
-offset_left = 205.0
-offset_top = 315.0
-offset_right = 385.0
-offset_bottom = 375.0
+[node name="DynamicTextLabel" type="Label" parent="BorrowPanel/Margin/VBox/InputContainer" unique_id=852963741]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("7_font")
-theme_override_font_sizes/font_size = 12
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 13
 text = "Take a loan 10 000/= with a Monthly Installment of 1000/="
 autowrap_mode = 2
 
-[node name="BorrowButton" type="Button" parent="BorrowPanel" unique_id=741852963]
-layout_mode = 0
-offset_left = 40.0
-offset_top = 405.0
-offset_right = 165.0
-offset_bottom = 450.0
-mouse_default_cursor_shape = 2
-flat = true
+[node name="ControlSpacer2" type="Control" parent="BorrowPanel/Margin/VBox" unique_id=369258147]
+layout_mode = 2
+size_flags_vertical = 3
 
-[node name="CancelButton" type="Button" parent="BorrowPanel" unique_id=963852741]
-layout_mode = 0
-offset_left = 250.0
-offset_top = 405.0
-offset_right = 375.0
-offset_bottom = 450.0
-mouse_default_cursor_shape = 2
-flat = true
+[node name="ButtonsRow" type="HBoxContainer" parent="BorrowPanel/Margin/VBox" unique_id=456321987]
+layout_mode = 2
+theme_override_constants/separation = 20
 
-[node name="RepayPanel" type="Control" parent="." unique_id=654987321]
+[node name="BorrowButton" type="Button" parent="BorrowPanel/Margin/VBox/ButtonsRow" unique_id=741852963]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_borrow_btn")
+text = "Borrow"
+
+[node name="CancelButton" type="Button" parent="BorrowPanel/Margin/VBox/ButtonsRow" unique_id=963852741]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_cancel_btn")
+text = "Cancel"
+
+[node name="RepayPanel" type="PanelContainer" parent="." unique_id=654987321]
 visible = false
-layout_mode = 3
+custom_minimum_size = Vector2(440, 520)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -210.0
-offset_top = -250.0
-offset_right = 210.0
-offset_bottom = 250.0
+offset_left = -220.0
+offset_top = -260.0
+offset_right = 220.0
+offset_bottom = 260.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="BackgroundTexture" type="TextureRect" parent="RepayPanel" unique_id=123789456]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-texture = ExtResource("5_repay_housing_svg")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="BankImage" type="TextureRect" parent="RepayPanel" unique_id=456789123]
-layout_mode = 0
-offset_left = 145.0
-offset_top = 65.0
-offset_right = 275.0
-offset_bottom = 175.0
-texture = ExtResource("3_bank_img")
-expand_mode = 1
-stretch_mode = 5
+theme_override_styles/panel = SubResource("StyleBoxFlat_orange_panel")
 
 [node name="CloseButton" type="TextureButton" parent="RepayPanel" unique_id=789123456]
-layout_mode = 0
-offset_left = 370.0
-offset_top = 15.0
-offset_right = 398.0
-offset_bottom = 43.0
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource("4_close_icon")
+texture_normal = ExtResource("3_close_icon")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TabHousingButton" type="Button" parent="RepayPanel" unique_id=147258369]
-layout_mode = 0
-offset_left = 40.0
-offset_top = 270.0
-offset_right = 145.0
-offset_bottom = 300.0
-mouse_default_cursor_shape = 2
-flat = true
+[node name="Margin" type="MarginContainer" parent="RepayPanel" unique_id=753159246]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
 
-[node name="TabVehicleButton" type="Button" parent="RepayPanel" unique_id=258369147]
-layout_mode = 0
-offset_left = 155.0
-offset_top = 270.0
-offset_right = 260.0
-offset_bottom = 300.0
-mouse_default_cursor_shape = 2
-flat = true
+[node name="VBox" type="VBoxContainer" parent="RepayPanel/Margin" unique_id=852369741]
+layout_mode = 2
+theme_override_constants/separation = 12
 
-[node name="TabBankButton" type="Button" parent="RepayPanel" unique_id=369147258]
-layout_mode = 0
-offset_left = 270.0
-offset_top = 270.0
-offset_right = 375.0
-offset_bottom = 300.0
-mouse_default_cursor_shape = 2
-flat = true
-
-[node name="InfoLabel" type="Label" parent="RepayPanel" unique_id=741963258]
-layout_mode = 0
-offset_left = 40.0
-offset_top = 320.0
-offset_right = 380.0
-offset_bottom = 360.0
+[node name="TitleLabel" type="Label" parent="RepayPanel/Margin/VBox" unique_id=951357486]
+layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("7_font")
-theme_override_font_sizes/font_size = 13
+theme_override_colors/font_outline_color = Color(0.15, 0.15, 0.15, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 32
+text = "Repay loan"
+horizontal_alignment = 1
+
+[node name="BankImage" type="TextureRect" parent="RepayPanel/Margin/VBox" unique_id=456789123]
+custom_minimum_size = Vector2(0, 110)
+layout_mode = 2
+texture = ExtResource("2_bank_img")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="InstructionLabel" type="Label" parent="RepayPanel/Margin/VBox" unique_id=159753852]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 16
+text = "Select which loan you need to repay."
+horizontal_alignment = 1
+
+[node name="InnerPanel" type="PanelContainer" parent="RepayPanel/Margin/VBox" unique_id=741258963]
+custom_minimum_size = Vector2(0, 140)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_inner_dark")
+
+[node name="Margin" type="MarginContainer" parent="RepayPanel/Margin/VBox/InnerPanel" unique_id=963741852]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 14
+
+[node name="VBox" type="VBoxContainer" parent="RepayPanel/Margin/VBox/InnerPanel/Margin" unique_id=852963147]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="TabsRow" type="HBoxContainer" parent="RepayPanel/Margin/VBox/InnerPanel/Margin/VBox" unique_id=123456789]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TabHousingButton" type="Button" parent="RepayPanel/Margin/VBox/InnerPanel/Margin/VBox/TabsRow" unique_id=147258369]
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 12
+text = "Housing loan"
+
+[node name="TabVehicleButton" type="Button" parent="RepayPanel/Margin/VBox/InnerPanel/Margin/VBox/TabsRow" unique_id=258369147]
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 12
+text = "Vehical leasing"
+
+[node name="TabBankButton" type="Button" parent="RepayPanel/Margin/VBox/InnerPanel/Margin/VBox/TabsRow" unique_id=369147258]
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 12
+text = "Bank loan"
+
+[node name="InfoLabel" type="Label" parent="RepayPanel/Margin/VBox/InnerPanel/Margin/VBox" unique_id=741963258]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 14
 text = "Housing loan and vehical leasing can full settle only"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
 
-[node name="BankRepayRow" type="HBoxContainer" parent="RepayPanel" unique_id=852147963]
+[node name="BankRepayRow" type="HBoxContainer" parent="RepayPanel/Margin/VBox/InnerPanel/Margin/VBox" unique_id=852147963]
 visible = false
-layout_mode = 0
-offset_left = 40.0
-offset_top = 320.0
-offset_right = 380.0
-offset_bottom = 360.0
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 8
 
-[node name="BankRepayLabel" type="Label" parent="RepayPanel/BankRepayRow" unique_id=963258147]
+[node name="BankRepayLabel" type="Label" parent="RepayPanel/Margin/VBox/InnerPanel/Margin/VBox/BankRepayRow" unique_id=963258147]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("7_font")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_font")
 theme_override_font_sizes/font_size = 13
 text = "Bank loan repaying amount:"
+vertical_alignment = 1
 
-[node name="BankRepayInput" type="LineEdit" parent="RepayPanel/BankRepayRow" unique_id=159487263]
+[node name="BankRepayInput" type="LineEdit" parent="RepayPanel/Margin/VBox/InnerPanel/Margin/VBox/BankRepayRow" unique_id=159487263]
+custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("7_font")
+theme_override_fonts/font = ExtResource("4_font")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxFlat_input")
 alignment = 1
 
-[node name="RepayButton" type="Button" parent="RepayPanel" unique_id=753951846]
-layout_mode = 0
-offset_left = 40.0
-offset_top = 405.0
-offset_right = 165.0
-offset_bottom = 450.0
-mouse_default_cursor_shape = 2
-flat = true
+[node name="ControlSpacer" type="Control" parent="RepayPanel/Margin/VBox" unique_id=753951258]
+layout_mode = 2
+size_flags_vertical = 3
 
-[node name="CancelButton" type="Button" parent="RepayPanel" unique_id=951753846]
-layout_mode = 0
-offset_left = 250.0
-offset_top = 405.0
-offset_right = 375.0
-offset_bottom = 450.0
-mouse_default_cursor_shape = 2
-flat = true
+[node name="ButtonsRow" type="HBoxContainer" parent="RepayPanel/Margin/VBox" unique_id=951852369]
+layout_mode = 2
+theme_override_constants/separation = 20
 
-[node name="PromptPanel" type="Control" parent="." unique_id=357159846]
+[node name="RepayButton" type="Button" parent="RepayPanel/Margin/VBox/ButtonsRow" unique_id=753951846]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_borrow_btn")
+text = "Repay"
+
+[node name="CancelButton" type="Button" parent="RepayPanel/Margin/VBox/ButtonsRow" unique_id=951753846]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_cancel_btn")
+text = "Cancel"
+
+[node name="PromptPanel" type="PanelContainer" parent="." unique_id=357159846]
 visible = false
-layout_mode = 3
+custom_minimum_size = Vector2(520, 250)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -260.0
-offset_top = -120.0
+offset_top = -125.0
 offset_right = 260.0
-offset_bottom = 120.0
+offset_bottom = 125.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_blue_panel")
 
-[node name="PromptBackgroundTexture" type="TextureRect" parent="PromptPanel" unique_id=159753486]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-texture = ExtResource("6_prompt_mandatory_svg")
-expand_mode = 1
-stretch_mode = 5
+[node name="Margin" type="MarginContainer" parent="PromptPanel" unique_id=159357852]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 20
 
-[node name="PromptTextLabel" type="Label" parent="PromptPanel" unique_id=753159486]
-layout_mode = 0
-offset_left = 45.0
-offset_top = 110.0
-offset_right = 475.0
-offset_bottom = 155.0
+[node name="VBox" type="VBoxContainer" parent="PromptPanel/Margin" unique_id=357951258]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TitleLabel" type="Label" parent="PromptPanel/Margin/VBox" unique_id=789351246]
+layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("7_font")
-theme_override_font_sizes/font_size = 14
+theme_override_colors/font_outline_color = Color(0.15, 0.15, 0.15, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 28
+text = "Take a loan"
+horizontal_alignment = 1
+
+[node name="WarningLabel" type="Label" parent="PromptPanel/Margin/VBox" unique_id=951236874]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.15, 0.15, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 18
+text = "Not enough cash!"
+horizontal_alignment = 1
+
+[node name="PromptTextLabel" type="Label" parent="PromptPanel/Margin/VBox" unique_id=753159486]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 15
 text = "Take a loan 10 000/= with a Monthy installment of 1000/="
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="PromptCancelButton" type="Button" parent="PromptPanel" unique_id=456789321]
-layout_mode = 0
-offset_left = 50.0
-offset_top = 170.0
-offset_right = 160.0
-offset_bottom = 210.0
-mouse_default_cursor_shape = 2
-flat = true
+[node name="ButtonsRow" type="HBoxContainer" parent="PromptPanel/Margin/VBox" unique_id=147963258]
+layout_mode = 2
+theme_override_constants/separation = 20
 
-[node name="PromptBorrowButton" type="Button" parent="PromptPanel" unique_id=789456123]
-layout_mode = 0
-offset_left = 360.0
-offset_top = 170.0
-offset_right = 470.0
-offset_bottom = 210.0
+[node name="PromptCancelButton" type="Button" parent="PromptPanel/Margin/VBox/ButtonsRow" unique_id=456789321]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+size_flags_horizontal = 3
 mouse_default_cursor_shape = 2
-flat = true
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_cancel_btn")
+text = "cancel"
+
+[node name="PromptBorrowButton" type="Button" parent="PromptPanel/Margin/VBox/ButtonsRow" unique_id=789456123]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_borrow_btn")
+text = "Borrow"
 
 [node name="ToastLabel" type="Label" parent="." unique_id=987654321]
 visible = false
@@ -331,7 +532,7 @@ offset_bottom = -50.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(1, 0.9, 0.4, 1)
-theme_override_fonts/font = ExtResource("7_font")
+theme_override_fonts/font = ExtResource("4_font")
 theme_override_font_sizes/font_size = 18
 theme_override_styles/normal = SubResource("StyleBoxFlat_toast")
 text = "Not enough cash"
