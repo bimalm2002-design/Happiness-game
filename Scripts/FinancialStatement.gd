@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 var main_panel: PanelContainer
 var bg_dim: ColorRect
@@ -9,10 +9,12 @@ var panel_start_pos: Vector2 = Vector2(-580, 10)
 var data: PlayerFinancials
 
 var font: FontFile
+var sinhala_font: FontFile
 
 func _ready():
+	layer = 10
 	main_panel = get_node_or_null("%MainPanel")
-	bg_dim = get_node_or_null("BackgroundDim") # BackgroundDim is a child of root, can stay the same or use % if we made it unique. Let's just try get_node_or_null("BackgroundDim") since it's direct child
+	bg_dim = get_node_or_null("BackgroundDim")
 	
 	if main_panel:
 		main_panel.scale = Vector2(1, 1)
@@ -25,11 +27,25 @@ func _ready():
 		bg_dim.gui_input.connect(_on_bg_gui_input)
 		
 	# Auto-connect to the Final Statement button
-	var fs_btn = get_parent().get_node_or_null("BottomLeftMenu/FinalStatementButton")
+	var fs_btn = null
+	if get_parent():
+		fs_btn = get_parent().get_node_or_null("BottomLeftMenu/FinalStatementButton")
+	if not fs_btn:
+		var tree = get_tree()
+		if tree and tree.root:
+			fs_btn = tree.root.find_child("FinalStatementButton", true, false)
 	if fs_btn:
-		fs_btn.pressed.connect(toggle)
+		if not fs_btn.pressed.is_connected(toggle):
+			fs_btn.pressed.connect(toggle)
+		
+	var close_btn = find_child("CloseButton", true, false)
+	if close_btn:
+		if close_btn.pressed.is_connected(toggle):
+			close_btn.pressed.disconnect(toggle)
+		close_btn.pressed.connect(toggle)
 		
 	font = load("res://LilitaOne-Regular.ttf")
+	sinhala_font = load("res://Assets/Fonts/AbhayaLibre-Regular.ttf")
 	
 	# Use global PlayerData
 	data = PlayerData.financials
@@ -39,42 +55,72 @@ func _ready():
 		
 	hide()
 
+func _is_sinhala_text(t: String) -> bool:
+	for c in t:
+		var code = c.unicode_at(0)
+		if code >= 0x0D80 and code <= 0x0DFF:
+			return true
+	return false
+
+func _apply_thin_stroke(lbl: Label, outline_px: int = 2, outline_color: Color = Color(0, 0, 0, 0.85)):
+	if lbl:
+		lbl.add_theme_constant_override("outline_size", outline_px)
+		lbl.add_theme_color_override("font_outline_color", outline_color)
+
+func _stroke_node_labels(node: Node, outline_px: int = 2, stroke_color: Color = Color(0, 0, 0, 0.85)):
+	if not node: return
+	if node is Label:
+		_apply_thin_stroke(node, outline_px, stroke_color)
+	for child in node.get_children():
+		_stroke_node_labels(child, outline_px, stroke_color)
+
 func _on_bg_gui_input(event):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		if visible and not is_animating:
 			toggle()
 			get_viewport().set_input_as_handled()
 
+var current_tween: Tween = null
+
 func toggle():
-	if is_animating:
-		return
+	if current_tween and current_tween.is_running():
+		current_tween.kill()
 		
 	is_animating = true
-	var tween = create_tween()
-	tween.set_parallel(true)
+	current_tween = create_tween()
+	current_tween.set_parallel(true)
 	
 	if visible:
 		# Animate closing
+		_notify_card_popup_shift(false)
 		if main_panel:
-			tween.tween_property(main_panel, "position", panel_start_pos, 0.3).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+			current_tween.tween_property(main_panel, "position", panel_start_pos, 0.3).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 		if bg_dim:
-			tween.tween_property(bg_dim, "color:a", 0.0, 0.3)
+			current_tween.tween_property(bg_dim, "color:a", 0.0, 0.3)
 		
-		tween.chain().tween_callback(func():
+		current_tween.chain().tween_callback(func():
 			hide()
 			is_animating = false
 		)
 	else:
 		# Animate opening
 		show()
+		_notify_card_popup_shift(true)
 		if main_panel:
-			tween.tween_property(main_panel, "position", panel_target_pos, 0.3).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+			current_tween.tween_property(main_panel, "position", panel_target_pos, 0.3).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 		if bg_dim:
-			tween.tween_property(bg_dim, "color:a", 0.4, 0.3)
+			current_tween.tween_property(bg_dim, "color:a", 0.4, 0.3)
 			
-		tween.chain().tween_callback(func():
+		current_tween.chain().tween_callback(func():
 			is_animating = false
 		)
+
+func _notify_card_popup_shift(is_fs_opening: bool):
+	var tree = get_tree()
+	if tree and tree.root:
+		var popup = tree.root.find_child("CardPopupLayer", true, false)
+		if popup and popup.has_method("_update_card_position"):
+			popup._update_card_position(true, is_fs_opening)
 
 func format_money(amount: int) -> String:
 	var s = str(amount)
@@ -101,10 +147,18 @@ func create_row(parent: Control, left_text: String, right_text: String, font_siz
 	
 	var l_lbl = Label.new()
 	l_lbl.text = left_text
-	l_lbl.add_theme_font_override("font", font)
-	l_lbl.add_theme_font_size_override("font_size", font_size)
+	if _is_sinhala_text(left_text) and sinhala_font:
+		l_lbl.add_theme_font_override("font", sinhala_font)
+		l_lbl.add_theme_font_size_override("font_size", font_size + 3)
+		l_lbl.add_theme_constant_override("outline_size", 1)
+		l_lbl.add_theme_color_override("font_outline_color", l_color)
+	else:
+		l_lbl.add_theme_font_override("font", font)
+		l_lbl.add_theme_font_size_override("font_size", font_size)
 	l_lbl.add_theme_color_override("font_color", l_color)
 	l_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	l_lbl.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
+	l_lbl.clip_text = true
 	row.add_child(l_lbl)
 	
 	var r_lbl = Label.new()
@@ -114,6 +168,7 @@ func create_row(parent: Control, left_text: String, right_text: String, font_siz
 	r_lbl.add_theme_color_override("font_color", r_color)
 	r_lbl.custom_minimum_size = Vector2(right_w, 0)
 	r_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	_apply_thin_stroke(r_lbl, 2, Color(0, 0, 0, 0.85))
 	row.add_child(r_lbl)
 	return row
 
@@ -123,19 +178,32 @@ func add_stock_row(parent: Control, name: String, qty: int, cost: int, blue_c: C
 	parent.add_child(row)
 	
 	var l1 = Label.new()
-	l1.text = name; l1.add_theme_font_override("font", font); l1.add_theme_font_size_override("font_size", 14); l1.add_theme_color_override("font_color", blue_c)
+	l1.text = name
+	if _is_sinhala_text(name) and sinhala_font:
+		l1.add_theme_font_override("font", sinhala_font)
+		l1.add_theme_font_size_override("font_size", 16)
+		l1.add_theme_constant_override("outline_size", 1)
+		l1.add_theme_color_override("font_outline_color", blue_c)
+	else:
+		l1.add_theme_font_override("font", font)
+		l1.add_theme_font_size_override("font_size", 14)
+	l1.add_theme_color_override("font_color", blue_c)
 	l1.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	l1.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
+	l1.clip_text = true
 	row.add_child(l1)
 	
 	var l2 = Label.new()
 	l2.text = str(qty); l2.add_theme_font_override("font", font); l2.add_theme_font_size_override("font_size", 14); l2.add_theme_color_override("font_color", blue_c)
 	l2.custom_minimum_size = Vector2(70, 0)
+	_apply_thin_stroke(l2, 2, Color(0, 0, 0, 0.85))
 	row.add_child(l2)
 	
 	var l3 = Label.new()
 	l3.text = format_money(cost); l3.add_theme_font_override("font", font); l3.add_theme_font_size_override("font_size", 14); l3.add_theme_color_override("font_color", orange_c)
 	l3.custom_minimum_size = Vector2(100, 0)
 	l3.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	_apply_thin_stroke(l3, 2, Color(0, 0, 0, 0.85))
 	row.add_child(l3)
 
 func render():
@@ -208,20 +276,37 @@ func _update_summary():
 	
 	# Update UI Labels
 	var cash_lbl = get_node_or_null("%CashLabel")
-	if cash_lbl: cash_lbl.text = format_money(data.cash)
+	if cash_lbl:
+		cash_lbl.text = format_money(data.cash)
+		_apply_thin_stroke(cash_lbl, 2, Color(0, 0, 0, 0.85))
+		if cash_lbl.get_parent():
+			_stroke_node_labels(cash_lbl.get_parent(), 2, Color(0, 0, 0, 0.85))
 	
 	var tot_inc_lbl = get_node_or_null("%TotalIncomeLabel")
-	if tot_inc_lbl: tot_inc_lbl.text = format_money(total_income)
+	if tot_inc_lbl:
+		tot_inc_lbl.text = format_money(total_income)
+		_apply_thin_stroke(tot_inc_lbl, 2, Color(0, 0, 0, 0.85))
+		if tot_inc_lbl.get_parent():
+			_stroke_node_labels(tot_inc_lbl.get_parent(), 2, Color(0, 0, 0, 0.85))
 	
 	var tot_exp_lbl = get_node_or_null("%TotalExpensesLabel")
-	if tot_exp_lbl: tot_exp_lbl.text = format_money(total_expenses)
+	if tot_exp_lbl:
+		tot_exp_lbl.text = format_money(total_expenses)
+		_apply_thin_stroke(tot_exp_lbl, 2, Color(0, 0, 0, 0.85))
+		if tot_exp_lbl.get_parent():
+			_stroke_node_labels(tot_exp_lbl.get_parent(), 2, Color(0, 0, 0, 0.85))
 	
 	var pd_lbl = get_node_or_null("%PaydayLabel")
-	if pd_lbl: pd_lbl.text = format_money(payday)
+	if pd_lbl:
+		pd_lbl.text = format_money(payday)
+		_apply_thin_stroke(pd_lbl, 2, Color(0, 0, 0, 0.85))
+		if pd_lbl.get_parent():
+			_stroke_node_labels(pd_lbl.get_parent(), 2, Color(0, 0, 0, 0.85))
 	
 	# Update Rat Race
 	var rr_exp = get_node_or_null("%RatRaceExpensesLabel")
-	if rr_exp: rr_exp.text = "Total Expenses: " + format_money(total_expenses)
+	if rr_exp:
+		rr_exp.text = "Total Expenses: " + format_money(total_expenses)
 	
 	var fill = get_node_or_null("%ProgressBarFill")
 	var bg = get_node_or_null("%ProgressBarBG")
@@ -233,20 +318,37 @@ func _update_summary():
 			percent = float(passive_income) / float(total_expenses)
 		percent = clamp(percent, 0.0, 1.0)
 		
-		# Set width
-		fill.size.x = bg.size.x * percent
-		
-		var ptr_x = fill.position.x + fill.size.x
-		var target_x = ptr_x - (ptr.size.x / 2.0)
-		var text_align = HORIZONTAL_ALIGNMENT_CENTER
-		
-		if target_x < 0:
-			text_align = HORIZONTAL_ALIGNMENT_LEFT
-			target_x = ptr_x
-		elif target_x + ptr.size.x > bg.size.x:
-			text_align = HORIZONTAL_ALIGNMENT_RIGHT
-			target_x = ptr_x - ptr.size.x
+		# Inner padding so orange bar progress sits inside the outer track stroke
+		var padding = 3.0
+		var bg_w = 220.0
+		var bg_h = 24.0
+		if bg.size.x > 0: bg_w = bg.size.x
+		if bg.size.y > 0: bg_h = bg.size.y
 			
-		ptr.horizontal_alignment = text_align
-		ptr.position.x = target_x
+		var avail_width = max(0.0, bg_w - (padding * 2.0))
+		var fill_width = avail_width * percent
+		
+		fill.position = Vector2(padding, padding)
+		fill.size = Vector2(fill_width, max(0.0, bg_h - (padding * 2.0)))
+		fill.visible = (fill_width > 0)
+		
+		# Clamping and dynamic Left/Center/Right alignment for PassiveIncomePointer
+		var bar_left_x = padding
+		var bar_right_x = bg_w - padding
+		var fill_edge_x = bar_left_x + fill_width
+		
+		var ptr_w = ptr.size.x if ptr.size.x > 0 else 120.0
+		var ptr_target_x = fill_edge_x - (ptr_w / 2.0)
+		
+		if ptr_target_x < bar_left_x:
+			ptr_target_x = bar_left_x
+			ptr.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
+		elif ptr_target_x + ptr_w > bar_right_x:
+			ptr_target_x = bar_right_x - ptr_w
+			ptr.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+		else:
+			ptr.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+			
+		ptr.position.x = ptr_target_x
+		ptr.position.y = bg_h + 2.0
 		ptr.text = "▲\nPassive Incomes\n" + format_money(passive_income)

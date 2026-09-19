@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b0c3cdt1ssysp" path="res://Assets/UI/skyline_clean.svg" id="2_04d6t"]
 [ext_resource type="FontFile" uid="uid://18eqbjshot3m" path="res://LilitaOne-Regular.ttf" id="3_q46m1"]
 [ext_resource type="Texture2D" uid="uid://bv32apv8gtbih" path="res://Assets/UI/avatar_doc.png" id="4_yiekn"]
-[ext_resource type="Texture2D" uid="uid://csdyisrrr84h4" path="res://Assets/UI/close_icon.png" id="5_p5qag"]
+[ext_resource type="Texture2D" path="res://Assets/UI/close_icon.svg" id="5_p5qag"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_04d6t"]
 bg_color = Color(0.7882353, 0.9019608, 1, 1)
@@ -18,11 +18,8 @@ corner_radius_top_right = 35
 corner_radius_bottom_right = 35
 corner_radius_bottom_left = 35
 
-[node name="CashLedger" type="Control" unique_id=647254571]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="CashLedger" type="CanvasLayer" unique_id=647254571]
+layer = 20
 script = ExtResource("1_04d6t")
 
 [node name="BackgroundDim" type="ColorRect" parent="." unique_id=1585794561]
@@ -131,10 +128,11 @@ stretch_mode = 5
 [node name="CloseButton" type="TextureButton" parent="MainPanel" unique_id=2045995723]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 563.0
-offset_top = -25.0
-offset_right = 613.0
-offset_bottom = 25.0
+offset_left = 545.0
+offset_top = 20.0
+offset_right = 573.0
+offset_bottom = 48.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("5_p5qag")
 ignore_texture_size = true
 stretch_mode = 5

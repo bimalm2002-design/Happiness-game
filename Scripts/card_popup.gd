@@ -30,8 +30,16 @@ const BUTTON_TEXTURES = {
 	"sell_greyed": preload("res://Assets/UI/card_buttons/sell button greyed.svg"),
 	"party": preload("res://Assets/UI/card_buttons/party button.svg"),
 	"ignore": preload("res://Assets/UI/card_buttons/ignore button.svg"),
-	"participate": preload("res://Assets/UI/card_buttons/participate button.svg")
+	"participate": preload("res://Assets/UI/card_buttons/participate button.svg"),
+	"ok": preload("res://Assets/UI/card_buttons/okay button.svg")
 }
+
+var hidden_timer_max = 60.0
+var visible_timer_max = 60.0
+var current_hidden_time = 0.0
+var current_visible_time = 0.0
+var is_counting_down = false
+var visible_timer_label: Label = null
 
 # Figma card colors (front & back base)
 var base_colors = {
@@ -47,11 +55,29 @@ var current_card_data: Dictionary = {}
 func _process(delta):
 	if visible and rays:
 		rays.rotation -= delta * 0.1 # Marvel animation spin slower
+	
+	if is_counting_down and is_flipped:
+		if current_hidden_time > 0:
+			current_hidden_time -= delta
+			if current_hidden_time <= 0:
+				current_visible_time = visible_timer_max
+				if visible_timer_label:
+					visible_timer_label.text = str(ceil(current_visible_time))
+					visible_timer_label.show()
+		elif current_visible_time > 0:
+			current_visible_time -= delta
+			if visible_timer_label:
+				visible_timer_label.text = str(ceil(current_visible_time))
+			if current_visible_time <= 0:
+				_handle_timeout()
 
 func _ready():
 	hide()
 	bg_dim.modulate.a = 0
 	rays.modulate.a = 0
+	
+	_load_timer_config()
+	_create_timer_label()
 	
 	tap_area.gui_input.connect(_on_tap_area_input)
 	
@@ -63,6 +89,44 @@ func _ready():
 	if stock_input:
 		stock_input.text_changed.connect(_on_stock_input_changed)
 
+func _load_timer_config():
+	if FileAccess.file_exists("res://countdown timer/config.txt"):
+		var file = FileAccess.open("res://countdown timer/config.txt", FileAccess.READ)
+		if file:
+			var content = file.get_as_text()
+			for line in content.split("\n"):
+				var l = line.strip_edges()
+				if l.begins_with("first_countdown="):
+					hidden_timer_max = l.get_slice("=", 1).to_float()
+				elif l.begins_with("second_countdown="):
+					visible_timer_max = l.get_slice("=", 1).to_float()
+			file.close()
+
+func _create_timer_label():
+	visible_timer_label = Label.new()
+	visible_timer_label.add_theme_font_size_override("font_size", 64)
+	visible_timer_label.add_theme_color_override("font_color", Color.WHITE)
+	visible_timer_label.add_theme_color_override("font_outline_color", Color.BLACK)
+	visible_timer_label.add_theme_constant_override("outline_size", 12)
+	visible_timer_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	visible_timer_label.hide()
+	add_child(visible_timer_label)
+	visible_timer_label.set_anchors_and_offsets_preset(Control.PRESET_TOP_WIDE)
+	visible_timer_label.offset_top = 40
+
+func _handle_timeout():
+	is_counting_down = false
+	if visible_timer_label: visible_timer_label.hide()
+	var cid = str(current_card_data.get("id", ""))
+	if cid in ["37", "40"]:
+		_on_button_clicked("party")
+	elif cid == "48":
+		_on_button_clicked("buy")
+	elif cid in ["15", "16", "17", "18", "19", "22", "26", "27", "30", "32", "33", "34", "35", "36", "38", "39", "41", "42", "43", "44", "46", "47", "49", "50", "51", "53"]:
+		_on_button_clicked("ok")
+	else:
+		_on_button_clicked("pass")
+
 func _input(event: InputEvent):
 	if not visible: return
 	
@@ -70,9 +134,6 @@ func _input(event: InputEvent):
 		if not is_flipped:
 			flip_card()
 			get_viewport().set_input_as_handled()
-		elif current_card_data.get("buttons", []).is_empty():
-			get_viewport().set_input_as_handled()
-			_on_accept("dismiss")
 
 func _on_tap_area_input(event: InputEvent):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
@@ -80,9 +141,7 @@ func _on_tap_area_input(event: InputEvent):
 			flip_card()
 
 func _on_back_face_input(event: InputEvent):
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		if is_flipped and current_card_data.get("buttons", []).is_empty():
-			_on_accept("dismiss")
+	pass
 
 func _on_stock_input_changed(new_text: String):
 	var qty = new_text.to_int()
@@ -109,13 +168,14 @@ func _format_money(value) -> String:
 
 func _get_stock_ticker(card_data: Dictionary) -> String:
 	var desc = card_data.get("back_desc", "")
-	if "BTC" in desc or "බිට්කොයින්" in desc:
-		return "BTC"
-	elif "Techno" in desc:
-		return "Techno"
-	elif "සිකුරු" in desc:
-		return "සිකුරු"
-	elif "කිරිකොකා" in desc:
+	var cid = int(card_data.get("id", 0))
+	if (cid >= 54 and cid <= 58) or "BTC" in desc or "බිට්කොයින්" in desc:
+		return "බිට්කොයින්"
+	elif (cid >= 59 and cid <= 62) or "Techno" in desc or "ටෙක්නෝ" in desc:
+		return "ටෙක්නෝ"
+	elif (cid >= 63 and cid <= 67) or "සිකුරු" in desc:
+		return "සිකුරු සබන්"
+	elif (cid >= 68 and cid <= 73) or "කිරිකොකා" in desc:
 		return "කිරිකොකා"
 	return ""
 
@@ -124,11 +184,14 @@ func _get_owned_stock_qty(card_data: Dictionary) -> int:
 	var ticker = _get_stock_ticker(card_data)
 	if ticker.is_empty(): return 0
 	for s in PlayerData.financials.stocks:
-		if s.get("ticker", "") == ticker or ticker in s.get("ticker", ""):
+		var s_ticker = str(s.get("ticker", ""))
+		if s_ticker == ticker or ticker in s_ticker or s_ticker in ticker:
 			return int(s.get("qty", 0))
 	return 0
 
 func show_card_data(card_data: Dictionary):
+	is_counting_down = false
+	if visible_timer_label: visible_timer_label.hide()
 	current_card_data = card_data
 	
 	var type: String = card_data.get("type", "Opportunity")
@@ -180,6 +243,13 @@ func show_card_data(card_data: Dictionary):
 			stock_cost_lbl.text = "for %s/=" % _format_money(default_qty * p)
 	elif stock_input_row:
 		stock_input_row.hide()
+		
+	# Configure Solar Panel Card (CID 52) Unit Picker
+	var cid = str(card_data.get("id", ""))
+	if cid == "52":
+		_setup_solar_panel_picker()
+	elif solar_options_container:
+		solar_options_container.hide()
 	
 	# Build dynamic buttons in ButtonsContainer
 	_populate_card_buttons()
@@ -197,6 +267,7 @@ func show_card_data(card_data: Dictionary):
 		mat.set_shader_parameter("ray_color", ray_color)
 	
 	show()
+	_update_card_position(false)
 	bg_dim.visible = false
 	var tw = create_tween()
 	tw.set_parallel(true)
@@ -211,6 +282,11 @@ func _populate_card_buttons():
 		child.queue_free()
 	
 	var buttons = current_card_data.get("buttons", [])
+	var cid = str(current_card_data.get("id", ""))
+	if buttons.is_empty() and cid in ["15", "16", "17", "18", "19", "22", "26", "27", "30", "32", "33", "34", "35", "36", "38", "39", "41", "42", "43", "44", "46", "47", "49", "50", "51", "53"]:
+		buttons = ["ok"]
+		current_card_data["buttons"] = buttons
+		
 	var type = current_card_data.get("type", "")
 	
 	for btn_name in buttons:
@@ -261,6 +337,10 @@ func _populate_card_buttons():
 		buttons_container.add_child(btn)
 
 func _on_button_clicked(action_name: String):
+	if current_card_data.get("type") != "Stock" or action_name in ["pass", "ignore", "ok"]:
+		is_counting_down = false
+		if visible_timer_label: visible_timer_label.hide()
+		
 	current_card_data["action"] = action_name
 	
 	if action_name in ["pass", "ignore"]:
@@ -276,7 +356,7 @@ func _on_button_clicked(action_name: String):
 			current_card_data["is_sell_action"] = true
 		_on_accept(action_name)
 	else:
-		# buy, invest, party, participate
+		# ok, buy, invest, party, participate
 		if current_card_data.get("type") == "Stock":
 			var qty = stock_input.text.to_int() if stock_input else 1
 			if qty <= 0: qty = 1
@@ -322,6 +402,11 @@ func _build_values_bbcode(card_data: Dictionary) -> String:
 func flip_card():
 	if is_flipped: return
 	is_flipped = true
+	_load_timer_config()
+	current_hidden_time = hidden_timer_max
+	current_visible_time = visible_timer_max
+	is_counting_down = true
+	
 	var tw = create_tween()
 	tw.tween_property(rays, "modulate:a", 0.0, 0.3)
 	anim_player.play("flip_card")
@@ -335,6 +420,102 @@ func hide_card():
 	await tw.finished
 	hide()
 	rotator.modulate.a = 1.0
+
+var solar_options_container: VBoxContainer = null
+var solar_option_cards: Array = []
+var selected_solar_index: int = 1
+
+func _setup_solar_panel_picker():
+	if values_lbl:
+		values_lbl.hide()
+		
+	if not solar_options_container:
+		solar_options_container = VBoxContainer.new()
+		solar_options_container.name = "SolarOptionsContainer"
+		solar_options_container.add_theme_constant_override("separation", 6)
+		
+		var options_data = [
+			{"units": 100, "cost": 3000, "cashflow": 300},
+			{"units": 500, "cost": 10000, "cashflow": 1000},
+			{"units": 1000, "cost": 15000, "cashflow": 1500}
+		]
+		
+		solar_option_cards.clear()
+		
+		for idx in range(options_data.size()):
+			var card_btn = Button.new()
+			card_btn.custom_minimum_size = Vector2(0, 42)
+			card_btn.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+			card_btn.flat = true
+			
+			card_btn.pressed.connect(_select_solar_option.bind(idx))
+			
+			solar_options_container.add_child(card_btn)
+			solar_option_cards.append(card_btn)
+			
+		var parent_node = buttons_container.get_parent() if buttons_container else back_face
+		if parent_node:
+			parent_node.add_child(solar_options_container)
+			if buttons_container:
+				parent_node.move_child(solar_options_container, buttons_container.get_index())
+				
+	solar_options_container.show()
+	_select_solar_option(1)
+
+func _select_solar_option(index: int):
+	selected_solar_index = index
+	var options_data = [
+		{"units": 100, "cost": 3000, "cashflow": 300},
+		{"units": 500, "cost": 10000, "cashflow": 1000},
+		{"units": 1000, "cost": 15000, "cashflow": 1500}
+	]
+	
+	var chosen = options_data[index]
+	current_card_data["selected_cost"] = chosen["cost"]
+	current_card_data["selected_cashflow"] = chosen["cashflow"]
+	current_card_data["selected_units"] = chosen["units"]
+	current_card_data["cost"] = chosen["cost"]
+	current_card_data["cashflow"] = chosen["cashflow"]
+	
+	for idx in range(solar_option_cards.size()):
+		var btn = solar_option_cards[idx] as Button
+		if not btn: continue
+		var opt = options_data[idx]
+		var is_selected = (idx == index)
+		
+		var sb = StyleBoxFlat.new()
+		sb.corner_radius_top_left = 8
+		sb.corner_radius_top_right = 8
+		sb.corner_radius_bottom_right = 8
+		sb.corner_radius_bottom_left = 8
+		sb.content_margin_left = 12
+		sb.content_margin_right = 12
+		sb.content_margin_top = 6
+		sb.content_margin_bottom = 6
+		
+		if is_selected:
+			sb.bg_color = Color(0.12, 0.28, 0.18, 0.92)
+			sb.border_width_left = 2
+			sb.border_width_top = 2
+			sb.border_width_right = 2
+			sb.border_width_bottom = 2
+			sb.border_color = Color(0.3, 0.95, 0.5)
+			btn.text = "✓  %d Units  —  Cost: %s/=  |  Cashflow: +%s/=" % [opt["units"], _format_money(opt["cost"]), _format_money(opt["cashflow"])]
+		else:
+			sb.bg_color = Color(0.0, 0.0, 0.0, 0.25)
+			sb.border_width_left = 1
+			sb.border_width_top = 1
+			sb.border_width_right = 1
+			sb.border_width_bottom = 1
+			sb.border_color = Color(1.0, 1.0, 1.0, 0.25)
+			btn.text = "   %d Units  —  Cost: %s/=  |  Cashflow: +%s/=" % [opt["units"], _format_money(opt["cost"]), _format_money(opt["cashflow"])]
+			
+		btn.add_theme_stylebox_override("normal", sb)
+		btn.add_theme_stylebox_override("hover", sb)
+		btn.add_theme_stylebox_override("pressed", sb)
+		btn.add_theme_font_override("font", preload("res://LilitaOne-Regular.ttf"))
+		btn.add_theme_font_size_override("font_size", 13)
+		btn.add_theme_color_override("font_color", Color(0.4, 1.0, 0.6) if is_selected else Color(0.9, 0.9, 0.9))
 
 func _on_accept(action: String = "accept"):
 	var cost = 0
@@ -352,6 +533,7 @@ func _on_accept(action: String = "accept"):
 	if current_card_data.has("cost"): cost = current_card_data["cost"]
 	if current_card_data.has("down_payment"): cost = current_card_data["down_payment"]
 	if current_card_data.has("penalty"): cost = current_card_data["penalty"]
+	if current_card_data.has("selected_cost"): cost = int(current_card_data["selected_cost"])
 	
 	if current_card_data.get("type") == "Stock" and action == "buy":
 		var qty = stock_input.text.to_int() if stock_input else 1
@@ -377,12 +559,72 @@ func _on_accept(action: String = "accept"):
 	if is_free_op:
 		_trigger_free_opportunity_flow()
 	else:
-		hide_card()
+		if current_card_data.get("type") == "Stock" and action in ["buy", "sell"]:
+			# Real-time refresh of shares owned text label and dynamic button states
+			if values_lbl:
+				values_lbl.text = _build_values_bbcode(current_card_data)
+			_populate_card_buttons()
+			_show_stock_transaction_toast(action)
+		else:
+			hide_card()
+
+func _show_stock_transaction_toast(action: String):
+	# Disable buttons in buttons_container for 0.3s to prevent accidental double/triple clicking
+	for child in buttons_container.get_children():
+		if child is BaseButton:
+			child.disabled = true
+			
+	var toast = PanelContainer.new()
+	var sb = StyleBoxFlat.new()
+	sb.bg_color = Color(0.08, 0.18, 0.12, 0.95) if action == "buy" else Color(0.22, 0.14, 0.08, 0.95)
+	sb.border_width_left = 2
+	sb.border_width_top = 2
+	sb.border_width_right = 2
+	sb.border_width_bottom = 2
+	sb.border_color = Color(0.3, 0.9, 0.5, 0.9) if action == "buy" else Color(1.0, 0.65, 0.2, 0.9)
+	sb.corner_radius_top_left = 8
+	sb.corner_radius_top_right = 8
+	sb.corner_radius_bottom_right = 8
+	sb.corner_radius_bottom_left = 8
+	sb.content_margin_left = 16
+	sb.content_margin_right = 16
+	sb.content_margin_top = 8
+	sb.content_margin_bottom = 8
+	toast.add_theme_stylebox_override("panel", sb)
+	
+	var lbl = Label.new()
+	var qty = current_card_data.get("selected_qty", 1)
+	var txt = "✓ Done! Bought %d share(s)" % qty if action == "buy" else "✓ Done! Sold %d share(s)" % qty
+	lbl.text = txt
+	lbl.add_theme_color_override("font_color", Color(0.4, 1.0, 0.6) if action == "buy" else Color(1.0, 0.8, 0.4))
+	lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	toast.add_child(lbl)
+	
+	back_face.add_child(toast)
+	toast.anchor_left = 0.5
+	toast.anchor_right = 0.5
+	toast.anchor_top = 0.78
+	toast.anchor_bottom = 0.78
+	toast.grow_horizontal = Control.GROW_DIRECTION_BOTH
+	toast.grow_vertical = Control.GROW_DIRECTION_BOTH
+	
+	toast.modulate.a = 0.0
+	
+	var tw = create_tween()
+	tw.tween_property(toast, "modulate:a", 1.0, 0.15)
+	tw.tween_interval(0.9)
+	tw.tween_property(toast, "modulate:a", 0.0, 0.25)
+	tw.tween_callback(toast.queue_free)
+	
+	get_tree().create_timer(0.3).timeout.connect(func():
+		_populate_card_buttons()
+	)
 
 func _show_loan_popup(shortage: int):
 	var dialog = ConfirmationDialog.new()
 	dialog.title = "Insufficient Cash"
-	var loan_needed = ceil(shortage / 10000.0) * 10000
+	var loan_needed = shortage
 	dialog.dialog_text = "You don't have enough cash.\nYou need a loan of %s/=\nInterest is 10%% per Payday.\nDo you want to take this loan?" % _format_money(loan_needed)
 	dialog.get_ok_button().text = "Take Loan"
 	dialog.get_cancel_button().text = "Cancel"
@@ -398,9 +640,7 @@ func _show_loan_popup(shortage: int):
 
 func _take_loan_and_proceed(loan_amount: int):
 	if PlayerData and PlayerData.financials:
-		PlayerData.financials.update_cash(loan_amount)
-		PlayerData.financials.set_fixed_liability("bank_loan", PlayerData.financials.bank_loan + loan_amount)
-		PlayerData.financials.add_expense("බැංකු ණය", loan_amount * 0.1)
+		PlayerData.financials.take_bank_loan(loan_amount)
 		PlayerData.add_ledger_entry("income", "අනිවාර්ය බැංකු ණය", loan_amount)
 	_on_accept()
 
@@ -487,3 +727,25 @@ func _play_full_screen_marvel_rays():
 
 func _play_marvel_rays_animation():
 	_play_full_screen_marvel_rays()
+
+func _update_card_position(animate: bool = true, override_fs_open: Variant = null):
+	if not rotator: return
+	
+	var is_open: bool = false
+	if override_fs_open != null:
+		is_open = bool(override_fs_open)
+	else:
+		var tree = get_tree()
+		if tree and tree.root:
+			var fs = tree.root.find_child("FinancialStatement", true, false) as Control
+			if fs and fs.visible:
+				is_open = true
+				
+	var target_x = 195.0 if is_open else 0.0
+	var target_pos = Vector2(target_x, 0.0)
+	
+	if animate and is_node_ready() and visible:
+		var tw = create_tween()
+		tw.tween_property(rotator, "position", target_pos, 0.35).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	else:
+		rotator.position = target_pos

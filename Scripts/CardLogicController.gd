@@ -11,7 +11,8 @@ func _ready():
 func has_asset(asset_name: String) -> bool:
 	if not PlayerData or not PlayerData.financials: return false
 	for a in PlayerData.financials.real_estate_assets:
-		if a.get("name", "") == asset_name:
+		var n = str(a.get("name", ""))
+		if n == asset_name or asset_name in n or n in asset_name:
 			return true
 	return false
 
@@ -21,6 +22,24 @@ func can_draw_card(card_id: int) -> bool:
 	var f = PlayerData.financials
 	
 	match card_id:
+		# Opportunity Cards: Do NOT draw if player already invested in and owns this asset
+		1: return not has_asset("විශ්වවිද්‍යාල ගොඩනැගිල්ල")
+		2: return not has_asset("Parking Lot")
+		3: return not has_asset("කඩකාමර 6")
+		4: return not has_asset("කුරුඳු ඉඩම")
+		5: return not has_asset("පොල් ඉඩම")
+		6: return not has_asset("ත්‍රීරෝද රථය")
+		7: return not has_asset("School වෑන්")
+		8: return not has_asset("Leisure Park")
+		9: return not has_asset("රොටී කඩය")
+		10: return not has_asset("මෘදුකාංග ව්‍යාපෘතිය")
+		11: return not (has_asset("පොතේ පේටන්ට් බලපත්‍රය") or has_asset("පොතේ පේටන්ට් අයිතිය"))
+		12: return not has_asset("Family Restaurant")
+		24: return not has_asset("ගඟ අසල ඉඩම")
+		28: return not has_asset("කුකුළු ගොවිපොළ")
+		29: return not has_asset("සත්ත්ව උද්‍යාන ඉඩම")
+		52: return not has_asset("සූර්ය කෝෂ පද්ධතිය")
+
 		# Investment sell / event prerequisites
 		15, 18:
 			return has_asset("Musical Show")
@@ -42,9 +61,7 @@ func can_draw_card(card_id: int) -> bool:
 		# Life event prerequisites
 		35, 40, 43:
 			return f.has_status_effect("has_child")
-		39:
-			return f.has_status_effect("is_married")
-		53:
+		39, 53:
 			return f.has_status_effect("is_married")
 		37:
 			# Can marry if not currently married
@@ -58,10 +75,8 @@ func ensure_cash(amount_needed: int, reason: String):
 	var f = PlayerData.financials
 	if f.cash < amount_needed:
 		var deficit = amount_needed - f.cash
-		var loan_amount = int(ceil(deficit / 10000.0)) * 10000
-		f.set_fixed_liability("bank_loan", f.bank_loan + loan_amount)
-		# Add 10% monthly repayment/installment to expenses
-		f.add_expense("බැංකු ණය", int(loan_amount * 0.1))
+		var loan_amount = deficit
+		f.take_bank_loan(loan_amount)
 		PlayerData.add_ledger_entry("income", "අනිවාර්ය බැංකු ණය (" + reason + ")", loan_amount)
 		print("Auto-loan granted: ", loan_amount, " for ", reason)
 
@@ -116,12 +131,15 @@ func execute_card_accepted(card_data: Dictionary):
 		12: # Family Restaurant (35,000 / CF: 12,000)
 			_buy_opportunity("Family Restaurant", 35000, 35000, 12000, "Family Restaurant එකක් ආරම්භ කිරීම")
 		52:
-			# Solar panel: cost 35,000, removes electricity expense, adds 1000 passive income
-			ensure_cash(35000, "Solar Panel System")
-			f.add_real_estate("සූර්ය කෝෂ පද්ධතිය", 35000, 0)
+			# Solar panel: dynamic unit options (100, 500, 1000 units)
+			var solar_cost = int(card_data.get("selected_cost", 10000))
+			var solar_cf = int(card_data.get("selected_cashflow", 1000))
+			var solar_units = int(card_data.get("selected_units", 500))
+			ensure_cash(solar_cost, "Solar Panel System (" + str(solar_units) + " Units)")
+			f.add_real_estate("සූර්ය කෝෂ පද්ධතිය (" + str(solar_units) + " Units)", solar_cost, 0)
 			f.remove_expense("විදුලි වියදම්")
-			f.add_income("සූර්ය කෝෂ පද්ධතිය", 1000)
-			PlayerData.add_ledger_entry("expense", "සූර්ය කෝෂ පද්ධතියක් සවි කිරීම", -35000)
+			f.add_income("සූර්ය කෝෂ පද්ධතිය (" + str(solar_units) + " Units)", solar_cf)
+			PlayerData.add_ledger_entry("expense", "සූර්ය කෝෂ පද්ධතියක් සවි කිරීම (" + str(solar_units) + " Units)", -solar_cost)
 
 		# --- FLASH CARDS ---
 		13: # Stage Drama

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://5tn8pha5bt61" path="res://Scripts/FinancialStatement.gd" id="1_0av0m"]
 [ext_resource type="FontFile" uid="uid://18eqbjshot3m" path="res://LilitaOne-Regular.ttf" id="2_c4a62"]
+[ext_resource type="Texture2D" path="res://Assets/UI/close_icon.svg" id="3_close_icon"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c4a62"]
 bg_color = Color(0.89411765, 0.9647059, 0.9882353, 1)
@@ -18,16 +19,18 @@ corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_blahq"]
-bg_color = Color(0.28235295, 0.35686275, 0.5058824, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
+bg_color = Color(0.262745, 0.278431, 0.403922, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1doqm"]
 bg_color = Color(1, 0.4392157, 0, 1)
-corner_radius_top_left = 6
-corner_radius_bottom_left = 6
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6jw3h"]
 bg_color = Color(1, 0.4392157, 0, 1)
@@ -46,11 +49,8 @@ corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
-[node name="FinancialStatement" type="Control" unique_id=1142765155]
-layout_mode = 3
-anchors_preset = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="FinancialStatement" type="CanvasLayer" unique_id=1142765155]
+layer = 10
 script = ExtResource("1_0av0m")
 
 [node name="BackgroundDim" type="ColorRect" parent="." unique_id=627389715]
@@ -78,6 +78,17 @@ theme_override_constants/margin_bottom = 15
 [node name="@VBoxContainer@78782" type="VBoxContainer" parent="MainPanel/@MarginContainer@78781" unique_id=2107838604]
 layout_mode = 2
 theme_override_constants/separation = 15
+
+[node name="CloseButton" type="TextureButton" parent="MainPanel/@MarginContainer@78781" unique_id=2045995724]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("3_close_icon")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="@HBoxContainer@78783" type="HBoxContainer" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782" unique_id=825781833]
 layout_mode = 2
@@ -151,7 +162,7 @@ layout_mode = 2
 
 [node name="@Label@78794" type="Label" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78783/@VBoxContainer@78792/RatRaceProgress" unique_id=1455536920]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.262745, 0.278431, 0.403922, 1)
 theme_override_fonts/font = ExtResource("2_c4a62")
 theme_override_font_sizes/font_size = 13
 text = "Increase passive income to
@@ -159,44 +170,53 @@ escape the rat race"
 horizontal_alignment = 1
 
 [node name="@Control@78795" type="Control" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78783/@VBoxContainer@78792/RatRaceProgress" unique_id=1802888168]
-custom_minimum_size = Vector2(0, 2)
+custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
 
-[node name="RatRaceExpensesLabel" type="Label" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78783/@VBoxContainer@78792/RatRaceProgress" unique_id=466805145]
+[node name="BarSection" type="VBoxContainer" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78783/@VBoxContainer@78792/RatRaceProgress"]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="RatRaceExpensesLabel" type="Label" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78783/@VBoxContainer@78792/RatRaceProgress/BarSection" unique_id=466805145]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.262745, 0.278431, 0.403922, 1)
 theme_override_fonts/font = ExtResource("2_c4a62")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 11
 text = "Total Expenses: 0"
 
-[node name="@Control@78796" type="Control" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78783/@VBoxContainer@78792/RatRaceProgress" unique_id=1780031566]
-custom_minimum_size = Vector2(0, 40)
+[node name="@Control@78796" type="Control" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78783/@VBoxContainer@78792/RatRaceProgress/BarSection" unique_id=1780031566]
+custom_minimum_size = Vector2(220, 75)
 layout_mode = 2
 
-[node name="ProgressBarBG" type="Panel" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78783/@VBoxContainer@78792/RatRaceProgress/@Control@78796" unique_id=1085705694]
+[node name="ProgressBarBG" type="Panel" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78783/@VBoxContainer@78792/RatRaceProgress/BarSection/@Control@78796" unique_id=1085705694]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 14)
+custom_minimum_size = Vector2(220, 24)
 layout_mode = 0
-anchor_right = 1.0
+offset_right = 220.0
+offset_bottom = 24.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_blahq")
 
-[node name="ProgressBarFill" type="Panel" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78783/@VBoxContainer@78792/RatRaceProgress/@Control@78796" unique_id=1344400604]
+[node name="ProgressBarFill" type="Panel" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78783/@VBoxContainer@78792/RatRaceProgress/BarSection/@Control@78796/ProgressBarBG" unique_id=1344400604]
 unique_name_in_owner = true
 layout_mode = 0
-offset_bottom = 14.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 3.0
+offset_bottom = 21.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_1doqm")
 
-[node name="PassiveIncomePointer" type="Label" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78783/@VBoxContainer@78792/RatRaceProgress/@Control@78796" unique_id=65453702]
+[node name="PassiveIncomePointer" type="Label" parent="MainPanel/@MarginContainer@78781/@VBoxContainer@78782/@HBoxContainer@78783/@VBoxContainer@78792/RatRaceProgress/BarSection/@Control@78796" unique_id=65453702]
 unique_name_in_owner = true
 layout_mode = 0
-offset_top = 14.0
-offset_right = 127.0
-offset_bottom = 89.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+offset_top = 26.0
+offset_right = 120.0
+offset_bottom = 75.0
+theme_override_colors/font_color = Color(0.207843, 0.32549, 0.529412, 1)
 theme_override_constants/line_spacing = -2
 theme_override_fonts/font = ExtResource("2_c4a62")
-theme_override_font_sizes/font_size = 9
+theme_override_font_sizes/font_size = 10
 text = "▲
 Passive Incomes
 0"

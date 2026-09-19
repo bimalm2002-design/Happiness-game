@@ -96,6 +96,33 @@ func update_cash(amount: int) -> void:
 	cash += amount
 	changed.emit()
 
+func update_bank_loan_expense() -> void:
+	var interest_expense = int(bank_loan * 0.10)
+	var found = false
+	for i in range(expenses.size() - 1, -1, -1):
+		if expenses[i].get("name", "") == "බැංකු ණය":
+			if not found and interest_expense > 0:
+				expenses[i]["amount"] = interest_expense
+				found = true
+			else:
+				expenses.remove_at(i)
+	if not found and interest_expense > 0:
+		expenses.append({"name": "බැංකු ණය", "amount": interest_expense})
+	changed.emit()
+
+func take_bank_loan(amount: int) -> void:
+	bank_loan += amount
+	cash += amount
+	update_bank_loan_expense()
+
+func process_payday_bank_loan_reduction() -> void:
+	if bank_loan <= 0: return
+	var reduction = int(bank_loan * 0.10)
+	if reduction <= 0 and bank_loan > 0:
+		reduction = bank_loan
+	bank_loan = max(0, bank_loan - reduction)
+	update_bank_loan_expense()
+
 func set_fixed_liability(type: String, amount: int) -> void:
 	if type == "housing_loan":
 		housing_loan = amount
@@ -103,6 +130,8 @@ func set_fixed_liability(type: String, amount: int) -> void:
 		car_leasing = amount
 	elif type == "bank_loan":
 		bank_loan = amount
+		update_bank_loan_expense()
+		return
 	changed.emit()
 
 func add_status_effect(effect_name: String, duration_in_paydays: int) -> void:

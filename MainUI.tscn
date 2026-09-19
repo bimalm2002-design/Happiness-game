@@ -256,18 +256,10 @@ theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = SubResource("StyleBoxFlat_l8sqb")
 text = "Repay"
 
-[node name="FinancialStatement" type="Control" parent="UILayer/UIContainer" unique_id=1142765155 instance=ExtResource("8_8xjv5")]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="FinancialStatement" type="CanvasLayer" parent="UILayer/UIContainer" unique_id=1142765155 instance=ExtResource("8_8xjv5")]
+layer = 10
 script = ExtResource("8_ijr42")
 
-[node name="CashLedger" type="Control" parent="UILayer/UIContainer" unique_id=1291492147 instance=ExtResource("10_3osgn")]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="CashLedger" type="CanvasLayer" parent="UILayer/UIContainer" unique_id=1291492147 instance=ExtResource("10_3osgn")]
+layer = 20
 script = ExtResource("11_3xc17")

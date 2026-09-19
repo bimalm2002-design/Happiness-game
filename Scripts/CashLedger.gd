@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 var main_panel: Control
 var bg_dim: ColorRect
@@ -7,6 +7,14 @@ var panel_target_pos: Vector2 = Vector2(0, 10)
 var panel_start_pos: Vector2 = Vector2(-700, 10)
 
 var font = preload("res://LilitaOne-Regular.ttf")
+var sinhala_font = preload("res://Assets/Fonts/AbhayaLibre-Regular.ttf")
+
+func _is_sinhala_text(t: String) -> bool:
+	for c in t:
+		var code = c.unicode_at(0)
+		if code >= 0x0D80 and code <= 0x0DFF:
+			return true
+	return false
 
 func _ready():
 	main_panel = get_node_or_null("%MainPanel")
@@ -22,7 +30,7 @@ func _ready():
 		if panel_size == Vector2.ZERO:
 			panel_size = Vector2(588, 664) # Fallback to our SVG dimensions just in case
 			
-		var viewport_size = get_viewport_rect().size
+		var viewport_size = get_viewport().get_visible_rect().size
 		panel_target_pos = (viewport_size - panel_size) / 2.0
 		panel_start_pos = Vector2(-panel_size.x - 50, panel_target_pos.y)
 		main_panel.position = panel_start_pos
@@ -59,7 +67,7 @@ func _on_viewport_size_changed():
 		var panel_size = main_panel.size
 		if panel_size == Vector2.ZERO:
 			panel_size = Vector2(588, 664)
-		var viewport_size = get_viewport_rect().size
+		var viewport_size = get_viewport().get_visible_rect().size
 		panel_target_pos = (viewport_size - panel_size) / 2.0
 		panel_start_pos = Vector2(-panel_size.x - 50, panel_target_pos.y)
 		
@@ -144,11 +152,19 @@ func render_ledger(total_cash: int, entries: Array):
 			
 			var title_lbl = Label.new()
 			title_lbl.text = desc
-			title_lbl.add_theme_font_override("font", font)
-			title_lbl.add_theme_font_size_override("font_size", 22)
+			if _is_sinhala_text(desc) and sinhala_font:
+				title_lbl.add_theme_font_override("font", sinhala_font)
+				title_lbl.add_theme_font_size_override("font_size", 25)
+				title_lbl.add_theme_constant_override("outline_size", 1)
+				title_lbl.add_theme_color_override("font_outline_color", Color.WHITE)
+			else:
+				title_lbl.add_theme_font_override("font", font)
+				title_lbl.add_theme_font_size_override("font_size", 22)
 			title_lbl.add_theme_color_override("font_color", Color.WHITE)
 			title_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 			title_lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+			title_lbl.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
+			title_lbl.clip_text = true
 			row.add_child(title_lbl)
 			
 			var amount_lbl = Label.new()
@@ -156,6 +172,8 @@ func render_ledger(total_cash: int, entries: Array):
 			amount_lbl.add_theme_font_override("font", font)
 			amount_lbl.add_theme_font_size_override("font_size", 24)
 			amount_lbl.add_theme_color_override("font_color", Color.WHITE)
+			amount_lbl.add_theme_constant_override("outline_size", 2)
+			amount_lbl.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.85))
 			amount_lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 			amount_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 			row.add_child(amount_lbl)

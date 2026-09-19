@@ -103,6 +103,7 @@ _data = {
 }
 
 [node name="CardPopupLayer" type="CanvasLayer" unique_id=1147757591]
+layer = 5
 script = ExtResource("1_5mon2")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=415835033]

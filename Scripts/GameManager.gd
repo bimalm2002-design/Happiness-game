@@ -156,8 +156,7 @@ func _trigger_payday():
 			var shortage = -(f.cash + payday_amount)
 			print("Mandatory loan of exact shortfall: ", shortage)
 			var loan_needed = shortage # Exact shortfall amount
-			f.set_fixed_liability("bank_loan", f.bank_loan + loan_needed)
-			f.add_expense("බැංකු ණය", int(loan_needed * 0.1))
+			f.take_bank_loan(loan_needed)
 			PlayerData.add_ledger_entry("income", "අනිවාර්ය බැංකු ණය", loan_needed)
 			
 	if payday_amount == 0:
@@ -167,3 +166,6 @@ func _trigger_payday():
 	
 	# Decrement status effects after Payday
 	f.decrement_status_effects()
+	
+	# Payday Bank Loan Reduction: reduce bank loan by 10% each payday and update expense
+	f.process_payday_bank_loan_reduction()

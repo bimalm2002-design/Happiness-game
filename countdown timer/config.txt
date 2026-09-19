@@ -1,0 +1,2 @@
+first_countdown=30
+second_countdown=30
