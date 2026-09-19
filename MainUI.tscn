@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://5tn8pha5bt61" path="res://Scripts/FinancialStatement.gd" id="8_ijr42"]
 [ext_resource type="PackedScene" uid="uid://dv2iv18seabtn" path="res://Scenes/CashLedger.tscn" id="10_3osgn"]
 [ext_resource type="Script" uid="uid://cm00lm403ad6m" path="res://Scripts/CashLedger.gd" id="11_3xc17"]
+[ext_resource type="PackedScene" uid="uid://c8b74hkq8n0ap" path="res://Scenes/BankPopups.tscn" id="12_bankpopups"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3osgn"]
 bg_color = Color(0, 0, 0, 0.35)
@@ -263,3 +264,6 @@ script = ExtResource("8_ijr42")
 [node name="CashLedger" type="CanvasLayer" parent="UILayer/UIContainer" unique_id=1291492147 instance=ExtResource("10_3osgn")]
 layer = 20
 script = ExtResource("11_3xc17")
+
+[node name="BankPopups" type="CanvasLayer" parent="UILayer/UIContainer" unique_id=987213451 instance=ExtResource("12_bankpopups")]
+layer = 15

@@ -1,0 +1,339 @@
+[gd_scene format=3 uid="uid://c8b74hkq8n0ap"]
+
+[ext_resource type="Script" uid="uid://dm0y35b2popu2" path="res://Scripts/BankPopups.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://Assets/UI/Bank/Bank loan borrow pop up.svg" id="2_borrow_svg"]
+[ext_resource type="Texture2D" uid="uid://cunx6281wlkmm" path="res://Assets/UI/Board/Bank image.png" id="3_bank_img"]
+[ext_resource type="Texture2D" path="res://Assets/UI/close_icon.svg" id="4_close_icon"]
+[ext_resource type="Texture2D" path="res://Assets/UI/Bank/Bank loan repay pop up for housing loan.svg" id="5_repay_housing_svg"]
+[ext_resource type="Texture2D" path="res://Assets/UI/Bank/not_enough_cash_mandatory.svg" id="6_prompt_mandatory_svg"]
+[ext_resource type="FontFile" uid="uid://18eqbjshot3m" path="res://LilitaOne-Regular.ttf" id="7_font"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_toast"]
+bg_color = Color(0.12, 0.12, 0.16, 0.95)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.99, 0.49, 0.11, 0.9)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_input"]
+bg_color = Color(0.2, 0.26, 0.38, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.35, 0.45, 0.65, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="BankPopups" type="CanvasLayer" unique_id=987213451]
+layer = 15
+script = ExtResource("1_script")
+
+[node name="BackgroundDim" type="ColorRect" parent="." unique_id=124587630]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.4)
+
+[node name="BorrowPanel" type="Control" parent="." unique_id=897612345]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -210.0
+offset_top = -250.0
+offset_right = 210.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackgroundTexture" type="TextureRect" parent="BorrowPanel" unique_id=321654987]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource("2_borrow_svg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BankImage" type="TextureRect" parent="BorrowPanel" unique_id=789654123]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 65.0
+offset_right = 275.0
+offset_bottom = 175.0
+texture = ExtResource("3_bank_img")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CloseButton" type="TextureButton" parent="BorrowPanel" unique_id=456123789]
+layout_mode = 0
+offset_left = 370.0
+offset_top = 15.0
+offset_right = 398.0
+offset_bottom = 43.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("4_close_icon")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="AmountInput" type="LineEdit" parent="BorrowPanel" unique_id=159357246]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 325.0
+offset_right = 195.0
+offset_bottom = 365.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("7_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_input")
+text = "10000"
+alignment = 1
+
+[node name="DynamicTextLabel" type="Label" parent="BorrowPanel" unique_id=852963741]
+layout_mode = 0
+offset_left = 205.0
+offset_top = 315.0
+offset_right = 385.0
+offset_bottom = 375.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("7_font")
+theme_override_font_sizes/font_size = 12
+text = "Take a loan 10 000/= with a Monthly Installment of 1000/="
+autowrap_mode = 2
+
+[node name="BorrowButton" type="Button" parent="BorrowPanel" unique_id=741852963]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 405.0
+offset_right = 165.0
+offset_bottom = 450.0
+mouse_default_cursor_shape = 2
+flat = true
+
+[node name="CancelButton" type="Button" parent="BorrowPanel" unique_id=963852741]
+layout_mode = 0
+offset_left = 250.0
+offset_top = 405.0
+offset_right = 375.0
+offset_bottom = 450.0
+mouse_default_cursor_shape = 2
+flat = true
+
+[node name="RepayPanel" type="Control" parent="." unique_id=654987321]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -210.0
+offset_top = -250.0
+offset_right = 210.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackgroundTexture" type="TextureRect" parent="RepayPanel" unique_id=123789456]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource("5_repay_housing_svg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BankImage" type="TextureRect" parent="RepayPanel" unique_id=456789123]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 65.0
+offset_right = 275.0
+offset_bottom = 175.0
+texture = ExtResource("3_bank_img")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CloseButton" type="TextureButton" parent="RepayPanel" unique_id=789123456]
+layout_mode = 0
+offset_left = 370.0
+offset_top = 15.0
+offset_right = 398.0
+offset_bottom = 43.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("4_close_icon")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TabHousingButton" type="Button" parent="RepayPanel" unique_id=147258369]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 270.0
+offset_right = 145.0
+offset_bottom = 300.0
+mouse_default_cursor_shape = 2
+flat = true
+
+[node name="TabVehicleButton" type="Button" parent="RepayPanel" unique_id=258369147]
+layout_mode = 0
+offset_left = 155.0
+offset_top = 270.0
+offset_right = 260.0
+offset_bottom = 300.0
+mouse_default_cursor_shape = 2
+flat = true
+
+[node name="TabBankButton" type="Button" parent="RepayPanel" unique_id=369147258]
+layout_mode = 0
+offset_left = 270.0
+offset_top = 270.0
+offset_right = 375.0
+offset_bottom = 300.0
+mouse_default_cursor_shape = 2
+flat = true
+
+[node name="InfoLabel" type="Label" parent="RepayPanel" unique_id=741963258]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 320.0
+offset_right = 380.0
+offset_bottom = 360.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("7_font")
+theme_override_font_sizes/font_size = 13
+text = "Housing loan and vehical leasing can full settle only"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BankRepayRow" type="HBoxContainer" parent="RepayPanel" unique_id=852147963]
+visible = false
+layout_mode = 0
+offset_left = 40.0
+offset_top = 320.0
+offset_right = 380.0
+offset_bottom = 360.0
+
+[node name="BankRepayLabel" type="Label" parent="RepayPanel/BankRepayRow" unique_id=963258147]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("7_font")
+theme_override_font_sizes/font_size = 13
+text = "Bank loan repaying amount:"
+
+[node name="BankRepayInput" type="LineEdit" parent="RepayPanel/BankRepayRow" unique_id=159487263]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("7_font")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_input")
+alignment = 1
+
+[node name="RepayButton" type="Button" parent="RepayPanel" unique_id=753951846]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 405.0
+offset_right = 165.0
+offset_bottom = 450.0
+mouse_default_cursor_shape = 2
+flat = true
+
+[node name="CancelButton" type="Button" parent="RepayPanel" unique_id=951753846]
+layout_mode = 0
+offset_left = 250.0
+offset_top = 405.0
+offset_right = 375.0
+offset_bottom = 450.0
+mouse_default_cursor_shape = 2
+flat = true
+
+[node name="PromptPanel" type="Control" parent="." unique_id=357159846]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -120.0
+offset_right = 260.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PromptBackgroundTexture" type="TextureRect" parent="PromptPanel" unique_id=159753486]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource("6_prompt_mandatory_svg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PromptTextLabel" type="Label" parent="PromptPanel" unique_id=753159486]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 110.0
+offset_right = 475.0
+offset_bottom = 155.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("7_font")
+theme_override_font_sizes/font_size = 14
+text = "Take a loan 10 000/= with a Monthy installment of 1000/="
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="PromptCancelButton" type="Button" parent="PromptPanel" unique_id=456789321]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 170.0
+offset_right = 160.0
+offset_bottom = 210.0
+mouse_default_cursor_shape = 2
+flat = true
+
+[node name="PromptBorrowButton" type="Button" parent="PromptPanel" unique_id=789456123]
+layout_mode = 0
+offset_left = 360.0
+offset_top = 170.0
+offset_right = 470.0
+offset_bottom = 210.0
+mouse_default_cursor_shape = 2
+flat = true
+
+[node name="ToastLabel" type="Label" parent="." unique_id=987654321]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -180.0
+offset_top = -100.0
+offset_right = 180.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 0.9, 0.4, 1)
+theme_override_fonts/font = ExtResource("7_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_toast")
+text = "Not enough cash"
+horizontal_alignment = 1
+vertical_alignment = 1

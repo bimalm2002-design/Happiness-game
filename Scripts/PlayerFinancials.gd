@@ -115,6 +115,42 @@ func take_bank_loan(amount: int) -> void:
 	cash += amount
 	update_bank_loan_expense()
 
+func repay_housing_loan() -> bool:
+	if housing_loan <= 0 or cash < housing_loan:
+		return false
+	var amount = housing_loan
+	cash -= amount
+	housing_loan = 0
+	remove_expense("නිවාස ණය")
+	if PlayerData and PlayerData.has_method("add_ledger_entry"):
+		PlayerData.add_ledger_entry("expense", "Full settled - Housing loan", amount)
+	changed.emit()
+	return true
+
+func repay_car_leasing() -> bool:
+	if car_leasing <= 0 or cash < car_leasing:
+		return false
+	var amount = car_leasing
+	cash -= amount
+	car_leasing = 0
+	remove_expense("වාහන ලීසිං")
+	if PlayerData and PlayerData.has_method("add_ledger_entry"):
+		PlayerData.add_ledger_entry("expense", "Full settled - vehicle leasing", amount)
+	changed.emit()
+	return true
+
+func repay_bank_loan(repay_amount: int) -> bool:
+	if repay_amount <= 0 or bank_loan <= 0 or cash < repay_amount:
+		return false
+	var actual_repay = mini(repay_amount, bank_loan)
+	cash -= actual_repay
+	bank_loan -= actual_repay
+	update_bank_loan_expense()
+	if PlayerData and PlayerData.has_method("add_ledger_entry"):
+		PlayerData.add_ledger_entry("expense", "Repaied bank loan", actual_repay)
+	changed.emit()
+	return true
+
 func process_payday_bank_loan_reduction() -> void:
 	if bank_loan <= 0: return
 	var reduction = int(bank_loan * 0.10)

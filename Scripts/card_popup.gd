@@ -622,26 +622,37 @@ func _show_stock_transaction_toast(action: String):
 	)
 
 func _show_loan_popup(shortage: int):
-	var dialog = ConfirmationDialog.new()
-	dialog.title = "Insufficient Cash"
-	var loan_needed = shortage
-	dialog.dialog_text = "You don't have enough cash.\nYou need a loan of %s/=\nInterest is 10%% per Payday.\nDo you want to take this loan?" % _format_money(loan_needed)
-	dialog.get_ok_button().text = "Take Loan"
-	dialog.get_cancel_button().text = "Cancel"
-	dialog.confirmed.connect(func():
-		_take_loan_and_proceed(loan_needed)
-		dialog.queue_free()
-	)
-	dialog.canceled.connect(func():
-		dialog.queue_free()
-	)
-	add_child(dialog)
-	dialog.popup_centered()
+	var type = current_card_data.get("type", "")
+	var is_mandatory = (type == "Oops")
+	
+	var tree = get_tree()
+	if tree and tree.root:
+		var popups = tree.root.find_child("BankPopups", true, false)
+		if not popups:
+			var scn = load("res://Scenes/BankPopups.tscn")
+			if scn:
+				popups = scn.instantiate()
+				tree.root.add_child(popups)
+		if popups and popups.has_method("open_insufficient_cash_prompt"):
+			if popups.is_connected("insufficient_cash_resolved", Callable(self, "_on_insufficient_cash_resolved")):
+				popups.disconnect("insufficient_cash_resolved", Callable(self, "_on_insufficient_cash_resolved"))
+			popups.connect("insufficient_cash_resolved", Callable(self, "_on_insufficient_cash_resolved"), CONNECT_ONE_SHOT)
+			popups.open_insufficient_cash_prompt(shortage, is_mandatory)
+			return
+			
+	_take_loan_and_proceed(shortage)
+
+func _on_insufficient_cash_resolved(accepted: bool):
+	if accepted:
+		_on_accept()
+	else:
+		_on_decline()
 
 func _take_loan_and_proceed(loan_amount: int):
 	if PlayerData and PlayerData.financials:
 		PlayerData.financials.take_bank_loan(loan_amount)
-		PlayerData.add_ledger_entry("income", "අනිවාර්ය බැංකු ණය", loan_amount)
+		if PlayerData.has_method("add_ledger_entry"):
+			PlayerData.add_ledger_entry("income", "Bank Loan", loan_amount)
 	_on_accept()
 
 func _can_execute_flashcard(cid: String) -> bool:
